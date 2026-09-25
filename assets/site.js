@@ -21,13 +21,24 @@
     });
   }
 
-  // Gallery: filter and sort in place; the address keeps the choice, so it can be shared.
+  // Gallery: filter and sort in place; the address keeps the choice, so it can be shared. The
+  // filters sit in a dropdown so the pictures start right under the heading; the ones in use
+  // show as tags beside it, each one tap from being dropped.
   var grid = document.querySelector("[data-grid]");
   var filters = document.querySelector("[data-filters]");
   if (grid && filters) {
     var cards = Array.prototype.slice.call(grid.querySelectorAll(".card"));
     var count = document.querySelector("[data-count]");
     var empty = document.querySelector("[data-empty]");
+    var drop = filters.querySelector("[data-dropdown]");
+    var sorter = filters.querySelector("select[data-sort]");
+    var active = filters.querySelector("[data-active]");
+    var activeN = filters.querySelector("[data-active-n]");
+    var done = filters.querySelector("[data-done]");
+    var label = function (key, value) {
+      var chip = filters.querySelector('[data-filter="' + key + '"][data-value="' + value + '"]');
+      return chip ? chip.firstChild.textContent.trim() : value;
+    };
     var params = new URLSearchParams(window.location.search);
     var state = {
       type: params.get("type") || "all",
@@ -65,9 +76,21 @@
           n.textContent = cards.filter(function (c) { return fits(c, type, telescope); }).length;
         }
       });
-      filters.querySelectorAll("[data-sort]").forEach(function (b) {
-        b.setAttribute("aria-pressed", String(state.sort === b.dataset.sort));
+      sorter.value = state.sort;
+      var on = ["type", "telescope"].filter(function (k) { return state[k] !== "all"; });
+      activeN.hidden = !on.length;
+      activeN.textContent = on.length;
+      active.textContent = "";
+      on.forEach(function (k) {
+        var pill = document.createElement("button");
+        pill.type = "button";
+        pill.className = "pill";
+        pill.setAttribute("data-remove", k);
+        pill.setAttribute("aria-label", "Show all, not only " + label(k, state[k]));
+        pill.textContent = label(k, state[k]) + " ×";
+        active.appendChild(pill);
       });
+      done.textContent = "Show " + shown.length + (shown.length === 1 ? " picture" : " pictures");
       if (remember) {
         var q = new URLSearchParams();
         if (state.type !== "all") q.set("type", state.type);
@@ -81,17 +104,33 @@
       var b = e.target.closest("button");
       if (!b) return;
       if (b.dataset.filter) state[b.dataset.filter] = b.dataset.value;
-      if (b.dataset.sort) state.sort = b.dataset.sort;
+      else if (b.dataset.remove) state[b.dataset.remove] = "all";
+      else if (b.hasAttribute("data-done")) {
+        drop.open = false;
+        // on a phone the button sits below a tall panel: back up to the tags and the first results
+        if (filters.getBoundingClientRect().top < 0) filters.scrollIntoView({ block: "start" });
+        return;
+      } else return;
       apply(true);
     });
-    var clear = document.querySelector("[data-clear]");
-    if (clear) {
-      clear.addEventListener("click", function () {
+    sorter.addEventListener("change", function () {
+      state.sort = sorter.value;
+      apply(true);
+    });
+    document.addEventListener("click", function (e) {
+      if (e.target.closest("[data-clear]")) {
         state.type = "all";
         state.telescope = "all";
         apply(true);
-      });
-    }
+      }
+      if (drop.open && !drop.contains(e.target)) drop.open = false;
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && drop.open) {
+        drop.open = false;
+        drop.querySelector("summary").focus();
+      }
+    });
     apply(false);
   }
 

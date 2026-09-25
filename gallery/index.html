@@ -18,8 +18,8 @@
 <link rel="icon" href="../assets/icon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=0c1e00a982">
-<script src="../assets/site.js?v=0c1e00a982" defer></script>
+<link rel="stylesheet" href="../assets/site.css?v=277fa88e1e">
+<script src="../assets/site.js?v=277fa88e1e" defer></script>
 <script data-goatcounter="https://blastrophoto.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -49,7 +49,10 @@
 <p class="lede" data-count aria-live="polite">110 pictures · 3,946 hours of integration</p>
 </section>
 <section class="wrap">
-<div class="filters" data-filters>
+<div class="toolbar" data-filters>
+<details class="dropdown" data-dropdown>
+<summary class="btn"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 4h12M4.5 8h7M7 12h2"/></svg>Filter<span class="tool-n" data-active-n hidden></span></summary>
+<div class="dropdown-panel">
 <div class="chip-row" role="group" aria-label="Type">
 <span class="label">Type</span>
 <button class="chip" type="button" data-filter="type" data-value="all" aria-pressed="true">All</button>
@@ -74,12 +77,20 @@
 <button class="chip" type="button" data-filter="telescope" data-value="r17" aria-pressed="false">C11 HyperStar + ASI294MM <span class="chip-n">3</span></button>
 <button class="chip" type="button" data-filter="telescope" data-value="r8" aria-pressed="false">GT81 (.8x) + ASI2600MM <span class="chip-n">2</span></button>
 </div>
-<div class="chip-row" role="group" aria-label="Sort">
-<span class="label">Sort</span>
-<button class="chip" type="button" data-sort="newest" aria-pressed="true">Newest</button>
-<button class="chip" type="button" data-sort="hours" aria-pressed="false">Most integration</button>
-<button class="chip" type="button" data-sort="az" aria-pressed="false">A to Z</button>
+<div class="dropdown-foot">
+<button class="btn btn-quiet" type="button" data-clear>Clear</button>
+<button class="btn btn-primary" type="button" data-done>Show the pictures</button>
 </div>
+</div>
+</details>
+<label class="tool-sort"><span class="label">Sort</span>
+<select data-sort>
+<option value="newest">Newest</option>
+<option value="hours">Most integration</option>
+<option value="az">A to Z</option>
+</select>
+</label>
+<div class="tool-active" data-active></div>
 </div>
 <div class="grid gallery-grid" data-grid>
 <a class="card" href="../ghost-of-cassiopeia/" data-type="nebula" data-telescopes="r11" data-hours="50.68" data-title="Ghost of Cassiopeia" data-order="0">
