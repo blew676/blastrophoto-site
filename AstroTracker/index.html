@@ -51,8 +51,8 @@
 <h1 class="p-h1">Every sub, every night, every telescope. Accounted for.</h1>
 <p class="p-lede">AstroTracker reads the files your imaging rigs write and keeps a complete record of every project: integration by filter and night, sub quality, calibration, and what to shoot next. No spreadsheets, no guesswork.</p>
 <div class="p-actions">
-<a class="btn btn-primary" href="AstroTracker-Explained.pdf" download>Download the free guide</a>
-<a class="btn" href="#how">See how it works</a>
+<button class="btn btn-primary" type="button" data-open="beta">Request to join the beta</button>
+<a class="btn" href="AstroTracker-Explained.pdf" download>Download the free guide</a>
 </div>
 <p class="p-meta"><span>For Windows</span><span>Runs on your own PC</span><span>The guide is free to read now</span></p>
 </div>
@@ -157,9 +157,33 @@
 </div>
 <a class="btn btn-primary" href="AstroTracker-Explained.pdf" download>Download the PDF · 5.6 MB</a>
 </div>
-<div class="p-status"><span class="p-soon">Coming soon</span><p>AstroTracker is in testing now, ahead of its public release. It isn't available to download yet; the guide above shows everything it does.</p></div>
+<div class="p-status"><span class="p-soon">Coming soon</span><p>AstroTracker is in beta testing now, ahead of its public release. It isn't available to download yet, but you're welcome to ask to join the beta.</p><button class="btn btn-primary" type="button" data-open="beta">Request to join the beta</button></div>
 </section>
 
+<dialog class="dialog" id="beta" aria-labelledby="beta-title">
+<div class="dialog-body">
+<div class="dialog-head">
+<h2 class="p-h2" id="beta-title">Request to join the beta</h2>
+<button class="icon-btn dialog-x" type="button" data-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+</div>
+<form class="form" action="https://api.web3forms.com/submit" method="post" data-send>
+<p>AstroTracker is being tested by a small group of imagers ahead of its public release. Tell me a little about yourself and your setup, and I'll be in touch by email.</p>
+<input type="hidden" name="access_key" value="cb265941-c26b-497b-9555-4f5ae201234f">
+<input type="hidden" name="subject" value="AstroTracker beta request">
+<input type="hidden" name="from_name" value="blastrophoto.com">
+<input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label class="field"><span>Name</span><input name="name" required maxlength="120" autocomplete="name"></label>
+<label class="field"><span>Email</span><input name="email" type="email" required maxlength="200" autocomplete="email"></label>
+<label class="field"><span>Message <em>(optional)</em></span><textarea name="message" rows="5" maxlength="4000" placeholder="Your telescopes, cameras and capture software, or anything you'd like to ask"></textarea></label>
+<p class="form-note">Sent to me by email through Web3Forms. Your name and email are used only to reply to you about the beta.</p>
+<div class="form-actions"><button class="btn btn-primary" type="submit">Send request</button><p class="form-status" data-status role="status" aria-live="polite"></p></div>
+</form>
+<div class="form-done" data-done hidden>
+<p>Thank you. Your request is on its way, and I'll reply by email.</p>
+<div class="form-actions"><button class="btn" type="button" data-close>Close</button></div>
+</div>
+</div>
+</dialog>
 </div>
 </main>
 <footer class="foot">
