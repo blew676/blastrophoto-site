@@ -1,4 +1,4 @@
-/* Blastrophoto, direction "Full frame": dark by design, so the pictures set the colour.
+/* AstroTracker Gallery, direction "Full frame": dark by design, so the pictures set the colour.
    Display type is Archivo, narrowed; data and labels are DM Mono. */
 
 @font-face {
@@ -105,6 +105,7 @@ p { margin: 0; }
   font-weight: 700; font-stretch: 75%; font-size: 21px; letter-spacing: 0.22em;
   text-transform: uppercase;
 }
+.brand-logo img { height: 40px; width: auto; }
 .nav { display: flex; gap: 4px; }
 .nav a, .menu summary, .menu nav a {
   font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
@@ -159,7 +160,7 @@ p { margin: 0; }
   color: var(--text); cursor: pointer;
 }
 .icon-btn:hover { border-color: var(--text); }
-.no-js [data-prev], .no-js [data-next] { display: none; }
+.no-js [data-prev], .no-js [data-next], .no-js [data-open] { display: none; }
 
 /* filter colours */
 .f-l { background: var(--f-l); }
@@ -354,6 +355,8 @@ p { margin: 0; }
 }
 .about-box .label { font-size: 13px; }
 .about-box p { font-size: 17px; line-height: 1.6; color: var(--text-2); }
+.about-side { display: flex; flex-direction: column; gap: 32px; }
+.about-picture { width: 100%; max-width: 440px; height: auto; margin: 0 auto; }
 .lost { margin-top: 28px; }
 
 /* a picture's page: full screen (the browser's own, or filling the window where a phone has
@@ -380,7 +383,7 @@ p { margin: 0; }
 .fs-on .nav-arrow { display: none; }
 body.no-scroll { overflow: hidden; }
 
-/* the AstroTracker product page */
+/* product-page blocks for a site's own pages (blastrophoto.com's AstroTracker page) */
 .product a:not(.btn) { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(245, 243, 239, 0.4); }
 .btn-primary { background: var(--text); color: var(--bg); border-color: var(--text); }
 .btn-primary:hover { background: #ffffff; color: var(--bg); }
@@ -456,6 +459,45 @@ body.no-scroll { overflow: hidden; }
 .p-status { margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
 .p-status p { max-width: 560px; font-size: 15px; line-height: 1.6; color: var(--muted); }
 
+/* a dialog over the page (data-open="<its id>" opens it), and a form in it that sends to a form
+   service in place (data-send) */
+.dialog {
+  width: min(560px, calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: 0; overflow: auto;
+  color: var(--text); background: var(--panel); border: 1px solid rgba(245, 243, 239, 0.14);
+  border-radius: 14px; box-shadow: 0 40px 120px -40px rgba(0, 0, 0, 0.9);
+}
+.dialog::backdrop {
+  background: rgba(7, 7, 8, 0.74); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.dialog-body { padding: 32px; display: flex; flex-direction: column; gap: 18px; }
+.dialog-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.dialog-x { flex-shrink: 0; margin: -6px -8px 0 0; }
+.dialog p { font-size: 16px; line-height: 1.55; color: var(--text-2); }
+.form { display: flex; flex-direction: column; gap: 16px; }
+.form[hidden], .form-done[hidden] { display: none; }
+.form-done { display: flex; flex-direction: column; gap: 20px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field > span {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted);
+}
+.field em { font-style: normal; letter-spacing: 0.04em; text-transform: none; color: var(--faint); }
+.field input, .field textarea {
+  width: 100%; padding: 12px 14px; font: inherit; font-size: 16px; line-height: 1.4;
+  color: var(--text); background: var(--bg); border: 1px solid rgba(245, 243, 239, 0.22);
+  border-radius: 6px;
+}
+.field textarea { min-height: 124px; resize: vertical; line-height: 1.5; }
+.field input:focus, .field textarea:focus {
+  outline: none; border-color: var(--f-oiii); box-shadow: 0 0 0 3px rgba(61, 181, 176, 0.25);
+}
+.dialog .form-note { font-family: var(--mono); font-size: 12px; line-height: 1.55; color: var(--faint); }
+.form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.btn:disabled { opacity: 0.6; cursor: progress; }
+.form-status { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.dialog .form-status.is-error { color: #f2a493; }
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; }
+
 /* footer */
 .foot {
   margin-top: 128px; padding: 28px var(--pad); border-top: 1px solid var(--line); display: flex;
@@ -480,6 +522,8 @@ body.no-scroll { overflow: hidden; }
   .menu { display: block; }
   .top { padding: 0 12px 0 var(--pad); }
   .brand { font-size: 18px; letter-spacing: 0.18em; }
+  .brand-logo img { height: 32px; }
+  .dialog-body { padding: 24px 20px; }
   .hero { height: auto; min-height: 0; padding-top: var(--header); }
   .slide { position: static; }
   .slide-img { position: static; height: auto; aspect-ratio: 3 / 2; }

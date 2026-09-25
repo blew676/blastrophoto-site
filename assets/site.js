@@ -1,5 +1,6 @@
 /* The little the site does in the browser: step through the featured pictures, filter and sort
-   the gallery, and let the arrow keys move between pictures. Without it every page still works. */
+   the gallery, full screen and the arrow keys on a picture's page, and dialogs and forms on a
+   site's own pages. Without it every page still works. */
 (function () {
   "use strict";
   document.documentElement.classList.remove("no-js");
@@ -174,4 +175,81 @@
       if (e.key === "ArrowRight") window.location.href = next.href;
     });
   }
+
+  // Dialogs: a button with data-open="<id>" opens that dialog; data-close, Escape or a click
+  // beside it closes it. A click that starts inside (selecting text in a field) never does.
+  var pressedOutside = false;
+  document.addEventListener("mousedown", function (e) {
+    pressedOutside = e.target.tagName === "DIALOG";
+  });
+  document.addEventListener("click", function (e) {
+    var opener = e.target.closest("[data-open]");
+    if (opener) {
+      var dialog = document.getElementById(opener.getAttribute("data-open"));
+      if (dialog && dialog.showModal && !dialog.open) {
+        e.preventDefault();
+        dialog.showModal();
+      }
+      return;
+    }
+    var closer = e.target.closest("[data-close]");
+    if (closer && closer.closest("dialog")) {
+      closer.closest("dialog").close();
+    } else if (e.target.tagName === "DIALOG" && e.target.open && pressedOutside) {
+      e.target.close();
+    }
+  });
+
+  // Forms that send to a form service (data-send) do it in place and say how it went; the
+  // browser's own posting stays as the fallback where fetch is missing.
+  document.querySelectorAll("form[data-send]").forEach(function (form) {
+    var status = form.querySelector("[data-status]");
+    var done = form.parentNode.querySelector("[data-done]");
+    var button = form.querySelector("[type=submit]");
+    var holder = form.closest("dialog");
+    if (holder && done) {
+      holder.addEventListener("close", function () {
+        if (!done.hidden) {
+          done.hidden = true;
+          form.hidden = false;
+        }
+      });
+    }
+    form.addEventListener("submit", function (e) {
+      if (!window.fetch) return;
+      e.preventDefault();
+      var data = {};
+      new FormData(form).forEach(function (value, key) { data[key] = value; });
+      button.disabled = true;
+      status.classList.remove("is-error");
+      status.textContent = "Sending…";
+      fetch(form.action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(data)
+      })
+        .then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (answer) {
+            if (!r.ok || answer.success === false) throw new Error(answer.message || r.status);
+          });
+        })
+        .then(function () {
+          form.reset();
+          status.textContent = "";
+          if (done) {
+            form.hidden = true;
+            done.hidden = false;
+            var next = done.querySelector("[data-close]");
+            if (next) next.focus();
+          } else {
+            status.textContent = "Sent. Thank you.";
+          }
+        })
+        .catch(function () {
+          status.classList.add("is-error");
+          status.textContent = "That didn't go through. Please try again in a minute.";
+        })
+        .then(function () { button.disabled = false; });
+    });
+  });
 })();
