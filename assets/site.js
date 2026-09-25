@@ -94,6 +94,74 @@
     apply(false);
   }
 
+  // A picture's page: full screen from the button, a click or tap on the picture, or the F key.
+  // The browser's own full screen where there is one; an iPhone has none for pictures, so there
+  // the picture fills the window instead. The sharper 4096 px copy loads only when the screen
+  // has more pixels than the page's copy.
+  var viewer = document.querySelector("[data-viewer]");
+  if (viewer) {
+    var pic = viewer.querySelector(".viewer-img");
+    var fsButton = viewer.querySelector("[data-fullscreen]");
+    var request = viewer.requestFullscreen || viewer.webkitRequestFullscreen;
+    var fsElement = function () {
+      return document.fullscreenElement || document.webkitFullscreenElement || null;
+    };
+    var isOn = function () {
+      return fsElement() === viewer || viewer.classList.contains("is-full");
+    };
+    var sharpen = function () {
+      var full = pic.getAttribute("data-full");
+      var need = Math.max(window.screen.width, window.screen.height) * (window.devicePixelRatio || 1);
+      if (!full || pic.getAttribute("src") === full || need <= pic.naturalWidth * 1.1) return;
+      var hi = new Image();
+      hi.onload = function () { pic.src = full; };
+      hi.src = full;
+    };
+    var sync = function () {
+      var on = isOn();
+      viewer.classList.toggle("fs-on", on);
+      document.body.classList.toggle("no-scroll", viewer.classList.contains("is-full"));
+      fsButton.setAttribute("aria-pressed", String(on));
+      fsButton.setAttribute("aria-label", on ? "Leave full screen" : "View full screen");
+    };
+    var fillWindow = function () {
+      viewer.classList.add("is-full");
+      sync();
+    };
+    var enter = function () {
+      sharpen();
+      if (!request || document.fullscreenEnabled === false) return fillWindow();
+      try {
+        var started = request.call(viewer);
+        if (started && started.catch) started.catch(fillWindow);
+      } catch (e) {
+        return fillWindow();
+      }
+      // Some embedded browsers neither grant nor refuse: fill the window if nothing happened.
+      window.setTimeout(function () {
+        if (!fsElement() && !viewer.classList.contains("is-full")) fillWindow();
+      }, 750);
+    };
+    var leave = function () {
+      if (fsElement()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      viewer.classList.remove("is-full");
+      sync();
+    };
+    var toggle = function () {
+      if (isOn()) leave();
+      else enter();
+    };
+    fsButton.addEventListener("click", toggle);
+    pic.addEventListener("click", toggle);
+    document.addEventListener("fullscreenchange", sync);
+    document.addEventListener("webkitfullscreenchange", sync);
+    document.addEventListener("keydown", function (e) {
+      if (e.altKey || e.ctrlKey || e.metaKey) return;
+      if (e.key === "Escape" && viewer.classList.contains("is-full")) leave();
+      if (e.key === "f" || e.key === "F") toggle();
+    });
+  }
+
   // A picture's page: the arrow keys step to the previous and next pictures.
   var prev = document.querySelector("[data-key-prev]");
   var next = document.querySelector("[data-key-next]");
