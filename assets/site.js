@@ -5,9 +5,12 @@
   "use strict";
   document.documentElement.classList.remove("no-js");
 
-  // Home: the featured pictures, one at a time.
+  // Home: the featured pictures, one at a time by the arrows, or as a slideshow when the site
+  // asks for one ([home] slideshow: slideshow(), at the end).
   var hero = document.querySelector("[data-carousel]");
-  if (hero) {
+  if (hero && hero.hasAttribute("data-show")) {
+    slideshow(hero);
+  } else if (hero) {
     var slides = Array.prototype.slice.call(hero.querySelectorAll("[data-slide]"));
     var at = 0;
     hero.addEventListener("click", function (e) {
@@ -291,4 +294,178 @@
         .then(function () { button.disabled = false; });
     });
   });
+
+  // Home as a slideshow: each featured picture fades in, and a moment later its record reads
+  // out over it (a rule draws, the parts come in one after another, integration and nights
+  // count up), holds, and goes before the next picture; the filter strip fills as the
+  // picture's clock. It stops while the pointer is on the record or the controls, on the
+  // pause button, and while the tab is hidden; the arrows, the arrow keys and a swipe step
+  // through it. Only the showing picture and the next one are loaded. Without this script the
+  // first picture shows with its record, as on any home page.
+  function slideshow(hero) {
+    var slides = Array.prototype.slice.call(hero.querySelectorAll("[data-slide]"));
+    var controls = hero.querySelector("[data-show-controls]");
+    if (slides.length < 2 || !controls) return;
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var dur = Number(hero.getAttribute("data-show")) * 1000 || 9000;
+    var IN = 1100, OUT = 1500, FADE = 1400;
+    var count = controls.querySelector("[data-show-count]");
+    var pauseButton = controls.querySelector("[data-show-pause]");
+    var at = -1, timers = [], started = 0, left = 0;
+    var paused = false, held = false, away = false, stopped = false;
+    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+
+    hero.style.setProperty("--show", dur + "ms");
+    hero.classList.add("is-showing");
+    controls.hidden = false;
+    slides.forEach(function (s) {
+      var parts = [s.querySelector(".label"), s.querySelector(".line"), s.querySelector(".hero-title")];
+      s.querySelectorAll(".figs > div").forEach(function (f) { parts.push(f); });
+      parts.push(s.querySelector(".actions"));
+      parts.forEach(function (el, i) {
+        if (!el) return;
+        el.classList.add("show-part");
+        el.style.setProperty("--i", String(i));
+      });
+      s.querySelectorAll(".figs dd").forEach(function (dd) { dd.setAttribute("data-final", dd.textContent); });
+    });
+
+    var clear = function () { timers.forEach(window.clearTimeout); timers = []; };
+    var later = function (fn, ms) { timers.push(window.setTimeout(fn, ms)); };
+
+    // integration and nights count up from nothing as the record reads out
+    var countUp = function (slide) {
+      if (still) return;
+      slide.querySelectorAll(".figs dd").forEach(function (dd) {
+        var text = dd.getAttribute("data-final");
+        var hm = /^(\d+)h (\d+)m$/.exec(text);
+        if (!hm && !/^\d+$/.test(text)) return;
+        var target = hm ? Number(hm[1]) * 60 + Number(hm[2]) : Number(text);
+        var t0 = performance.now();
+        var step = function (now) {
+          var k = Math.min(1, Math.max(0, (now - t0 - 700) / 1500));
+          if (k >= 1 || !slide.classList.contains("is-caption")) { dd.textContent = text; return; }
+          var v = Math.round(target * (1 - Math.pow(1 - k, 3)));
+          dd.textContent = hm ? Math.floor(v / 60) + "h " + pad(v % 60) + "m" : String(v);
+          window.requestAnimationFrame(step);
+        };
+        step(t0);
+      });
+    };
+
+    // one picture's timeline, from `from` ms into it (to carry on where it stopped)
+    var run = function (from) {
+      var slide = slides[at];
+      started = performance.now() - from;
+      if (from < IN && !slide.classList.contains("is-caption")) {
+        later(function () { slide.classList.add("is-caption"); countUp(slide); }, IN - from);
+      }
+      if (from < dur - OUT) {
+        later(function () {
+          slide.classList.remove("is-caption");
+          slide.classList.add("is-leaving");
+        }, dur - OUT - from);
+      }
+      later(function () { go(at + 1); }, dur - from);
+    };
+
+    // drawn and loaded: the leaving picture, the showing one and the next; the rest wait
+    var place = function () {
+      slides.forEach(function (s, i) {
+        var needed = i === at || i === (at + 1) % slides.length || s.classList.contains("is-leaving");
+        s.hidden = !needed;
+        if (needed) s.querySelector(".slide-img").loading = "eager";
+      });
+    };
+
+    var go = function (to) {
+      clear();
+      var next = (to + slides.length) % slides.length;
+      var s = slides[next];
+      var img = s.querySelector(".slide-img");
+      s.hidden = false;
+      img.loading = "eager";
+      var ready = img.decode ? img.decode().catch(function () {}) : Promise.resolve();
+      ready.then(function () {
+        var old = slides[at];
+        if (old && old !== s) {
+          old.classList.remove("is-current", "is-caption");
+          old.classList.add("is-leaving");
+          window.setTimeout(function () { old.classList.remove("is-leaving"); place(); }, FADE);
+        }
+        at = next;
+        s.classList.remove("is-current", "is-caption", "is-leaving");
+        void s.offsetWidth; // the picture's zoom and clock start again
+        s.classList.add("is-current");
+        begin(s);
+      });
+    };
+
+    // a picture has come: its figures as they are, the count, the pictures to load, its time
+    var begin = function (s) {
+      s.querySelectorAll(".figs dd").forEach(function (dd) { dd.textContent = dd.getAttribute("data-final"); });
+      count.textContent = pad(at + 1) + " / " + pad(slides.length);
+      place();
+      if (stopped) {
+        left = 0;
+        started = performance.now();
+        s.classList.add("is-caption");
+      } else {
+        run(0);
+      }
+    };
+
+    // stopped by the pause button, the pointer on the record, or a hidden tab: the record
+    // shows, the clock waits
+    var update = function () {
+      var stop = paused || held || away;
+      hero.classList.toggle("is-paused", paused);
+      hero.classList.toggle("is-still", stop);
+      pauseButton.setAttribute("aria-label", paused ? "Play the slideshow" : "Pause the slideshow");
+      if (at < 0 || stop === stopped) { stopped = stop; return; }
+      stopped = stop;
+      var s = slides[at];
+      if (stop) {
+        clear();
+        left = performance.now() - started;
+        s.classList.remove("is-leaving");
+        s.classList.add("is-caption");
+      } else {
+        run(Math.min(left, dur - OUT - 400));
+      }
+    };
+
+    controls.addEventListener("click", function (e) {
+      if (e.target.closest("[data-show-prev]")) go(at - 1);
+      else if (e.target.closest("[data-show-next]")) go(at + 1);
+      else if (e.target.closest("[data-show-pause]")) { paused = !paused; update(); }
+    });
+    var onRecord = function (el) {
+      return !!(el && el.closest && el.closest(".slide.is-current .band, [data-show-controls]"));
+    };
+    hero.addEventListener("pointerover", function (e) {
+      if (!held && onRecord(e.target)) { held = true; update(); }
+    });
+    hero.addEventListener("pointerout", function (e) {
+      if (held && !onRecord(e.relatedTarget)) { held = false; update(); }
+    });
+    hero.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") go(at + 1);
+      else if (e.key === "ArrowLeft") go(at - 1);
+    });
+    var x0 = null;
+    hero.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    hero.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 50) go(at + (dx < 0 ? 1 : -1));
+    });
+    document.addEventListener("visibilitychange", function () { away = document.hidden; update(); });
+    // the first picture is on screen already (the page shows it without the script): the show
+    // starts from it as it is, without waiting for it to decode
+    at = 0;
+    slides[0].classList.add("is-current");
+    begin(slides[0]);
+  }
 })();

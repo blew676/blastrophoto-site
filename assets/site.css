@@ -384,6 +384,7 @@ p { margin: 0; }
 .about-solo { grid-template-columns: minmax(0, 760px); }
 .about-text { display: flex; flex-direction: column; gap: 20px; }
 .about-text p { font-size: 22px; line-height: 1.5; color: var(--text-2); }
+.about-text a { overflow-wrap: anywhere; }
 .about-links { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 8px; }
 .about-box {
   padding: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px;
@@ -594,4 +595,96 @@ body.no-scroll { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .card-img img { transition: none; }
   .card:hover .card-img img { transform: none; }
+}
+
+/* home as a slideshow ([home] slideshow; site.js puts is-showing on the hero when it runs it):
+   the pictures crossfade with a slow zoom, each one's record reads out over it (no bar), and
+   the filter strip fills as the picture's clock */
+.hero.is-showing { height: 100vh; height: 100svh; min-height: 560px; }
+.is-showing .slide { opacity: 0; transition: opacity 1.4s ease; pointer-events: none; }
+.is-showing .slide.is-current { opacity: 1; pointer-events: auto; }
+.is-showing .slide:nth-child(4n + 1) .slide-img { transform-origin: 30% 42%; }
+.is-showing .slide:nth-child(4n + 2) .slide-img { transform-origin: 72% 38%; }
+.is-showing .slide:nth-child(4n + 3) .slide-img { transform-origin: 42% 68%; }
+.is-showing .slide:nth-child(4n + 4) .slide-img { transform-origin: 64% 60%; }
+.is-showing .slide.is-current .slide-img, .is-showing .slide.is-leaving .slide-img {
+  animation: show-zoom calc(var(--show) + 1.4s) linear both;
+}
+@keyframes show-zoom { from { transform: scale(1); } to { transform: scale(1.07); } }
+/* a shade behind the record while it shows */
+.is-showing .slide::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0;
+  background: radial-gradient(115% 85% at 0% 100%, rgba(0, 0, 0, 0.74) 0%, rgba(0, 0, 0, 0.38) 36%, rgba(0, 0, 0, 0) 64%);
+  transition: opacity 1.2s ease;
+}
+.is-showing .slide.is-caption::before { opacity: 1; }
+.is-showing .slide .band {
+  z-index: 2; left: var(--pad); right: auto; bottom: 70px; width: min(1000px, calc(100% - 2 * var(--pad)));
+  padding: 0; flex-direction: column; align-items: flex-start; gap: 20px;
+  background: none; -webkit-backdrop-filter: none; backdrop-filter: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55), 0 0 28px rgba(0, 0, 0, 0.45);
+}
+.is-showing .band-title { gap: 12px; }
+.is-showing .band-side { flex-direction: column; align-items: flex-start; gap: 22px; }
+.is-showing .hero-title { font-size: clamp(56px, 7.4vw, 118px); }
+.is-showing .label { color: rgba(245, 243, 239, 0.8); }
+.is-showing .line { color: rgba(245, 243, 239, 0.86); }
+.is-showing .figs { gap: 0; }
+.is-showing .figs > div { padding: 0 28px; border-left: 1px solid rgba(245, 243, 239, 0.28); }
+.is-showing .figs > div:first-child { padding-left: 0; border-left: 0; }
+.is-showing .figs dd { font-variant-numeric: tabular-nums; }
+.is-showing .band [data-prev], .is-showing .band [data-next] { display: none; }
+.is-showing .actions .btn { background: rgba(7, 7, 8, 0.35); }
+/* the readout: a rule draws, the parts come in one after another, and all go together */
+.show-rule { display: none; }
+.is-showing .show-rule {
+  display: block; width: min(560px, 100%); height: 1px; background: rgba(245, 243, 239, 0.7);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.6s ease;
+}
+.is-showing .slide.is-caption .show-rule { transform: scaleX(1); transition: transform 0.9s cubic-bezier(0.6, 0, 0.2, 1); }
+.is-showing .slide.is-leaving .show-rule { transform-origin: right; }
+.is-showing .show-part { opacity: 0; transform: translateX(-14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.is-showing .slide.is-caption .show-part {
+  opacity: 1; transform: none;
+  transition: opacity 0.9s ease calc(var(--i) * 110ms + 450ms),
+    transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--i) * 110ms + 450ms);
+}
+.is-showing .slide.is-leaving .show-part { opacity: 0; transform: translateY(-12px); transition: opacity 0.8s ease, transform 0.9s ease; }
+/* the filter strip is the picture's clock */
+.is-showing .slide .edge { z-index: 2; height: 4px; clip-path: inset(0 100% 0 0); }
+.is-showing .slide.is-current .edge { animation: show-clock var(--show) linear both; }
+@keyframes show-clock { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.is-still .slide .edge, .is-still .slide-img { animation-play-state: paused; }
+/* its controls, lower right */
+.show-controls {
+  position: absolute; z-index: 3; right: 28px; bottom: 26px; display: flex; align-items: center; gap: 8px;
+  opacity: 0.55; transition: opacity 0.3s ease;
+}
+.show-controls[hidden] { display: none; }
+.hero:hover .show-controls, .show-controls:focus-within { opacity: 1; }
+.show-count { margin-right: 8px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; color: rgba(245, 243, 239, 0.85); }
+.show-controls .icon-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(7, 7, 8, 0.35); border-color: rgba(245, 243, 239, 0.3); }
+.show-controls .icon-btn:hover { border-color: var(--text); }
+.show-controls .i-play, .is-paused .show-controls .i-pause { display: none; }
+.is-paused .show-controls .i-play { display: block; }
+@media (max-width: 700px) {
+  .hero.is-showing { height: 80vh; height: 80svh; min-height: 520px; padding-top: 0; }
+  .is-showing .slide { position: absolute; }
+  .is-showing .slide-img { position: absolute; height: 100%; aspect-ratio: auto; }
+  .is-showing .slide .band {
+    position: absolute; left: var(--pad); bottom: 46px; width: calc(100% - 2 * var(--pad)); gap: 14px;
+    padding: 0; background: none;
+  }
+  .is-showing .slide .edge { position: absolute; }
+  .is-showing .slide::before { background: linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.45) 38%, rgba(0, 0, 0, 0) 62%); }
+  .is-showing .hero-title { font-size: 44px; }
+  .is-showing .figs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 18px; }
+  .is-showing .figs > div { padding: 0; border: 0; }
+  .is-showing .figs dd { font-size: 22px; }
+  .show-controls { right: 12px; bottom: 12px; }
+  .show-count { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-showing .slide.is-current .slide-img, .is-showing .slide.is-leaving .slide-img { animation: none; }
+  .is-showing .show-part, .is-showing .slide.is-caption .show-part, .is-showing .slide.is-leaving .show-part { transform: none; }
 }

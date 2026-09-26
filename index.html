@@ -18,8 +18,8 @@
 <link rel="icon" href="assets/icon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=277fa88e1e">
-<script src="assets/site.js?v=277fa88e1e" defer></script>
+<link rel="stylesheet" href="assets/site.css?v=356bef1bab">
+<script src="assets/site.js?v=356bef1bab" defer></script>
 <script data-goatcounter="https://blastrophoto.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -44,14 +44,14 @@
 </header>
 <main id="main">
 <h1 class="visually-hidden">Blastrophoto: astrophotography</h1>
-<section class="hero" data-carousel aria-label="Featured pictures">
+<section class="hero" data-carousel data-show="9" aria-label="Featured pictures">
 <article class="slide" data-slide aria-label="1 of 5: Ghost of Cassiopeia">
 <img class="slide-img" src="img/p321-24f5cbea.jpg" width="2048" height="1177" alt="Ghost of Cassiopeia, IC 63, Cassiopeia">
 <div class="band">
 <div class="band-title">
 <p class="label">Latest · 01 / 05</p>
 <p class="line">IC 63 · Cassiopeia · LRGB + Hα</p>
-<h2 class="display hero-title">Ghost of Cassiopeia</h2>
+<span class="show-rule" aria-hidden="true"></span><h2 class="display hero-title">Ghost of Cassiopeia</h2>
 </div>
 <div class="band-side">
 <dl class="figs">
@@ -74,7 +74,7 @@
 <div class="band-title">
 <p class="label">Featured · 02 / 05</p>
 <p class="line">Sh2-240 · Simeis 147 · Taurus · HOO</p>
-<h2 class="display hero-title">Spaghetti Nebula</h2>
+<span class="show-rule" aria-hidden="true"></span><h2 class="display hero-title">Spaghetti Nebula</h2>
 </div>
 <div class="band-side">
 <dl class="figs">
@@ -97,7 +97,7 @@
 <div class="band-title">
 <p class="label">Featured · 03 / 05</p>
 <p class="line">IC 1848 · Cassiopeia · SHO</p>
-<h2 class="display hero-title">Soul Nebula</h2>
+<span class="show-rule" aria-hidden="true"></span><h2 class="display hero-title">Soul Nebula</h2>
 </div>
 <div class="band-side">
 <dl class="figs">
@@ -120,7 +120,7 @@
 <div class="band-title">
 <p class="label">Featured · 04 / 05</p>
 <p class="line">M81 · M82 · faint galactic dust · Ursa Major · LRGB + Hα, OIII</p>
-<h2 class="display hero-title">M81 and the Vulcan Nebula</h2>
+<span class="show-rule" aria-hidden="true"></span><h2 class="display hero-title">M81 and the Vulcan Nebula</h2>
 </div>
 <div class="band-side">
 <dl class="figs">
@@ -143,7 +143,7 @@
 <div class="band-title">
 <p class="label">Featured · 05 / 05</p>
 <p class="line">NGC 7293 · Aquarius · SHO</p>
-<h2 class="display hero-title">Helix Nebula</h2>
+<span class="show-rule" aria-hidden="true"></span><h2 class="display hero-title">Helix Nebula</h2>
 </div>
 <div class="band-side">
 <dl class="figs">
@@ -160,6 +160,12 @@
 </div>
 <div class="edge" aria-hidden="true"><span class="f-ha" style="flex-grow: 29.02"></span><span class="f-oiii" style="flex-grow: 29.82"></span><span class="f-sii" style="flex-grow: 41.16"></span></div>
 </article>
+<div class="show-controls" data-show-controls hidden>
+<span class="show-count" data-show-count></span>
+<button class="icon-btn" type="button" data-show-prev aria-label="Previous picture"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 3L5 9l6 6"/></svg></button>
+<button class="icon-btn" type="button" data-show-pause aria-label="Pause the slideshow"><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M3 1.5v11l9.5-5.5z"/></svg></button>
+<button class="icon-btn" type="button" data-show-next aria-label="Next picture"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 3l6 6-6 6"/></svg></button>
+</div>
 </section>
 <section class="wrap intro">
 <p>Deep-sky pictures, each shown with the full record of how it was made: every filter, every night, every telescope.</p>
@@ -208,7 +214,7 @@
 <h2 class="label">By the numbers</h2>
 <div class="stats">
 <div class="stat"><span class="stat-value">114</span><span class="label">Finished pictures</span></div>
-<div class="stat"><span class="stat-value">3,993</span><span class="label">Hours of light in them</span></div>
+<div class="stat"><span class="stat-value">4,005</span><span class="label">Hours of light in them</span></div>
 <div class="stat"><span class="stat-value">386</span><span class="label">Nights under the sky</span></div>
 <div class="stat"><span class="stat-value">10</span><span class="label">Telescopes</span></div>
 </div>
