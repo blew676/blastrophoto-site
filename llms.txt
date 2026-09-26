@@ -8,7 +8,7 @@ Every picture is shown with the record AstroTracker keeps of how it was made: in
 
 ## Pages
 
-- [Gallery](https://blastrophoto.com/gallery/): 110 finished pictures, 3,946 hours of integration.
+- [Gallery](https://blastrophoto.com/gallery/): 111 finished pictures, 3,946 hours of integration.
 - [Telescopes](https://blastrophoto.com/telescopes/): the telescopes behind the pictures.
 - [About](https://blastrophoto.com/about/): the person behind the pictures.
 - [AstroTracker](https://blastrophoto.com/AstroTracker/): AstroTracker keeps a complete record of every astrophotography project: integration by filter and night, sub quality, calibration, and what to shoot next.
@@ -103,6 +103,7 @@ The pictures are not offered for training AI models (see robots.txt).
 - [Sailboat Cluster](https://blastrophoto.com/sailboat-cluster/): Sailboat Cluster: 30h 39m of LRGB + Hα through the ED127 + ASI2600MM, 8 nights.
 - [Emission near IC 2118](https://blastrophoto.com/emission-near-ic-2118/): Emission near IC 2118: 32h 18m of LRGB + Hα through the GT81 + ASI294MM, 11 nights.
 - [Orion's Head](https://blastrophoto.com/orions-head/): Orion's Head: 16h 33m of RGB + Hα through the Pleiades 68 + ASI2600MM, 6 nights.
+- [Mars and The Beehive Cluster](https://blastrophoto.com/mars-and-the-beehive-cluster/): Mars and The Beehive Cluster: 0h 47m of RGB through the Pleiades 68 + ASI2600MM, 1 night.
 - [Clamshell Nebula](https://blastrophoto.com/clamshell-nebula/): Clamshell Nebula: 34h 48m of RGB + Hα, OIII, SII through the GT81 + ASI294MM, 8 nights.
 - [Horsehead and Flame](https://blastrophoto.com/horsehead-and-flame/): Horsehead and Flame: 31h 24m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 12 nights.
 - [Dumbbell Nebula](https://blastrophoto.com/dumbbell-nebula/): Dumbbell Nebula: 15h 16m of RGB + Hα, OIII, SII through the ED127 + ASI2600MM, 6 nights.
