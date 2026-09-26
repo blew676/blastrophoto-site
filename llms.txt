@@ -35,6 +35,8 @@ The other purpose of this website is to promote a new tool I've developed called
 
 ## Pictures
 
+The pictures are not offered for training AI models (see robots.txt).
+
 - [Ghost of Cassiopeia](https://blastrophoto.com/ghost-of-cassiopeia/): Ghost of Cassiopeia: 50h 41m of LRGB + Hα through the GT81 + ASI585MM, 13 nights.
 - [Heart Nebula](https://blastrophoto.com/heart-nebula/): Heart Nebula: 34h 00m of SHO through the ED127 + ASI2600MM, 8 nights.
 - [Ghost Nebula](https://blastrophoto.com/ghost-nebula/): Ghost Nebula: 41h 24m of LRGB through the EdgeHD 8 + ASI294MM, 8 nights.
