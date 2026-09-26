@@ -8,7 +8,7 @@ Every picture is shown with the record AstroTracker keeps of how it was made: in
 
 ## Pages
 
-- [Gallery](https://blastrophoto.com/gallery/): 111 finished pictures, 3,946 hours of integration.
+- [Gallery](https://blastrophoto.com/gallery/): 114 finished pictures, 3,993 hours of integration.
 - [Telescopes](https://blastrophoto.com/telescopes/): the telescopes behind the pictures.
 - [About](https://blastrophoto.com/about/): the person behind the pictures.
 - [AstroTracker](https://blastrophoto.com/AstroTracker/): AstroTracker keeps a complete record of every astrophotography project: integration by filter and night, sub quality, calibration, and what to shoot next.
@@ -133,6 +133,7 @@ The pictures are not offered for training AI models (see robots.txt).
 - [vdB 15](https://blastrophoto.com/vdb-15/): vdB 15: 42h 19m of LRGB + Hα through the ED127 + ASI2600MM, 11 nights.
 - [Cone Nebula](https://blastrophoto.com/cone-nebula/): Cone Nebula: 28h 20m of RGB + Hα through the ED127 + ASI2600MM, 5 nights.
 - [Cygnus Wall](https://blastrophoto.com/cygnus-wall/): Cygnus Wall: 25h 00m of SHO through the ED127 + ASI2600MM, 8 nights.
+- [Little Flame Nebula ic2087](https://blastrophoto.com/little-flame-nebula-ic2087/): Little Flame Nebula ic2087: 16h 06m of RGB through the GT81 (.8x) + ASI2600MM, 7 nights.
 - [Triangulum Galaxy](https://blastrophoto.com/triangulum-galaxy/): Triangulum Galaxy: 65h 52m of RGB + Hα, OIII through the ED127 + ASI2600MM, 10 nights.
 - [Bubble Nebula](https://blastrophoto.com/bubble-nebula/): Bubble Nebula: 20h 30m of SHO through the ED127 + ASI2600MM, 5 nights.
 - [Double Cluster](https://blastrophoto.com/double-cluster/): Double Cluster: 18h 12m of RGB + Hα through the Redcat 51 + ASI294MM, 4 nights.
@@ -141,7 +142,9 @@ The pictures are not offered for training AI models (see robots.txt).
 - [Helix Nebula](https://blastrophoto.com/helix-nebula/): Helix Nebula: 31h 35m of SHO through the ED127 + ASI2600MM, 7 nights.
 - [NGC 7129](https://blastrophoto.com/ngc-7129/): NGC 7129: 46h 46m of RGB + Hα through the ED127 + ASI2600MM, 7 nights.
 - [Cocoon Nebula](https://blastrophoto.com/cocoon-nebula-ed127/): Cocoon Nebula: 43h 05m of RGB + Hα through the ED127 + ASI2600MM, 9 nights.
+- [The Iris Nebula](https://blastrophoto.com/the-iris-nebula/): The Iris Nebula: 7h 50m of RGB through the GT81 (.8x) + ASI2600MM, 2 nights.
 - [vdB 132](https://blastrophoto.com/vdb-132/): vdB 132: 10h 27m of RGB + Hα through the ED127 + ASI2600MM, 2 nights.
+- [Wolf's Cave Nebula](https://blastrophoto.com/wolfs-cave-nebula-gt81-8x-asi2600mm/): Wolf's Cave Nebula: 22h 25m of LRGB + Hα through the GT81 (.8x) + ASI2600MM, 5 nights.
 - [Seahorse Nebula](https://blastrophoto.com/seahorse-nebula/): Seahorse Nebula: 13h 09m of RGB through the ED127 + ASI2600MM, 3 nights.
 - [Ghost of Cassiopeia](https://blastrophoto.com/ghost-of-cassiopeia-ed127/): Ghost of Cassiopeia: 8h 07m of RGB + Hα through the ED127 + ASI2600MM, 3 nights.
 - [Wizard Nebula](https://blastrophoto.com/wizard-nebula/): Wizard Nebula: 39h 10m of SHO through the ED127 + ASI2600MM, 12 nights.
