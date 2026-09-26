@@ -1,0 +1,147 @@
+# Blastrophoto
+
+> Deep-sky astrophotography, each picture shown with the full record of how it was made.
+
+Deep-sky pictures, each shown with the full record of how it was made: every filter, every night, every telescope.
+
+Every picture is shown with the record AstroTracker keeps of how it was made: integration per filter and per night, subs kept, the telescope and camera.
+
+## Pages
+
+- [Gallery](https://blastrophoto.com/gallery/): 110 finished pictures, 3,946 hours of integration.
+- [Telescopes](https://blastrophoto.com/telescopes/): the telescopes behind the pictures.
+- [About](https://blastrophoto.com/about/): the person behind the pictures.
+- [AstroTracker](https://blastrophoto.com/AstroTracker/): AstroTracker keeps a complete record of every astrophotography project: integration by filter and night, sub quality, calibration, and what to shoot next.
+  - [AstroTracker Explained (web page)](https://blastrophoto.com/AstroTracker/AstroTracker-Explained.html)
+  - [AstroTracker Explained (PDF)](https://blastrophoto.com/AstroTracker/AstroTracker-Explained.pdf)
+
+## AstroTracker
+
+AstroTracker is a Windows program by Brandon Lewis for astrophotographers. It watches the folders the imaging rigs write to, reads each frame's header (it never changes an image file), and keeps a complete record of every project: integration per filter, night and telescope; sub quality, with subs flagged for clouds and trailing; calibration coverage (flats, darks and bias); the night-by-night history; planning for the coming nights; weather; and alerts while imaging. It runs on the user's own PC, and nothing leaves it unless a feature is switched on.
+
+Status: in beta testing ahead of its public release; it is not yet available to download. People can ask to join the beta with the form on the AstroTracker page.
+
+For how AstroTracker works and how to use it, the complete guide is AstroTracker Explained (it covers version 0.23.3), linked above as a web page and as a PDF.
+
+## About
+
+Hello and thank you for visiting my site! My name is Brandon Lewis. I'm a husband, father, IT nerd, and follower of Jesus!
+
+When I was young, astronomy was always on my mind. I loved the photos and I was always in awe of the sheer size of space. Everything about astronomy purely is wonderful and it points to the creative mind of our Wonderful Creator. Something about the intricate beauty of each unique space object captivates my heart every time I see something out there. Well, when I turned adult I finally was able to do this and a dream was made true. Since 2019 I have collected well over 8000 hours of total exposure time on a variety of different deep space objects and that number continues to climb every clear night.
+
+The purpose of this webpage is to share the things I've been able to see with whomever else enjoys looking at such beautiful wonders. I hope to eventually provide information about the gear I use to help guide anyone else interested in starting this hobby.
+
+The other purpose of this website is to promote a new tool I've developed called AstroTracker. This app is the bones behind the content on this site and helps me keep track of years worth of photography. If you're interested in seeing more about this incredible new tool, please feel free to visit https://www.blastrophoto.com/AstroTracker
+
+## Pictures
+
+- [Ghost of Cassiopeia](https://blastrophoto.com/ghost-of-cassiopeia/): Ghost of Cassiopeia: 50h 41m of LRGB + Hα through the GT81 + ASI585MM, 13 nights.
+- [Heart Nebula](https://blastrophoto.com/heart-nebula/): Heart Nebula: 34h 00m of SHO through the ED127 + ASI2600MM, 8 nights.
+- [Ghost Nebula](https://blastrophoto.com/ghost-nebula/): Ghost Nebula: 41h 24m of LRGB through the EdgeHD 8 + ASI294MM, 8 nights.
+- [IC 63 and IC 59](https://blastrophoto.com/ic-63-and-ic-59/): IC 63 and IC 59: 25h 22m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 8 nights.
+- [The Butterfly Nebula](https://blastrophoto.com/the-butterfly-nebula/): The Butterfly Nebula: 15h 10m of SHO through the GT81 + ASI585MM, 7 nights.
+- [Crescent Nebula](https://blastrophoto.com/crescent-nebula/): Crescent Nebula: 45h 10m of HOO through the ED127 + ASI2600MM, 9 nights.
+- [North America and Pelican](https://blastrophoto.com/north-america-and-pelican/): North America and Pelican: 6h 30m of HOO through the Pleiades 68 + ASI2600MM, 1 night.
+- [Veil Nebula](https://blastrophoto.com/veil-nebula-gt81-asi585mm/): Veil Nebula: 31h 00m of HOO through the GT81 + ASI585MM, 10 nights.
+- [Hamburger Galaxy](https://blastrophoto.com/hamburger-galaxy/): Hamburger Galaxy: 21h 42m of LRGB through the EdgeHD 8 + ASI294MM, 7 nights.
+- [Leo Triplet](https://blastrophoto.com/leo-triplet/): Leo Triplet: 35h 49m of L + R + B + Hα through the Pleiades 68 + ASI2600MM, 17 nights.
+- [Splinter Galaxy](https://blastrophoto.com/splinter-galaxy/): Splinter Galaxy: 52h 51m of LRGB through the ED127 + ASI2600MM, 5 nights.
+- [M106](https://blastrophoto.com/m106/): M106: 149h 26m of LRGB + Hα through the ED127 + ASI2600MM, 31 nights.
+- [Whirlpool Galaxy](https://blastrophoto.com/whirlpool-galaxy/): Whirlpool Galaxy: 47h 03m of LRGB + Hα through the EdgeHD 8 + ASI294MM + ED127 + ASI2600MM, 8 nights.
+- [Sombrero Galaxy](https://blastrophoto.com/sombrero-galaxy/): Sombrero Galaxy: 25h 03m of LRGB through the EdgeHD 8 + ASI294MM + ED127 + ASI2600MM, 4 nights.
+- [Bubble Galaxy](https://blastrophoto.com/bubble-galaxy/): Bubble Galaxy: 24h 51m of LRGB + Hα through the EdgeHD 8 + ASI294MM, 8 nights.
+- [M99](https://blastrophoto.com/m99/): M99: 31h 35m of LRGB through the ED127 + ASI2600MM, 8 nights.
+- [Whale and Crowbar](https://blastrophoto.com/whale-and-crowbar/): Whale and Crowbar: 57h 06m of LRGB + Hα through the ED127 + ASI2600MM, 7 nights.
+- [Coddington's Nebula](https://blastrophoto.com/coddingtons-nebula/): Coddington's Nebula: 53h 59m of LRGB + Hα through the EdgeHD 8 + ASI294MM, 10 nights.
+- [M81 and the Vulcan Nebula](https://blastrophoto.com/m81-and-the-vulcan-nebula/): M81 and the Vulcan Nebula: 151h 00m of LRGB + Hα, OIII through the Pleiades 68 + ASI2600MM, 24 nights.
+- [M101](https://blastrophoto.com/m101/): M101: 82h 28m of LRGB + Hα through the GT81 + ASI585MM, 16 nights.
+- [Tiger Eye Galaxy](https://blastrophoto.com/tiger-eye-galaxy/): Tiger Eye Galaxy: 35h 42m of LRGB through the EdgeHD 8 + ASI294MM, 5 nights.
+- [IC 2169](https://blastrophoto.com/ic-2169/): IC 2169: 60h 50m of LRGB + Hα through the ED127 + ASI2600MM, 17 nights.
+- [vdB 14](https://blastrophoto.com/vdb-14/): vdB 14: 81h 30m of LRGB + Hα through the GT81 + ASI294MM, 13 nights.
+- [Cosmic Bat Nebula](https://blastrophoto.com/cosmic-bat-nebula/): Cosmic Bat Nebula: 23h 05m of LRGB through the EdgeHD 8 + ASI2600MM, 7 nights.
+- [Pleiades](https://blastrophoto.com/pleiades/): Pleiades: 76h 46m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 17 nights.
+- [Orion Nebula](https://blastrophoto.com/orion-nebula/): Orion Nebula: 39h 51m of LRGB + Hα, OIII through the GT81 + ASI294MM, 14 nights.
+- [Christmas Tree Cluster](https://blastrophoto.com/christmas-tree-cluster/): Christmas Tree Cluster: 7h 30m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 3 nights.
+- [IC 5076](https://blastrophoto.com/ic-5076/): IC 5076: 19h 04m of LRGB + Hα through the ED127 + ASI2600MM, 6 nights.
+- [M15](https://blastrophoto.com/m15/): M15: 55h 22m of Hα + No filter through the GT81 + ASI294MM, 15 nights.
+- [Spaghetti Nebula](https://blastrophoto.com/spaghetti-nebula/): Spaghetti Nebula: 56h 40m of HOO through the Pleiades 68 + ASI2600MM, 16 nights.
+- [M78](https://blastrophoto.com/m78/): M78: 78h 41m of LRGB + Hα through the ED127 + ASI2600MM, 19 nights.
+- [M35](https://blastrophoto.com/m35/): M35: 21h 44m of LRGB + Hα through the EdgeHD 8 + ASI2600MM, 6 nights.
+- [Flaming Star Nebula](https://blastrophoto.com/flaming-star-nebula/): Flaming Star Nebula: 20h 54m of LRGB + Hα through the ED127 + ASI2600MM, 10 nights.
+- [IC 2169](https://blastrophoto.com/ic-2169-gt81/): IC 2169: 22h 40m of Hα through the GT81 + ASI294MM, 7 nights.
+- [Fish Head Nebula](https://blastrophoto.com/fish-head-nebula/): Fish Head Nebula: 30h 10m of SHO through the EdgeHD 8 + ASI2600MM, 6 nights.
+- [Soul Nebula](https://blastrophoto.com/soul-nebula/): Soul Nebula: 76h 44m of SHO through the ED127 + ASI2600MM, 15 nights.
+- [LBN 438](https://blastrophoto.com/lbn-438/): LBN 438: 76h 01m of RGB + Hα through the ED127 + ASI2600MM, 15 nights.
+- [Pacman Nebula](https://blastrophoto.com/pacman/): Pacman Nebula: 58h 21m of SHO through the EdgeHD 8 + ASI2600MM, 10 nights.
+- [Wolf's Cave Nebula](https://blastrophoto.com/wolfs-cave-nebula/): Wolf's Cave Nebula: 66h 30m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 19 nights.
+- [LDN 1221](https://blastrophoto.com/ldn-1221/): LDN 1221: 60h 40m of LRGB + Hα through the ED127 + ASI2600MM, 14 nights.
+- [Cocoon Nebula](https://blastrophoto.com/cocoon-nebula/): Cocoon Nebula: 24h 38m of LRGB + Hα through the C11 HyperStar + ASI294MM, 7 nights.
+- [Sagittarius Star Cloud](https://blastrophoto.com/sagittarius-star-cloud/): Sagittarius Star Cloud: 31h 16m of LRGB + Hα, OIII through the Pleiades 68 + ASI2600MM, 10 nights.
+- [Eastern Veil](https://blastrophoto.com/eastern-veil/): Eastern Veil: 16h 30m of HOO through the GT81 + ASI585MM, 3 nights.
+- [LDN 234](https://blastrophoto.com/ldn-234/): LDN 234: 12h 00m of LRGB through the Pleiades 68 + ASI2600MM, 5 nights.
+- [IC 4605](https://blastrophoto.com/ic-4605/): IC 4605: 14h 26m of LRGB + Hα through the ED127 + ASI2600MM, 9 nights.
+- [Iris Nebula](https://blastrophoto.com/iris-nebula/): Iris Nebula: 17h 24m of LRGB through the C11 HyperStar + ASI294MM, 5 nights.
+- [Tulip Nebula](https://blastrophoto.com/tulip-nebula/): Tulip Nebula: 39h 10m of SHO through the ED127 + ASI2600MM, 11 nights.
+- [Eagle Nebula](https://blastrophoto.com/eagle-nebula-gt81-asi585mm/): Eagle Nebula: 5h 10m of SHO through the GT81 + ASI585MM, 2 nights.
+- [Little Cocoon](https://blastrophoto.com/little-cocoon/): Little Cocoon: 10h 00m of LRGB through the GT81 + ASI585MM, 2 nights.
+- [LDN 1100](https://blastrophoto.com/ldn-1100/): LDN 1100: 9h 21m of LRGB through the GT81 + ASI585MM, 2 nights.
+- [NGC 4395](https://blastrophoto.com/ngc-4395/): NGC 4395: 31h 31m of LRGB + Hα through the ED127 + ASI2600MM, 12 nights.
+- [Trifid Nebula](https://blastrophoto.com/m20/): Trifid Nebula: 8h 24m of LRGB through the C11 (.63x) + ASI294MM, 5 nights.
+- [M95 and M96](https://blastrophoto.com/m95-and-m96/): M95 and M96: 19h 24m of LRGB + Hα through the ED127 + ASI2600MM, 8 nights.
+- [M88](https://blastrophoto.com/m88/): M88: 15h 30m of LRGB through the C11 (.63x) + ASI294MM, 5 nights.
+- [Needle Galaxy](https://blastrophoto.com/needle-galaxy/): Needle Galaxy: 6h 28m of LRGB through the C11 (.63x) + ASI294MM, 2 nights.
+- [Koi Fish Galaxy](https://blastrophoto.com/koi-fish-galaxy/): Koi Fish Galaxy: 71h 17m of LRGB + Hα through the ED127 + ASI2600MM, 12 nights.
+- [NGC 2170](https://blastrophoto.com/ngc-2170/): NGC 2170: 33h 27m of L + Hα through the ED127 + ASI2600MM, 17 nights.
+- [Horsehead Nebula](https://blastrophoto.com/horsehead-nebula/): Horsehead Nebula: 41h 00m of LRGB + Hα through the ED127 + ASI2600MM, 10 nights.
+- [Dolphin Head Nebula](https://blastrophoto.com/dolphin-head-nebula/): Dolphin Head Nebula: 16h 40m of HOO through the ED127 + ASI2600MM, 11 nights.
+- [LDN 1594](https://blastrophoto.com/ldn-1594/): LDN 1594: 13h 03m of LRGB through the GT81 + ASI294MM, 3 nights.
+- [Boogeyman Nebula](https://blastrophoto.com/boogeyman-nebula/): Boogeyman Nebula: 60h 00m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 13 nights.
+- [Sh2-263](https://blastrophoto.com/sh2-263/): Sh2-263: 80h 05m of LRGB + Hα through the ED127 + ASI2600MM, 18 nights.
+- [Andromeda Galaxy (wide)](https://blastrophoto.com/andromeda-galaxy-wide/): Andromeda Galaxy (wide): 75h 28m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 19 nights.
+- [Sailboat Cluster](https://blastrophoto.com/sailboat-cluster/): Sailboat Cluster: 30h 39m of LRGB + Hα through the ED127 + ASI2600MM, 8 nights.
+- [Emission near IC 2118](https://blastrophoto.com/emission-near-ic-2118/): Emission near IC 2118: 32h 18m of LRGB + Hα through the GT81 + ASI294MM, 11 nights.
+- [Orion's Head](https://blastrophoto.com/orions-head/): Orion's Head: 16h 33m of RGB + Hα through the Pleiades 68 + ASI2600MM, 6 nights.
+- [Clamshell Nebula](https://blastrophoto.com/clamshell-nebula/): Clamshell Nebula: 34h 48m of RGB + Hα, OIII, SII through the GT81 + ASI294MM, 8 nights.
+- [Horsehead and Flame](https://blastrophoto.com/horsehead-and-flame/): Horsehead and Flame: 31h 24m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 12 nights.
+- [Dumbbell Nebula](https://blastrophoto.com/dumbbell-nebula/): Dumbbell Nebula: 15h 16m of RGB + Hα, OIII, SII through the ED127 + ASI2600MM, 6 nights.
+- [LDN 1136](https://blastrophoto.com/ldn-1136/): LDN 1136: 57h 13m of LRGB + Hα through the GT81 + ASI294MM, 9 nights.
+- [Veil Nebula](https://blastrophoto.com/veil-nebula/): Veil Nebula: 23h 12m of HOO through the ED127 + ASI2600MM, 6 nights.
+- [IC 1396](https://blastrophoto.com/ic-1396/): IC 1396: 19h 45m of SHO through the Pleiades 68 + ASI2600MM, 3 nights.
+- [Comet ATLAS](https://blastrophoto.com/comet-atlas/): Comet ATLAS: 0h 30m of RGB through the Pleiades 68 + ASI2600MM, 1 night.
+- [LDN 1165 (wide)](https://blastrophoto.com/ldn-1165-wide/): LDN 1165 (wide): 34h 19m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 6 nights.
+- [LDN 1165](https://blastrophoto.com/ldn-1165/): LDN 1165: 45h 01m of LRGB + Hα through the ED127 + ASI2600MM, 8 nights.
+- [Gecko Nebula](https://blastrophoto.com/gecko-nebula/): Gecko Nebula: 21h 29m of RGB + Hα through the Pleiades 68 + ASI2600MM, 4 nights.
+- [Pacman Nebula](https://blastrophoto.com/pacman-nebula/): Pacman Nebula: 86h 49m of RGB + Hα, OIII through the Pleiades 68 + ASI2600MM, 20 nights.
+- [Andromeda Galaxy](https://blastrophoto.com/andromeda-galaxy/): Andromeda Galaxy: 21h 52m of RGB + Hα through the ED127 + ASI2600MM, 6 nights.
+- [Lagoon and Trifid](https://blastrophoto.com/lagoon-and-trifid/): Lagoon and Trifid: 25h 49m of RGB + Hα, OIII through the Pleiades 68 + ASI2600MM, 15 nights.
+- [Trifid Nebula](https://blastrophoto.com/trifid-nebula/): Trifid Nebula: 27h 40m of RGB + Hα through the ED127 + ASI2600MM, 13 nights.
+- [Baby Eagle Nebula](https://blastrophoto.com/baby-eagle-nebula/): Baby Eagle Nebula: 24h 12m of LRGB through the ED127 + ASI2600MM, 4 nights.
+- [LDN 1147](https://blastrophoto.com/ldn-1147/): LDN 1147: 13h 08m of RGB through the C11 HyperStar + ASI294MM, 3 nights.
+- [Propeller Nebula](https://blastrophoto.com/propeller-nebula/): Propeller Nebula: 26h 10m of SHO through the ED127 + ASI2600MM, 4 nights.
+- [Lagoon Nebula](https://blastrophoto.com/lagoon-nebula/): Lagoon Nebula: 6h 24m of RGB + Hα through the ED127 + ASI2600MM, 5 nights.
+- [North America Nebula](https://blastrophoto.com/north-america-nebula/): North America Nebula: 18h 41m of SHO through the Pleiades 68 + ASI2600MM, 4 nights.
+- [WR 134](https://blastrophoto.com/wr-134/): WR 134: 57h 31m of HOO through the ED127 + ASI2600MM, 12 nights.
+- [M94](https://blastrophoto.com/m94/): M94: 21h 39m of LRGB + Hα through the ED127 + ASI2600MM, 11 nights.
+- [Eagle Nebula](https://blastrophoto.com/eagle-nebula/): Eagle Nebula: 13h 55m of SHO through the ED127 + ASI2600MM, 6 nights.
+- [NGC 3521](https://blastrophoto.com/ngc-3521/): NGC 3521: 31h 06m of LRGB + Hα through the ED127 + ASI2600MM, 12 nights.
+- [M81 and M82](https://blastrophoto.com/m81-and-m82/): M81 and M82: 87h 13m of LRGB + Hα through the ED127 + ASI2600MM, 12 nights.
+- [Markarian's Chain](https://blastrophoto.com/markarians-chain/): Markarian's Chain: 39h 33m of LRGB through the GT81 (.8x) + ASI2600MM, 10 nights.
+- [Mintaka and Alnilam](https://blastrophoto.com/mintaka-and-alnilam/): Mintaka and Alnilam: 12h 53m of RGB + Hα through the GT81 (.8x) + ASI2600MM, 3 nights.
+- [vdB 15](https://blastrophoto.com/vdb-15/): vdB 15: 42h 19m of LRGB + Hα through the ED127 + ASI2600MM, 11 nights.
+- [Cone Nebula](https://blastrophoto.com/cone-nebula/): Cone Nebula: 28h 20m of RGB + Hα through the ED127 + ASI2600MM, 5 nights.
+- [Cygnus Wall](https://blastrophoto.com/cygnus-wall/): Cygnus Wall: 25h 00m of SHO through the ED127 + ASI2600MM, 8 nights.
+- [Triangulum Galaxy](https://blastrophoto.com/triangulum-galaxy/): Triangulum Galaxy: 65h 52m of RGB + Hα, OIII through the ED127 + ASI2600MM, 10 nights.
+- [Bubble Nebula](https://blastrophoto.com/bubble-nebula/): Bubble Nebula: 20h 30m of SHO through the ED127 + ASI2600MM, 5 nights.
+- [Double Cluster](https://blastrophoto.com/double-cluster/): Double Cluster: 18h 12m of RGB + Hα through the Redcat 51 + ASI294MM, 4 nights.
+- [Heart and Soul Nebulae](https://blastrophoto.com/heart-and-soul-nebulae/): Heart and Soul Nebulae: 25h 20m of SHO through the Redcat 51 + ASI294MM, 4 nights.
+- [Crescent Nebula](https://blastrophoto.com/crescent-nebula-ed127/): Crescent Nebula: 22h 05m of HOO through the ED127 + ASI2600MM, 5 nights.
+- [Helix Nebula](https://blastrophoto.com/helix-nebula/): Helix Nebula: 31h 35m of SHO through the ED127 + ASI2600MM, 7 nights.
+- [NGC 7129](https://blastrophoto.com/ngc-7129/): NGC 7129: 46h 46m of RGB + Hα through the ED127 + ASI2600MM, 7 nights.
+- [Cocoon Nebula](https://blastrophoto.com/cocoon-nebula-ed127/): Cocoon Nebula: 43h 05m of RGB + Hα through the ED127 + ASI2600MM, 9 nights.
+- [vdB 132](https://blastrophoto.com/vdb-132/): vdB 132: 10h 27m of RGB + Hα through the ED127 + ASI2600MM, 2 nights.
+- [Seahorse Nebula](https://blastrophoto.com/seahorse-nebula/): Seahorse Nebula: 13h 09m of RGB through the ED127 + ASI2600MM, 3 nights.
+- [Ghost of Cassiopeia](https://blastrophoto.com/ghost-of-cassiopeia-ed127/): Ghost of Cassiopeia: 8h 07m of RGB + Hα through the ED127 + ASI2600MM, 3 nights.
+- [Wizard Nebula](https://blastrophoto.com/wizard-nebula/): Wizard Nebula: 39h 10m of SHO through the ED127 + ASI2600MM, 12 nights.
+- [Christmas Tree Cluster](https://blastrophoto.com/christmas-tree-cluster-redcat51/): Christmas Tree Cluster: 13h 50m of RGB + Hα through the Redcat 51 + ASI294MM, 3 nights.
+- [Rosette Nebula](https://blastrophoto.com/rosette-nebula-ed127/): Rosette Nebula: 5h 00m of SHO through the ED127 + ASI2600MM, 1 night.
+- [Witch Head Nebula](https://blastrophoto.com/witch-head-nebula/): Witch Head Nebula: 6h 40m of LRGB through the Redcat 51 + ASI294MM, 1 night.
