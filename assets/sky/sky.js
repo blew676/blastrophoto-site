@@ -1,10 +1,11 @@
 // The home page as the night sky ([home] sky; atgallery/sky/__init__.py says where everything
-// comes from). Every picture sits at its place and true size among the stars; the tour flies
-// from one featured picture to the next, pulling back to show the sky between them, and dives in
-// until the sharp picture fills the screen and its record reads out (the slideshow's own styles,
-// site.css .is-showing). Drag to look around, pinch or ctrl + wheel to zoom (the wheel alone
-// scrolls the page), point at a picture for its name, click to fly to it. Without this script
-// the home page shows its first featured picture, as it always did.
+// comes from). Every picture sits at its place and true size among the stars, and the sky waits
+// for the visitor (0.7.1: nothing is chosen until they choose). Drag to look around, pinch or
+// ctrl + wheel to zoom (the wheel alone scrolls the page), point at a picture for its name, click
+// to fly to it: the flight pulls back to show the sky on the way and dives in until the sharp
+// picture fills the screen and its record reads out (the slideshow's own styles, site.css
+// .is-showing). The arrows step through the featured pictures; the play button tours them.
+// Without this script the home page shows its first featured picture, as it always did.
 (function () {
   "use strict";
   var hero = document.querySelector("[data-sky]");
@@ -141,7 +142,6 @@
   var stars = [], lines = [], names = [];
 
   var note = el("div", "sky-note");
-  note.appendChild(el("p", "", data.line));
   note.appendChild(el("h2", "display", data.heading));
   var controls = el("div", "show-controls");
   controls.innerHTML =
@@ -223,9 +223,11 @@
   };
 
   // ------------------------------------------------------------------ the tour
-  var timer = 0, paused = false, mode = "sky", at = 0;
+  // paused, and no featured picture chosen (at -1), until the visitor chooses
+  var timer = 0, paused = true, mode = "sky", at = -1;
   var flight = null, open = null, coming = null, going = null;
   var hover = null, dragging = false, moved = 0, last = null;
+  var touched = 0; // when the visitor last did something: a sky left alone holds still
   var landing = function (q) { return (q.p.w * Math.max(W / q.p.w, H / q.p.h)) / q.w; };
   var fly = function (toC, toS, dur, done) {
     var fromC = view.c.slice(), fromS = view.s;
@@ -258,7 +260,8 @@
   var visit = function (q, index, n) {
     clearTimeout(timer);
     letGo();
-    if (!q.big) { q.big = new Image(); q.big.src = rel + "img/" + q.p.thumb; }
+    count.textContent = n ? pad(index + 1) + " / " + pad(n) : "";
+    if (!q.big) { q.big = new Image(); q.big.onload = wake; q.big.src = rel + "img/" + q.p.thumb; }
     var s = slideFor(q.p, index, n);
     s.classList.add("sky-flying", "is-current");
     var img = s.querySelector(".slide-img");
@@ -285,25 +288,28 @@
   };
   var go = function (i) {
     at = (i + tour.length) % tour.length;
-    count.textContent = pad(at + 1) + " / " + pad(tour.length);
     visit(tour[at], at, tour.length);
   };
+  // the next or the previous featured picture; from the sky before any, the first or the last
+  var step = function (d) { go(at < 0 ? (d > 0 ? 0 : tour.length - 1) : at + d); };
   var pause = function (on) {
     paused = on;
     hero.classList.toggle("is-paused", on);
     hero.classList.toggle("is-still", on);
     controls.querySelector("[data-pause]").setAttribute("aria-label", on ? "Play the tour" : "Pause the tour");
     clearTimeout(timer);
-    if (!on) timer = setTimeout(function () { go(at + 1); }, mode === "open" ? 2500 : 300);
+    if (!on) timer = setTimeout(function () { step(1); }, mode === "open" ? 2500 : 300);
   };
   var toSky = function () {
     pause(true);
+    count.textContent = "";
     letGo();
     mode = "flying";
     fly(view.c.slice(), Math.max(W, H) / (62 * D2R), 1900, function () {
       drop(going);
       going = null;
       mode = "sky";
+      touched = performance.now();
       note.classList.remove("is-away");
     });
   };
@@ -405,7 +411,7 @@
         ctx.fillStyle = "#fff";
         ctx.fillRect(P.x - 1.5, P.y - 1.5, 3, 3);
       } else {
-        if (!q.img) { q.img = new Image(); q.img.src = rel + "img/" + q.p.tile; }
+        if (!q.img) { q.img = new Image(); q.img.onload = wake; q.img.src = rel + "img/" + q.p.tile; }
         var pic = (w > 260 && q.big && q.big.complete && q.big.naturalWidth) ? q.big : q.img;
         ctx.globalAlpha = (q === hover ? 1 : 0.94) * fade;
         if (pic.complete && pic.naturalWidth) ctx.drawImage(pic, P.x - w / 2, P.y - h / 2, w, h);
@@ -452,7 +458,7 @@
   };
 
   // drawn only while it can be seen: not scrolled past, not in a hidden tab
-  var seen = true, running = false;
+  var seen = true, running = false, lastNow = 0;
   var tick = function (now) {
     if (!seen || document.hidden) { running = false; return; }
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -466,21 +472,27 @@
       flight.step(k);
       if (k >= 1) { var done = flight.done; flight = null; if (done) done(); }
     } else if (mode === "sky" && !dragging && !still) {
-      var cv = view.c;
-      view.c = norm([cv[0] - cv[1] * 0.00005, cv[1] + cv[0] * 0.00005, cv[2]]);
+      // the sky turns slowly westward, 0.17° a second whatever the screen's frame rate
+      var cv = view.c, turn = 0.003 * clamp((now - lastNow) / 1000, 0, 0.1);
+      view.c = norm([cv[0] - cv[1] * turn, cv[1] + cv[0] * turn, cv[2]]);
     }
+    lastNow = now;
     setBasis();
     draw(now);
     follow(coming);
     follow(going);
-    // an open picture covers the sky: nothing to draw until the view moves again
+    // an open picture covers the sky, and a sky left alone for a minute (at once, for a visitor
+    // who asks for less motion) holds still: nothing to draw until something moves again
     if (mode === "open" && !flight) { running = false; return; }
+    if (mode === "sky" && !flight && !dragging && now - touched > (still ? 0 : 60000)) { running = false; return; }
     requestAnimationFrame(tick);
   };
   var wake = function () {
     if (!running && seen && !document.hidden) { running = true; requestAnimationFrame(tick); }
   };
+  var stir = function () { touched = performance.now(); wake(); };
   document.addEventListener("visibilitychange", wake);
+  window.addEventListener("resize", wake);
   if (window.IntersectionObserver) {
     new IntersectionObserver(function (e) { seen = e[0].isIntersecting; wake(); }).observe(hero);
   }
@@ -497,6 +509,7 @@
   };
   canvas.addEventListener("pointerdown", function (e) {
     if (mode !== "sky") return;
+    stir();
     dragging = true;
     moved = 0;
     last = { x: e.clientX, y: e.clientY };
@@ -511,10 +524,11 @@
       view.c = norm([cv[0] + (basis.e[0] * dx + basis.n[0] * dy) / s,
                      cv[1] + (basis.e[1] * dx + basis.n[1] * dy) / s,
                      cv[2] + (basis.e[2] * dx + basis.n[2] * dy) / s]);  // prettier-ignore
-      wake();
+      stir();
       return;
     }
     if (mode !== "sky") { tip.hidden = true; return; }
+    stir();
     hover = hit(e.offsetX, e.offsetY);
     canvas.classList.toggle("is-hover", !!hover);
     tip.hidden = !hover;
@@ -535,26 +549,26 @@
     if (!q) return;
     pause(true);
     var j = tour.indexOf(q);
-    if (j >= 0) { at = j; count.textContent = pad(j + 1) + " / " + pad(tour.length); }
+    if (j >= 0) at = j;
     visit(q, j, j >= 0 ? tour.length : 0);
   });
   canvas.addEventListener("pointercancel", function () { dragging = false; canvas.classList.remove("is-dragging"); });
-  canvas.addEventListener("pointerleave", function () { if (!dragging) { hover = null; tip.hidden = true; } });
+  canvas.addEventListener("pointerleave", function () { if (!dragging) { hover = null; tip.hidden = true; wake(); } });
   canvas.addEventListener("wheel", function (e) {
     if (mode !== "sky" || !(e.ctrlKey || e.metaKey)) return;
     e.preventDefault();
     view.s = clamp(view.s * Math.exp(-e.deltaY * 0.01), Math.max(W, H) / (150 * D2R), W / (0.6 * D2R));
-    wake();
+    stir();
   }, { passive: false });
   controls.addEventListener("click", function (e) {
-    if (e.target.closest("[data-prev]")) go(at - 1);
-    else if (e.target.closest("[data-next]")) go(at + 1);
+    if (e.target.closest("[data-prev]")) step(-1);
+    else if (e.target.closest("[data-next]")) step(1);
     else if (e.target.closest("[data-pause]")) pause(!paused);
   });
   back.addEventListener("click", toSky);
   hero.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowRight") go(at + 1);
-    else if (e.key === "ArrowLeft") go(at - 1);
+    if (e.key === "ArrowRight") step(1);
+    else if (e.key === "ArrowLeft") step(-1);
     else if (e.key === "Escape" && mode === "open") toSky();
   });
 
@@ -576,13 +590,11 @@
     hero.appendChild(tip);
     hero.appendChild(back);
     hero.appendChild(controls);
-    hero.appendChild(el("p", "sky-credit", data.credit));
-    count.textContent = "01 / " + pad(tour.length);
+    pause(true); // the sky waits: nothing is chosen until the visitor chooses
     W = canvas.clientWidth;
     H = canvas.clientHeight;
     view.c = norm(slerp(tour[0].v, [0, 0, 1], 0.1));
     view.s = Math.max(W, H) / (105 * D2R);
-    wake();
-    timer = setTimeout(function () { go(0); }, still ? 600 : 2800);
+    stir();
   });
 })();
