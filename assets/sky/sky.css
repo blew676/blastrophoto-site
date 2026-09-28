@@ -1,13 +1,17 @@
-/* The home page as the night sky ([home] sky): sky.js puts .is-sky on the hero when it runs it,
-   so without the script the home page is as it always was. An opened picture is a .slide read out
-   with the slideshow's own styles (site.css .is-showing). */
+/* The home page as the night sky ([home] sky): sky.js puts .is-sky on the hero when it runs it.
+   The featured pictures are in the page only inside noscript (0.7.2): a browser without the script
+   shows them as the home page always did. An opened picture is a .slide read out with the
+   slideshow's own styles (site.css .is-showing). */
 
-.hero.is-sky { background: #000; }
+.hero[data-sky] { background: #000; }
 .hero.is-sky > .slide { display: none; }
 .sky-canvas {
   position: absolute; inset: 0; width: 100%; height: 100%; display: block;
   touch-action: pan-y; /* a finger may still scroll the page past the sky */
+  animation: sky-in 1.2s ease backwards; /* the sky comes up out of the dark */
 }
+@keyframes sky-in { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .sky-canvas { animation: none; } }
 .sky-canvas.is-hover { cursor: pointer; }
 .sky-canvas.is-dragging { cursor: grabbing; }
 .sky-stage { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
@@ -40,7 +44,10 @@
 .hero.is-sky .show-controls { z-index: 7; }
 
 @media (max-width: 700px) {
-  .hero.is-sky { height: 88vh; height: 88svh; min-height: 520px; padding-top: 0; }
+  /* sized from the first paint, so the page does not jump when the sky comes up */
+  .hero[data-sky] { height: 88vh; height: 88svh; min-height: 520px; padding-top: 0; }
+  /* without JavaScript the noscript pictures are elements (with it, text): the hero fits them */
+  .hero[data-sky]:has(> noscript > .slide) { height: auto; min-height: 0; padding-top: var(--header); }
   .sky-note { bottom: 72px; }
   .sky-note .display { font-size: 34px; }
 }

@@ -1,6 +1,7 @@
 // The home page as the night sky ([home] sky; atgallery/sky/__init__.py says where everything
-// comes from). Every picture sits at its place and true size among the stars, and the sky waits
-// for the visitor (0.7.1: nothing is chosen until they choose). Drag to look around, pinch or
+// comes from). Every picture sits at its place and true size among the stars, and the sky crawls
+// slowly westward while it waits for the visitor (0.7.1: nothing is chosen until they choose; 0.7.2:
+// the page carries no picture that could show first). Drag to look around, pinch or
 // ctrl + wheel to zoom (the wheel alone scrolls the page), point at a picture for its name, click
 // to fly to it: the flight pulls back to show the sky on the way and dives in until the sharp
 // picture fills the screen and its record reads out (the slideshow's own styles, site.css
@@ -227,7 +228,7 @@
   var timer = 0, paused = true, mode = "sky", at = -1;
   var flight = null, open = null, coming = null, going = null;
   var hover = null, dragging = false, moved = 0, last = null;
-  var touched = 0; // when the visitor last did something: a sky left alone holds still
+  var touched = 0; // when the visitor last did something: a sky left alone is drawn less often
   var landing = function (q) { return (q.p.w * Math.max(W / q.p.w, H / q.p.h)) / q.w; };
   var fly = function (toC, toS, dur, done) {
     var fromC = view.c.slice(), fromS = view.s;
@@ -458,9 +459,14 @@
   };
 
   // drawn only while it can be seen: not scrolled past, not in a hidden tab
-  var seen = true, running = false, lastNow = 0;
+  var seen = true, running = false, lastNow = 0, drawn = 0;
   var tick = function (now) {
     if (!seen || document.hidden) { running = false; return; }
+    var calm = mode === "sky" && !flight && !dragging;
+    // a sky left alone for a minute keeps crawling but is drawn at most 20 times a second (it
+    // moves a fraction of a pixel in between): kinder to the battery of a page left open
+    if (calm && !still && now - touched > 60000 && now - drawn < 50) { requestAnimationFrame(tick); return; }
+    drawn = now;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = canvas.clientWidth; H = canvas.clientHeight; DPR = dpr;
     if (canvas.width !== Math.round(W * dpr) || canvas.height !== Math.round(H * dpr)) {
@@ -472,8 +478,8 @@
       flight.step(k);
       if (k >= 1) { var done = flight.done; flight = null; if (done) done(); }
     } else if (mode === "sky" && !dragging && !still) {
-      // the sky turns slowly westward, 0.17° a second whatever the screen's frame rate
-      var cv = view.c, turn = 0.003 * clamp((now - lastNow) / 1000, 0, 0.1);
+      // the sky crawls westward about the pole, 0.4° a second whatever the screen's frame rate
+      var cv = view.c, turn = 0.007 * clamp((now - lastNow) / 1000, 0, 0.1);
       view.c = norm([cv[0] - cv[1] * turn, cv[1] + cv[0] * turn, cv[2]]);
     }
     lastNow = now;
@@ -481,10 +487,10 @@
     draw(now);
     follow(coming);
     follow(going);
-    // an open picture covers the sky, and a sky left alone for a minute (at once, for a visitor
-    // who asks for less motion) holds still: nothing to draw until something moves again
+    // an open picture covers the sky, and a visitor who asks for less motion gets a still sky:
+    // nothing to draw until something moves again
     if (mode === "open" && !flight) { running = false; return; }
-    if (mode === "sky" && !flight && !dragging && now - touched > (still ? 0 : 60000)) { running = false; return; }
+    if (calm && still && now - touched > 0) { running = false; return; }
     requestAnimationFrame(tick);
   };
   var wake = function () {
