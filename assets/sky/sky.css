@@ -1,0 +1,52 @@
+/* The home page as the night sky ([home] sky): sky.js puts .is-sky on the hero when it runs it,
+   so without the script the home page is as it always was. An opened picture is a .slide read out
+   with the slideshow's own styles (site.css .is-showing). */
+
+.hero.is-sky { background: #000; }
+.hero.is-sky > .slide { display: none; }
+.sky-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+  touch-action: pan-y; /* a finger may still scroll the page past the sky */
+}
+.sky-canvas.is-hover { cursor: pointer; }
+.sky-canvas.is-dragging { cursor: grabbing; }
+.sky-stage { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+.sky-stage .slide { position: absolute; inset: 0; }
+.sky-stage .slide.is-current { pointer-events: auto; }
+.sky-stage .slide.sky-flying { transition: none; }
+.sky-stage .slide.sky-flying .slide-img { position: absolute; inset: auto; object-fit: cover; animation: none; }
+
+/* the words over the sky */
+.sky-note {
+  position: absolute; z-index: 4; left: var(--pad); bottom: 64px; display: flex; flex-direction: column;
+  gap: 14px; max-width: min(640px, calc(100% - 2 * var(--pad))); pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 0 26px rgba(0, 0, 0, 0.5); transition: opacity 0.8s ease;
+}
+.sky-note .display { font-size: clamp(40px, 4.6vw, 76px); line-height: 0.92; }
+.sky-note p { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; color: rgba(245, 243, 239, 0.8); }
+.sky-note.is-away { opacity: 0; }
+.sky-tip {
+  position: absolute; z-index: 6; pointer-events: none; padding: 7px 10px;
+  transform: translate(-50%, calc(-100% - 12px)); white-space: nowrap;
+  background: rgba(7, 7, 8, 0.82); border: 1px solid rgba(245, 243, 239, 0.18);
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--text);
+}
+.sky-tip[hidden] { display: none; }
+.sky-tip b { margin-right: 8px; font-family: var(--display); font-weight: 700; font-stretch: 75%; font-size: 16px; letter-spacing: 0.02em; }
+.sky-credit {
+  position: absolute; z-index: 4; left: var(--pad); bottom: 18px; pointer-events: none;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: rgba(245, 243, 239, 0.4);
+}
+.hero.is-open .sky-credit { opacity: 0; }
+
+/* back to the sky, and the tour's controls (the slideshow's own) above an opened picture */
+.sky-back { position: absolute; z-index: 7; left: var(--pad); top: calc(var(--header) + 18px); display: none; }
+.hero.is-open .sky-back { display: inline-flex; }
+.hero.is-sky .show-controls { z-index: 7; }
+
+@media (max-width: 700px) {
+  .hero.is-sky { height: 88vh; height: 88svh; min-height: 520px; padding-top: 0; }
+  .sky-note { bottom: 72px; }
+  .sky-note .display { font-size: 34px; }
+  .sky-credit { font-size: 9px; }
+}
