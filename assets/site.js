@@ -39,7 +39,8 @@
     var activeN = filters.querySelector("[data-active-n]");
     var done = filters.querySelector("[data-done]");
     var label = function (key, value) {
-      var chip = filters.querySelector('[data-filter="' + key + '"][data-value="' + value + '"]');
+      // the value comes from the address (?telescope=...): escaped, a quote in it cannot break
+      var chip = filters.querySelector('[data-filter="' + key + '"][data-value="' + CSS.escape(value) + '"]');
       return chip ? chip.firstChild.textContent.trim() : value;
     };
     var params = new URLSearchParams(window.location.search);
