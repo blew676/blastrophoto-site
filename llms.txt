@@ -8,7 +8,7 @@ Every picture is shown with the record AstroTracker keeps of how it was made: in
 
 ## Pages
 
-- [Gallery](https://blastrophoto.com/gallery/): 129 finished pictures, 4,151 hours of integration.
+- [Gallery](https://blastrophoto.com/gallery/): 130 finished pictures, 4,160 hours of integration.
 - [Telescopes](https://blastrophoto.com/telescopes/): the telescopes behind the pictures.
 - [About](https://blastrophoto.com/about/): the person behind the pictures.
 - [AstroTracker](https://blastrophoto.com/AstroTracker/): AstroTracker keeps a complete record of every astrophotography project: integration by filter and night, sub quality, calibration, and what to shoot next.
@@ -38,7 +38,7 @@ The other purpose of this website is to promote a new tool I've developed called
 The pictures are not offered for training AI models (see robots.txt).
 
 - [Ghost of Cassiopeia](https://blastrophoto.com/ghost-of-cassiopeia/): Ghost of Cassiopeia: 50h 41m of LRGB + Hα through the GT81 + ASI585MM, 13 nights.
-- [Heart Nebula](https://blastrophoto.com/heart-nebula/): Heart Nebula: 34h 00m of SHO through the ED127 + ASI2600MM, 8 nights.
+- [Heart Nebula](https://blastrophoto.com/heart-nebula/): Heart Nebula: 33h 55m of SHO through the ED127 + ASI2600MM, 8 nights.
 - [Ghost Nebula](https://blastrophoto.com/ghost-nebula/): Ghost Nebula: 41h 24m of LRGB through the EdgeHD 8 + ASI294MM, 8 nights.
 - [IC 63 and IC 59](https://blastrophoto.com/ic-63-and-ic-59/): IC 63 and IC 59: 25h 22m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 8 nights.
 - [The Butterfly Nebula](https://blastrophoto.com/the-butterfly-nebula/): The Butterfly Nebula: 15h 10m of SHO through the GT81 + ASI585MM, 7 nights.
@@ -46,7 +46,7 @@ The pictures are not offered for training AI models (see robots.txt).
 - [North America and Pelican](https://blastrophoto.com/north-america-and-pelican/): North America and Pelican: 6h 30m of HOO through the Pleiades 68 + ASI2600MM, 1 night.
 - [Veil Nebula](https://blastrophoto.com/veil-nebula-gt81-asi585mm/): Veil Nebula: 31h 00m of HOO through the GT81 + ASI585MM, 10 nights.
 - [Hamburger Galaxy](https://blastrophoto.com/hamburger-galaxy/): Hamburger Galaxy: 21h 42m of LRGB through the EdgeHD 8 + ASI294MM, 7 nights.
-- [Leo Triplet](https://blastrophoto.com/leo-triplet/): Leo Triplet: 35h 49m of L + R + B + Hα through the Pleiades 68 + ASI2600MM, 17 nights.
+- [Leo Triplet](https://blastrophoto.com/leo-triplet/): Leo Triplet: 35h 46m of L + R + B + Hα through the Pleiades 68 + ASI2600MM, 17 nights.
 - [Splinter Galaxy](https://blastrophoto.com/splinter-galaxy/): Splinter Galaxy: 52h 51m of LRGB through the ED127 + ASI2600MM, 5 nights.
 - [M106](https://blastrophoto.com/m106/): M106: 149h 26m of LRGB + Hα through the ED127 + ASI2600MM, 31 nights.
 - [Whirlpool Galaxy](https://blastrophoto.com/whirlpool-galaxy/): Whirlpool Galaxy: 47h 03m of LRGB + Hα through the EdgeHD 8 + ASI294MM + ED127 + ASI2600MM, 8 nights.
@@ -134,6 +134,7 @@ The pictures are not offered for training AI models (see robots.txt).
 - [Propeller Nebula](https://blastrophoto.com/propeller-nebula/): Propeller Nebula: 26h 10m of SHO through the ED127 + ASI2600MM, 4 nights.
 - [Lagoon Nebula](https://blastrophoto.com/lagoon-nebula/): Lagoon Nebula: 6h 24m of RGB + Hα through the ED127 + ASI2600MM, 5 nights.
 - [North America Nebula](https://blastrophoto.com/north-america-nebula/): North America Nebula: 18h 41m of SHO through the Pleiades 68 + ASI2600MM, 4 nights.
+- [LDN 1089](https://blastrophoto.com/ldn-1089/): LDN 1089: 8h 44m of One-shot colour through the C11 Hyperstar, 3 nights.
 - [LDN 1251](https://blastrophoto.com/ldn-1251/): LDN 1251: 19h 39m of One-shot colour through the C11 Hyperstar, 5 nights.
 - [WR 134](https://blastrophoto.com/wr-134/): WR 134: 57h 31m of HOO through the ED127 + ASI2600MM, 12 nights.
 - [Small Sgr Star Cloud](https://blastrophoto.com/small-sgr-star-cloud/): Small Sgr Star Cloud: 3h 41m of One-shot colour through the C11 Hyperstar, 2 nights.
