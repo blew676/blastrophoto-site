@@ -8,7 +8,7 @@ Every picture is shown with the record AstroTracker keeps of how it was made: in
 
 ## Pages
 
-- [Gallery](https://blastrophoto.com/gallery/): 136 finished pictures, 4,303 hours of integration.
+- [Gallery](https://blastrophoto.com/gallery/): 137 finished pictures, 4,338 hours of integration.
 - [Telescopes](https://blastrophoto.com/telescopes/): the telescopes behind the pictures.
 - [About](https://blastrophoto.com/about/): the person behind the pictures.
 - [AstroTracker](https://blastrophoto.com/AstroTracker/): AstroTracker keeps a complete record of every astrophotography project: integration by filter and night, sub quality, calibration, and what to shoot next.
@@ -37,6 +37,7 @@ The other purpose of this website is to promote a new tool I've developed called
 
 The pictures are not offered for training AI models (see robots.txt).
 
+- [IC 1396](https://blastrophoto.com/ic-1396-ed127-asi2600mm/): IC 1396: 35h 05m of LRGB + Hα through the ED127 + ASI2600MM, 9 nights.
 - [Ghost of Cassiopeia](https://blastrophoto.com/ghost-of-cassiopeia/): Ghost of Cassiopeia: 50h 41m of LRGB + Hα through the GT81 + ASI585MM, 13 nights.
 - [Heart Nebula](https://blastrophoto.com/heart-nebula/): Heart Nebula: 33h 55m of SHO through the ED127 + ASI2600MM, 8 nights.
 - [Ghost Nebula](https://blastrophoto.com/ghost-nebula/): Ghost Nebula: 41h 24m of LRGB through the EdgeHD 8 + ASI294MM, 8 nights.
