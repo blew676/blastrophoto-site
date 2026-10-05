@@ -38,7 +38,7 @@ The other purpose of this website is to promote a new tool I've developed called
 The pictures are not offered for training AI models (see robots.txt).
 
 - [LBN 331](https://blastrophoto.com/lbn-331/): LBN 331: 81h 40m of HOO through the Pleiades 68 + ASI2600MM, 24 nights.
-- [IC 1396](https://blastrophoto.com/ic-1396-ed127-asi2600mm/): IC 1396: 35h 05m of LRGB + Hα through the ED127 + ASI2600MM, 9 nights.
+- [LBN 456, LBN 457, and The Garnet Star](https://blastrophoto.com/ic-1396-ed127-asi2600mm/): LBN 456, LBN 457, and The Garnet Star: 35h 05m of LRGB + Hα through the ED127 + ASI2600MM, 9 nights.
 - [Ghost of Cassiopeia](https://blastrophoto.com/ghost-of-cassiopeia/): Ghost of Cassiopeia: 50h 41m of LRGB + Hα through the GT81 + ASI585MM, 13 nights.
 - [Heart Nebula](https://blastrophoto.com/heart-nebula/): Heart Nebula: 33h 55m of SHO through the ED127 + ASI2600MM, 8 nights.
 - [Ghost Nebula](https://blastrophoto.com/ghost-nebula/): Ghost Nebula: 41h 24m of LRGB through the EdgeHD 8 + ASI294MM, 8 nights.
