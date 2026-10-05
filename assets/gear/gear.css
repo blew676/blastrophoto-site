@@ -1,0 +1,104 @@
+/* The Gear page ([gear] on): the Telescopes page telling what each piece of gear does. Only the
+   site's own variables (colours, type, gutters), so every look dresses it in its own. */
+
+.gear .g-block { padding-top: 96px; }
+.gear .g-kicker { margin-bottom: 22px; }
+
+/* the path of light */
+.gear .g-path { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.gear .g-path li { padding: 28px 24px 8px 0; display: flex; flex-direction: column; gap: 12px; }
+.gear .g-path li + li { padding-left: 24px; border-left: 1px solid var(--line); }
+.gear .g-path svg { width: 40px; height: 40px; fill: none; stroke: var(--text); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.gear .g-path h2 { font-size: 30px; }
+.gear .g-path p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--text-2); }
+.gear .g-path .g-here { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--muted); }
+
+/* a telescope */
+.gear .g-scope { padding: 48px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 32px 48px; }
+.gear .g-scope-info { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.gear .g-scope-name { font-size: clamp(56px, 6vw, 84px); line-height: 0.88; }
+.gear .g-full { margin: 0; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.gear .g-use { margin: 4px 0 0; font-size: 18px; line-height: 1.5; color: var(--text); max-width: 520px; }
+.gear .g-configs { width: 100%; border-collapse: collapse; font-size: 14px; }
+.gear .g-configs th { text-align: left; font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding: 0 12px 8px 0; border-bottom: 1px solid var(--line); }
+.gear .g-configs td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); color: var(--text-2); vertical-align: top; }
+.gear .g-configs td a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+.gear .g-configs td a:hover { text-decoration-color: currentColor; }
+.gear .g-configs tr.is-old td { color: var(--faint); }
+.gear .g-tag { display: inline-grid; place-items: center; width: 20px; height: 20px; border: 1px solid var(--rule); border-radius: 50%; font-family: var(--mono); font-size: 11px; color: var(--text); }
+.gear .g-earlier { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
+.gear .g-field { margin: 0; align-self: start; display: flex; flex-direction: column; gap: 8px; }
+.gear .g-field svg { width: 100%; height: auto; background: var(--bg); border: 1px solid var(--line); }
+.gear .g-grid { stroke: var(--rule); stroke-width: 1; opacity: 0.5; }
+.gear .g-frame { fill: none; stroke: var(--text); stroke-width: 1.2; opacity: 0.9; }
+.gear .g-frame.is-old { stroke-dasharray: 4 3; opacity: 0.45; }
+.gear .g-svg-tag { font-family: var(--mono); font-size: 10px; fill: var(--text); }
+.gear .g-svg-note { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.12em; fill: var(--faint); }
+.gear .g-moon { fill: var(--rule); stroke: var(--text); stroke-width: 1; stroke-dasharray: 3 3; }
+.gear .g-cards { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.gear .g-retired { padding-top: 40px; border-top: 1px solid var(--line); }
+.gear .g-retired-grid { margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(420px, 100%), 1fr)); gap: 16px; }
+.gear .g-old { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 18px; padding: 16px; background: var(--card); color: inherit; text-decoration: none; }
+.gear .g-old img { width: 140px; height: 100px; object-fit: cover; display: block; }
+.gear .g-old h4 { margin: 6px 0 4px; font-size: 34px; }
+.gear .g-old .note { margin: 6px 0 0; line-height: 1.5; }
+
+/* the cameras */
+.gear .g-intro { max-width: 760px; margin: 0 0 28px; font-size: 17px; line-height: 1.6; color: var(--text-2); }
+.gear .g-cams { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 16px; }
+.gear .g-cam { padding: 22px; background: var(--card); display: flex; flex-direction: column; gap: 12px; }
+.gear .g-cam.is-old { opacity: 0.7; }
+.gear .g-cam svg { width: 196px; height: 132px; }
+.gear .g-cam h3 { font-size: 36px; }
+.gear .g-sensor-ref { fill: none; stroke: var(--rule); stroke-dasharray: 3 3; }
+.gear .g-sensor { fill: color-mix(in srgb, var(--f-oiii) 18%, transparent); stroke: var(--f-oiii); stroke-width: 1.2; }
+
+/* the filters and the palettes */
+.gear .g-filters { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(460px, 100%), 1fr)); gap: 22px 48px; }
+.gear .g-filter { display: flex; flex-direction: column; gap: 8px; }
+.gear .g-filter-head { display: flex; align-items: baseline; gap: 12px; }
+.gear .g-fname { font-family: var(--display); font-weight: 700; font-stretch: 68%; font-size: 28px; min-width: 56px; }
+.gear .g-fhours { margin-left: auto; font-family: var(--mono); font-size: 13px; color: var(--text); }
+.gear .g-bar { height: 6px; background: var(--line); }
+.gear .g-bar span { display: block; height: 100%; }
+.gear .g-filter p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.gear .g-sub { margin: 56px 0 20px; }
+.gear .g-palettes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 16px; }
+.gear .g-palette { display: flex; flex-direction: column; background: var(--card); color: inherit; text-decoration: none; }
+.gear .g-palette-text { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.5; color: var(--text-2); }
+/* not in capitals: "Hα" would read "HA" */
+.gear .g-pname { font-family: var(--display); font-weight: 700; font-stretch: 68%; font-size: 30px; color: var(--text); }
+
+/* the owner's notes, and the words on the picture pages */
+.gear .g-notes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 16px; }
+.gear .g-note { padding: 22px; background: var(--card); display: flex; flex-direction: column; gap: 10px; }
+.gear .g-note p:last-child { margin: 0; font-size: 15px; line-height: 1.55; color: var(--text-2); white-space: pre-line; }
+.gear .g-words { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 22px 48px; }
+.gear .g-words div { border-top: 1px solid var(--line); padding-top: 14px; }
+.gear .g-words dt { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); }
+.gear .g-words dd { margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+.gear .g-end { padding-bottom: 96px; }
+.gear .g-cta { display: flex; align-items: center; gap: 28px; padding: 32px; border: 1px solid var(--line); background: var(--panel); }
+.gear .g-cta h2 { margin: 8px 0; font-size: 40px; }
+.gear .g-cta p { margin: 0; color: var(--muted); }
+.gear .g-cta .btn { margin-left: auto; flex: none; }
+
+@media (max-width: 1100px) {
+  .gear .g-path { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gear .g-path li + li { padding-left: 0; border-left: 0; }
+  .gear .g-path li:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--line); }
+  .gear .g-scope { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 700px) {
+  .gear .g-block { padding-top: 64px; }
+  .gear .g-path { grid-template-columns: minmax(0, 1fr); }
+  .gear .g-path li:nth-child(even) { padding-left: 0; border-left: 0; }
+  .gear .g-path li { border-bottom: 1px solid var(--line); padding-bottom: 22px; }
+  .gear .g-configs th:nth-child(3), .gear .g-configs td:nth-child(3) { display: none; }
+  .gear .g-cards { grid-template-columns: minmax(0, 1fr); }
+  .gear .g-cards .card:nth-child(n+2) { display: none; }
+  .gear .g-old { grid-template-columns: 96px minmax(0, 1fr); }
+  .gear .g-old img { width: 96px; height: 72px; }
+  .gear .g-cta { flex-direction: column; align-items: flex-start; }
+  .gear .g-cta .btn { margin-left: 0; }
+}
