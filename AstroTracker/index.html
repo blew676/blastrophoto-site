@@ -43,22 +43,41 @@
 </details>
 </header>
 <main id="main">
-<div class="product">
+<link rel="stylesheet" href="astrotracker.css?v=1">
+<script src="astrotracker.js?v=1" defer></script>
+<div class="product at">
 
-<section class="wrap p-hero">
-<div class="p-hero-text">
+<section class="wrap at-hero">
 <div class="p-brand"><img src="astrotracker-icon.png" width="56" height="56" alt=""><span>AstroTracker</span><span class="p-soon">Coming soon</span></div>
 <h1 class="p-h1">Every sub, every night, every telescope. Accounted for.</h1>
-<p class="p-lede">AstroTracker reads the files your imaging rigs write and keeps a complete record of every project: integration by filter and night, sub quality, calibration, and what to shoot next. No spreadsheets, no guesswork.</p>
+<p class="p-lede">AstroTracker reads the files your imaging rigs write and keeps a complete record of every project: integration by filter and night, sub quality, calibration, and what to shoot next. It watches your rigs through the night and tells your phone when something needs you.</p>
 <div class="p-actions">
 <button class="btn btn-primary" type="button" data-open="beta">Request to join the beta</button>
-<a class="btn" href="AstroTracker-Explained.pdf" download>Download the free guide</a>
+<a class="btn" href="#tour">Take the tour</a>
 <a class="btn" href="https://discord.gg/uN5zege2Bk" target="_blank" rel="noopener">Join the Discord</a></div>
-<p class="p-meta"><span>For Windows</span><span>Runs on your own PC</span><span>The guide is free to read now</span></p>
+<p class="p-meta"><span>For Windows</span><span>Runs on your own PC</span><span>Reads your files, never changes them</span></p>
+</section>
+
+<section class="wrap at-stage" aria-label="AstroTracker in 43 seconds">
+<div class="at-video">
+<div class="at-glow" aria-hidden="true"></div>
+<div class="at-window">
+<div class="at-bar" aria-hidden="true"><span class="at-dots"><i></i><i></i><i></i></span><span class="at-bar-title">AstroTracker in 43 seconds</span></div>
+<video data-tour data-story-ends="36.5" autoplay muted loop playsinline controls preload="metadata" poster="tour-poster.jpg" width="1920" height="1080" aria-label="AstroTracker in 43 seconds: a library of scattered files read, sorted by telescope and target, every sub measured, the rigs watched through the night, and a summary waiting in the morning">
+<source src="tour-720.mp4" type="video/mp4" media="(max-width: 760px)">
+<source src="tour-1080.mp4" type="video/mp4">
+</video>
 </div>
-<figure class="p-hero-shot shot">
-<img src="overview.jpg" width="2000" height="1222" alt="AstroTracker's overview: active projects, total integration, last night's results with flagged subs, and integration per filter for each telescope">
-</figure>
+<button class="at-play" type="button" data-video-toggle aria-pressed="false" aria-label="Pause the video"><svg class="i-pause" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg><svg class="i-play" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.5 2.8v10.4c0 .6.7 1 1.2.7l8.2-5.2c.5-.3.5-1 0-1.3L5.7 2.1c-.5-.3-1.2.1-1.2.7z"/></svg></button>
+</div>
+<ol class="at-chapters" aria-label="Chapters">
+<li><button type="button" data-chapter="0">0:00<span>Your library</span></button></li>
+<li><button type="button" data-chapter="6">0:06<span>Reading the headers</span></button></li>
+<li><button type="button" data-chapter="12">0:12<span>Sorted by telescope</span></button></li>
+<li><button type="button" data-chapter="18.5">0:18<span>Every sub measured</span></button></li>
+<li><button type="button" data-chapter="24.5">0:24<span>Watching the night</span></button></li>
+<li><button type="button" data-chapter="30.5">0:30<span>The morning note</span></button></li>
+</ol>
 </section>
 
 <section class="wrap p-proof" aria-label="AstroTracker at work">
@@ -71,73 +90,162 @@
 </dl>
 </section>
 
-<section class="wrap p-features" id="how">
-<article class="p-row">
-<div class="p-row-text">
-<p class="label">At a glance</p>
-<h2 class="p-h2">Know where every project stands</h2>
-<p>Integration per filter for every telescope, and each morning a summary of the night before: what every rig captured, and which subs look clouded or trailed.</p>
+<section class="wrap at-tour" id="tour">
+<div class="at-tour-head">
+<p class="label">A tour of the app</p>
+<h2 class="p-h2">From tonight's sky to a finished archive</h2>
+<p>Each tab below is AstroTracker as it is today, photographed during a real night of imaging with five rigs at work.</p>
+<nav class="at-tabs" aria-label="The tabs in this tour">
+<a href="#imaging">Imaging</a><a href="#weather">Weather</a><a href="#planning">Planning</a><a href="#active">Active</a><a href="#finished">Finished</a><a href="#organize">Organize</a>
+</nav>
+</div>
+
+<article class="at-row tall" id="imaging">
+<div class="at-row-text">
+<p class="at-kicker"><b>01</b><i></i>Imaging</p>
+<h2 class="p-h2">Every rig, live, on one page</h2>
+<p>Each rig's sequence, target and progress per filter, its guiding, focus and the latest sub, read from Sequence Generator Pro, N.I.N.A. and PHD2 as they work. With Sequence Generator Pro, start every rig at dark or stop and park them all from here.</p>
 <ul class="p-list">
-<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Totals by target, filter and telescope</li>
-<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Last night's results, waiting in the morning</li>
-<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Subs flagged for clouds and trailing</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Slew, centre, guide, focus and image, step by step</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Guiding RMS, star size and seeing from every sub</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Each capture PC's drive space, and Windows Update kept from restarting it mid-sequence</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>An alert the moment a sequence stalls or guiding drifts</li>
 </ul>
 </div>
-<figure class="shot shot-wide"><img src="lastnight.jpg" width="2000" height="484" alt="AstroTracker's summary of last night: what each rig captured per filter, with subs flagged for clouds and trailing" loading="lazy"></figure>
+<figure class="at-shot"><div class="at-window"><div class="at-bar" aria-hidden="true"><span class="at-dots"><i></i><i></i><i></i></span><span class="at-bar-title">AstroTracker · Imaging</span></div><img src="tab-imaging.jpg" width="1536" height="1872" alt="AstroTracker&#39;s Imaging tab during the night: tonight&#39;s dark hours, Start all, Arm for dark and Hold to stop and park all, and one rig&#39;s card with its sequence progress, the steps from slew to imaging, the latest sub, seeing, the capture PC&#39;s drive and ten minutes of guiding" loading="lazy" decoding="async"></div></figure>
 </article>
 
-<article class="p-row flip">
-<div class="p-row-text">
-<p class="label">The record</p>
-<h2 class="p-h2">A complete record for every target</h2>
-<p>Integration, subs kept, nights and calibration, with the finished picture alongside. Every record in <a href="../gallery/">this site's gallery</a> comes straight from here.</p>
+<article class="at-row flip tall" id="weather">
+<div class="at-row-text">
+<p class="at-kicker"><b>02</b><i></i>Weather</p>
+<h2 class="p-h2">Know what the sky will do tonight</h2>
+<p>Cloud cover hour by hour for every dark hour of the week, and a rain alert while rigs are out. Add your own Astrospheric key for seeing and transparency, or an all-sky camera to watch the clouds themselves.</p>
 <ul class="p-list">
-<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Goals per filter, and progress towards them</li>
-<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Every sub counted once; rejected subs add no time</li>
-<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>AstroBin acquisition details in one click</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Clear dark hours for each night ahead</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Rain alerts while rigs are imaging or set up</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>All-sky cloud watch, and a ping when it clears</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Seeing measured from the stars in your own subs</li>
 </ul>
 </div>
-<figure class="shot"><img src="project.jpg" width="2000" height="1250" alt="A project in AstroTracker: integration, lights, nights, flats, darks and sub quality above the finished picture of the Bubble Nebula" loading="lazy"></figure>
+<figure class="at-shot"><div class="at-window"><div class="at-bar" aria-hidden="true"><span class="at-dots"><i></i><i></i><i></i></span><span class="at-bar-title">AstroTracker · Weather</span></div><img src="tab-weather.jpg" width="1536" height="1636" alt="AstroTracker&#39;s Weather tab: a clear night ahead with clear hours for each night of the week, hourly cloud cover, Astrospheric&#39;s cloud, seeing and transparency, and the all-sky camera&#39;s cloud cover through the night" loading="lazy" decoding="async"></div></figure>
 </article>
 
-<article class="p-row">
-<div class="p-row-text">
-<p class="label">Calibration</p>
-<h2 class="p-h2">Catch calibration gaps before they cost a night</h2>
-<p>Night by night, what each filter collected and whether flats cover it. Missing flats, darks at the wrong temperature and a gain or offset that quietly changed are flagged while there is still time to fix them.</p>
-<ul class="p-list">
-<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Flats paired night by night</li>
-<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Darks and bias matched on temperature, gain and offset</li>
-<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>An alert the moment something slips</li>
-</ul>
-</div>
-<figure class="shot shot-wide"><img src="nights.jpg" width="2000" height="433" alt="AstroTracker's night-by-night table: subs per filter each night, and the flats that cover them" loading="lazy"></figure>
-</article>
-
-<article class="p-row flip">
-<div class="p-row-text">
-<p class="label">Planning</p>
+<article class="at-row" id="planning">
+<div class="at-row-text">
+<p class="at-kicker"><b>03</b><i></i>Planning</p>
 <h2 class="p-h2">Plan the next clear night</h2>
-<p>When it gets dark, what the moon allows, and when each target clears your horizon, with a forecast of when every project will be finished.</p>
+<p>When it gets dark, what the moon allows and when each target clears your horizon, for every night of the month. AstroTracker suggests targets you have never imaged, suited to each telescope's field and tonight's moon.</p>
 <ul class="p-list">
-<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Dark hours and moonlight for every night of the month</li>
-<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Which targets suit which telescope's field</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>A month of nights: dark hours, moonlight, broadband or narrowband</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Every planned target's altitude through the night</li>
 <li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Checklists: Messier, Caldwell, Sharpless and more</li>
 </ul>
 </div>
-<figure class="shot"><img src="planning.jpg" width="2000" height="1250" alt="AstroTracker's planning page: tonight's dark hours, the moon, a month of nights and the altitude of each planned target" loading="lazy"></figure>
+<figure class="at-shot"><div class="at-window"><div class="at-bar" aria-hidden="true"><span class="at-dots"><i></i><i></i><i></i></span><span class="at-bar-title">AstroTracker · Planning</span></div><img src="tab-planning.jpg" width="2000" height="1125" alt="AstroTracker&#39;s Planning tab: tonight&#39;s dark hours, the moon and what the night suits, a month of nights, and the altitude of twelve planned targets through the night" loading="lazy" decoding="async"></div></figure>
+</article>
+
+<article class="at-row flip" id="active">
+<div class="at-row-text">
+<p class="at-kicker"><b>04</b><i></i>Active</p>
+<h2 class="p-h2">Know where every project stands</h2>
+<p>The Active tab is the morning view: every project in progress, grouped by telescope with its integration per filter, and last night's results above them. What each rig captured, which subs look clouded or trailed, and which filters still need flats.</p>
+<ul class="p-list">
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Totals by target, filter and telescope</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Last night's results, waiting in the morning</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Flagged subs rejected in one click</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>The last 30 days, and the subs still to review</li>
+</ul>
+</div>
+<figure class="at-shot"><div class="at-window"><div class="at-bar" aria-hidden="true"><span class="at-dots"><i></i><i></i><i></i></span><span class="at-bar-title">AstroTracker · Active</span></div><img src="tab-active.jpg" width="2000" height="1256" alt="AstroTracker&#39;s Active tab: 47 active projects, 563 hours on them, the last 30 days, subs waiting to be reviewed, last night&#39;s results with flags for trailing and missing flats, and integration per filter for each telescope" loading="lazy" decoding="async"></div></figure>
+</article>
+
+<article class="at-row" id="finished">
+<div class="at-row-text">
+<p class="at-kicker"><b>05</b><i></i>Finished</p>
+<h2 class="p-h2">Years of nights, accounted for</h2>
+<p>Every completed project, telescope by telescope: the hours behind it per filter, the final pictures, and what still sits on a working drive waiting to be archived.</p>
+<ul class="p-list">
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Every finished hour, by rig and filter</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Final pictures kept with their projects</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>What is not archived yet, and the space it takes</li>
+</ul>
+</div>
+<figure class="at-shot"><div class="at-window"><div class="at-bar" aria-hidden="true"><span class="at-dots"><i></i><i></i><i></i></span><span class="at-bar-title">AstroTracker · Finished</span></div><img src="tab-finished.jpg" width="2000" height="1161" alt="AstroTracker&#39;s Finished tab: 283 finished projects, 6,096 hours, final pictures for 145 of them, and each rig&#39;s finished hours per filter" loading="lazy" decoding="async"></div></figure>
+</article>
+
+<article class="at-row flip" id="organize">
+<div class="at-row-text">
+<p class="at-kicker"><b>06</b><i></i>Organize</p>
+<h2 class="p-h2">Tidy files, safely</h2>
+<p>AstroTracker finds subs filed under the wrong target, strays, and targets sharing a folder, and archives finished projects into one layout. Nothing moves until you tick it and confirm.</p>
+<ul class="p-list">
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Misfiled and stray subs found by their headers</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Finished projects archived; copies set aside, never deleted</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>A preview before, an undo after. Your image files are never modified.</li>
+</ul>
+</div>
+<figure class="at-shot"><div class="at-window"><div class="at-bar" aria-hidden="true"><span class="at-dots"><i></i><i></i><i></i></span><span class="at-bar-title">AstroTracker · Organize</span></div><img src="tab-organize.jpg" width="2000" height="1059" alt="AstroTracker&#39;s Organize tab: proposed moves grouped by telescope, one opened to show its eighty subs, the folder they sit in now and the folder they would move to" loading="lazy" decoding="async"></div></figure>
 </article>
 </section>
 
+<section class="wrap" aria-labelledby="phone-title">
+<div class="at-phone-band">
+<div class="at-phone-text">
+<p class="label">On your phone</p>
+<h2 class="p-h2" id="phone-title">Your rigs, in your pocket</h2>
+<p>Notifications reach your phone through the free ntfy app wherever you are: no account, no open port. Pair your phone with a QR code to open the Imaging page from anywhere at home.</p>
+<ul class="p-list">
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>A sequence that stalls, or a capture PC gone quiet</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Guiding that drifts, cloud rolling in, rain on the way</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Last night's summary, ready by breakfast</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Wake me: the alerts that can't wait, at full volume</li>
+</ul>
+</div>
+<div class="at-phone" role="img" aria-label="A phone's lock screen at 02:46 with AstroTracker's notifications: a rig with no new subs for 15 minutes, cloud seen by the all-sky camera, and guiding over its limit">
+<p class="at-phone-time">02:46</p>
+<p class="at-phone-date">Saturday 17 October</p>
+<div class="at-notes">
+<div class="at-notif" style="--i: 0"><p class="at-notif-head"><img src="astrotracker-icon.png" width="14" height="14" alt=""><span>AstroTracker</span><span>now</span></p><strong>Redcat51 + 585mm: no new subs for 15 min</strong><p>42 subs tonight, the last started at 02:31 and the next is 6 min late.</p></div>
+<div class="at-notif" style="--i: 1"><p class="at-notif-head"><img src="astrotracker-icon.png" width="14" height="14" alt=""><span>AstroTracker</span><span>4 min ago</span></p><strong>Clouds: the all-sky camera sees 46% cover</strong><p>Moving in from the west. Imaging: Edge8, GT81, Redcat51.</p></div>
+<div class="at-notif" style="--i: 2"><p class="at-notif-head"><img src="astrotracker-icon.png" width="14" height="14" alt=""><span>AstroTracker</span><span>22 min ago</span></p><strong>GT81 + ASI2600MM Pro: guiding 1.62″ RMS for 5 min</strong><p>RA 1.21″, Dec 1.08″, your limit is 1.5″.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="wrap at-inside" aria-labelledby="inside-title">
+<div class="at-inside-head">
+<p class="label">Inside every project</p>
+<h2 class="p-h2" id="inside-title">The whole record, and the calibration behind it</h2>
+</div>
+<div class="at-inside-grid">
+<figure class="at-fig">
+<div class="at-window"><div class="at-bar" aria-hidden="true"><span class="at-dots"><i></i><i></i><i></i></span><span class="at-bar-title">AstroTracker · A project</span></div><img src="project.jpg" width="2000" height="1250" alt="A project in AstroTracker: integration, lights, nights, flats, darks and sub quality above the finished picture of the Bubble Nebula" loading="lazy" decoding="async"></div>
+<figcaption><h3>The record</h3><p>Integration, subs kept, nights and calibration, with the finished picture alongside. Goals per filter show how far each project has to go, and every record in <a href="../gallery/">this site's gallery</a> comes straight from here.</p></figcaption>
+</figure>
+<div class="at-inside-side">
+<figure class="at-fig">
+<div class="at-window"><div class="at-bar" aria-hidden="true"><span class="at-dots"><i></i><i></i><i></i></span><span class="at-bar-title">AstroTracker · Night by night</span></div><img src="nights.jpg" width="2000" height="433" alt="AstroTracker&#39;s night-by-night table: subs per filter each night, and the flats that cover them" loading="lazy" decoding="async"></div>
+<figcaption><h3>Calibration</h3><p>Night by night, what each filter collected and whether flats cover it. Missing flats, darks at the wrong temperature and a gain or offset that quietly changed are flagged while there is still time to fix them.</p></figcaption>
+</figure>
+<ul class="p-list">
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Every sub counted once; rejected subs add no time</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Darks and bias matched on temperature, gain and offset</li>
+<li><svg class="p-check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>AstroBin acquisition details in one click</li>
+</ul>
+</div>
+</div>
+</section>
+
 <section class="wrap p-more" aria-labelledby="more-title">
-<h2 class="p-h2 p-center" id="more-title">And through the night</h2>
+<h2 class="p-h2 p-center" id="more-title">And there's more</h2>
 <div class="p-tiles">
-<div class="p-tile"><h3>Night watch</h3><p>Follow every rig while it images, on the PC or your phone, with an alert if a sequence stalls or guiding drifts.</p></div>
-<div class="p-tile"><h3>Cloud alerts</h3><p>With an all-sky camera, AstroTracker spots cloud rolling in and lets you know.</p></div>
-<div class="p-tile"><h3>Morning summary</h3><p>What every rig captured overnight, ready when you wake up.</p></div>
-<div class="p-tile"><h3>How much more?</h3><p>Measures the faint detail in your subs and estimates the hours still needed for a clean result.</p></div>
-<div class="p-tile"><h3>Tidy files, safely</h3><p>Sorts subs into folders with a preview first and an undo after. Your image files are never modified.</p></div>
-<div class="p-tile"><h3>Weather</h3><p>The forecast for your site, and a rain alert for rigs left out overnight.</p></div>
+<div class="p-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 19h16M6 16l3-5 3 3 4-7 2 3"/></svg><h3>How much more?</h3><p>Measures the faint detail in your subs and estimates the hours still needed for a clean result.</p></div>
+<div class="p-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><h3>Capture PCs</h3><p>Each capture PC reports its drive space and logs through a folder you already sync, and Windows Update is kept from restarting it at night.</p></div>
+<div class="p-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><h3>Library survey</h3><p>Finds your past processing, from WBPP runs to PixInsight projects and finished pictures, and places it with its projects.</p></div>
+<div class="p-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="4" y="7" width="11" height="13" rx="2"/><path d="M9 4h9a2 2 0 0 1 2 2v11"/></svg><h3>Duplicates found</h3><p>The same capture stored twice is found by camera, exposure and time, and set aside for you to delete when you're happy.</p></div>
+<div class="p-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 17l5-10 4 6 2-3 3 7z"/><circle cx="17" cy="6" r="2"/></svg><h3>Rigs by fingerprint</h3><p>Each rig is recognised by focal length, pixel size and sensor, whatever the capture program calls it.</p></div>
+<div class="p-tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg><h3>Backups</h3><p>AstroTracker backs up its own record to a folder you choose, and checks every copy it makes.</p></div>
 </div>
 </section>
 
@@ -198,7 +306,9 @@
   "operatingSystem": "Windows",
   "description": "AstroTracker keeps a complete record of every astrophotography project: integration by filter and night, sub quality, calibration, and what to shoot next. It runs on your own PC and only reads your image files.",
   "url": "https://blastrophoto.com/AstroTracker/",
-  "image": "https://blastrophoto.com/AstroTracker/overview.jpg",
+  "image": "https://blastrophoto.com/AstroTracker/tab-active.jpg",
+  "screenshot": ["https://blastrophoto.com/AstroTracker/tab-imaging.jpg", "https://blastrophoto.com/AstroTracker/tab-planning.jpg", "https://blastrophoto.com/AstroTracker/tab-active.jpg"],
+  "video": {"@type": "VideoObject", "name": "AstroTracker in 43 seconds", "description": "From a library of scattered files to a summary by breakfast: AstroTracker reads, sorts and measures every sub, and watches the rigs through the night.", "thumbnailUrl": "https://blastrophoto.com/AstroTracker/tour-poster.jpg", "contentUrl": "https://blastrophoto.com/AstroTracker/tour-1080.mp4", "uploadDate": "2026-10-20", "duration": "PT43S"},
   "author": {"@type": "Person", "name": "Brandon Lewis", "url": "https://blastrophoto.com/about/"},
   "softwareHelp": {"@type": "CreativeWork", "name": "AstroTracker Explained", "url": "https://blastrophoto.com/AstroTracker/AstroTracker-Explained.html"}
 }
