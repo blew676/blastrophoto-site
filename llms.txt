@@ -8,7 +8,7 @@ Every picture is shown with the record AstroTracker keeps of how it was made: in
 
 ## Pages
 
-- [Gallery](https://blastrophoto.com/gallery/): 143 finished pictures, 4,595 hours of integration.
+- [Gallery](https://blastrophoto.com/gallery/): 144 finished pictures, 4,645 hours of integration.
 - [Telescopes](https://blastrophoto.com/telescopes/): the telescopes behind the pictures.
 - [About](https://blastrophoto.com/about/): the person behind the pictures.
 - [AstroTracker](https://blastrophoto.com/AstroTracker/): AstroTracker keeps a complete record of every astrophotography project: integration by filter and night, sub quality, calibration, and what to shoot next.
@@ -39,10 +39,11 @@ The other purpose of this website is to promote a new tool I've developed called
 
 The pictures are not offered for training AI models (see robots.txt).
 
+- [vdB 156](https://blastrophoto.com/vdb-156/): vdB 156: 47h 05m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 9 nights.
 - [Triangulum Galaxy](https://blastrophoto.com/triangulum-galaxy-edgehd-8-asi2600mm/): Triangulum Galaxy: 44h 16m of LRGB + Hα through the EdgeHD 8 + ASI2600MM, 5 nights.
 - [Andromeda Galaxy](https://blastrophoto.com/andromeda-galaxy-redcat51/): Andromeda Galaxy: 17h 58m of LRGB through the Redcat51, 3 nights.
 - [LBN 552](https://blastrophoto.com/lbn-552/): LBN 552: 22h 15m of LRGB through the ED127 Reduced, 5 nights.
-- [LBN 331](https://blastrophoto.com/lbn-331/): LBN 331: 81h 40m of HOO through the Pleiades 68 + ASI2600MM, 24 nights.
+- [LBN 331](https://blastrophoto.com/lbn-331/): LBN 331: 84h 31m of HOO through the Pleiades 68 + ASI2600MM, 25 nights.
 - [LBN 456, LBN 457, and The Garnet Star](https://blastrophoto.com/ic-1396-ed127-asi2600mm/): LBN 456, LBN 457, and The Garnet Star: 35h 05m of LRGB + Hα through the ED127 + ASI2600MM, 9 nights.
 - [Ghost of Cassiopeia](https://blastrophoto.com/ghost-of-cassiopeia/): Ghost of Cassiopeia: 50h 41m of LRGB + Hα through the GT81 + ASI585MM, 13 nights.
 - [Heart Nebula](https://blastrophoto.com/heart-nebula/): Heart Nebula: 33h 55m of SHO through the ED127 + ASI2600MM, 8 nights.
