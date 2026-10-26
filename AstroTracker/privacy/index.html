@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · AstroTracker</title>
+<meta name="description" content="What AstroTracker keeps on your PC, and the few things that ever leave it.">
+<link rel="canonical" href="https://blastrophoto.com/AstroTracker/privacy/">
+<meta property="og:url" content="https://blastrophoto.com/AstroTracker/privacy/">
+<meta property="og:image" content="https://blastrophoto.com/assets/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blastrophoto">
+<meta property="og:title" content="Privacy · AstroTracker">
+<meta property="og:description" content="What AstroTracker keeps on your PC, and the few things that ever leave it.">
+<meta name="theme-color" content="#070708">
+<link rel="icon" href="../../favicon.ico" sizes="48x48">
+<link rel="icon" href="../../assets/icon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="preload" href="../../assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/site.css?v=36de4b00f7">
+<script src="../../assets/site.js?v=36de4b00f7" defer></script>
+<script data-goatcounter="https://blastrophoto.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ" crossorigin="anonymous"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="top">
+<a class="brand brand-logo" href="../../"><img src="../../assets/logo.png" width="931" height="160" alt="Blastrophoto"></a>
+<nav class="nav" aria-label="Main">
+<a href="../../gallery/">Gallery</a>
+<a href="../../telescopes/">Gear</a>
+<a href="../../about/">About</a>
+<a href="../../AstroTracker/">AstroTracker</a>
+</nav>
+<details class="menu">
+<summary>Menu</summary>
+<nav aria-label="Main">
+<a href="../../gallery/">Gallery</a>
+<a href="../../telescopes/">Gear</a>
+<a href="../../about/">About</a>
+<a href="../../AstroTracker/">AstroTracker</a>
+</nav>
+</details>
+</header>
+<main id="main">
+<link rel="stylesheet" href="../astrotracker.css?v=2">
+<div class="product at at-doc">
+<section class="wrap at-doc-head">
+<p class="label"><a href="../">AstroTracker</a> · Privacy</p>
+<h1 class="p-h2">AstroTracker and your data</h1>
+</section>
+<article class="wrap at-doc-body">
+
+<p><strong>Short version: AstroTracker does not collect anything about you, and your photographs never leave your computer.</strong></p>
+<p>There is no account, no sign-in, no telemetry, no analytics, and no usage tracking. Nothing about which features you use, how often you run it, or what is in your library is recorded anywhere but on your own PC.</p>
+<p>Last updated 22 October 2026: notifications to the AstroTracker iPhone app.</p>
+<hr>
+<h2>Where your data lives</h2>
+<p>Everything AstroTracker knows sits in one folder on your computer:</p>
+<pre><code>%LOCALAPPDATA%\AstroTracker</code></pre>
+<p>That folder holds the database (your projects, grades, rigs, sites, notes, goals and the target catalogues), the cached thumbnails, a cache of sky-survey images, copies of the final images you add to finished projects, and the log. Nothing else, anywhere.</p>
+<p><strong>Your image files are never copied there and never modified.</strong> AstroTracker reads them and records what it found. It does not write to a FITS file under any circumstance. A final image you add is read once and AstroTracker keeps its own copy; the file you chose is not touched.</p>
+<p>If you switch on automatic backups, a copy of that database, and of those final images, is written to the folder you choose — typically your own NAS. Nowhere else, and only where you say.</p>
+<hr>
+<h2>What leaves your computer</h2>
+<p>Eight things, in total. Each is listed with exactly what it carries and when it happens.</p>
+<div class="at-table"><table><thead><tr><th>What</th><th>Goes to</th><th>Carries</th><th>Switched on by default?</th></tr></thead><tbody><tr><td data-label="What">Weather forecast</td><td data-label="Goes to">Open-Meteo (the forecast is theirs, credited on the Weather page)</td><td data-label="Carries">Your site's latitude and longitude. No account, no key, no identifier.</td><td data-label="Switched on by default?">Yes — the app works without it and simply says it is offline</td></tr><tr><td data-label="What">Astrospheric forecast (a preview)</td><td data-label="Goes to">Astrospheric (the forecast is theirs, credited on the Weather page)</td><td data-label="Carries">Your site's latitude and longitude, and your own Astrospheric key. The key is kept on your PC and sent nowhere else.</td><td data-label="Switched on by default?">No — only when you enter your own Astrospheric key in Settings; switching it off or removing the key stops it</td></tr><tr><td data-label="What">Sky survey pictures</td><td data-label="Goes to">CDS (hips2fits)</td><td data-label="Carries">The coordinates of the patch of sky you are framing, or of the sky around a sub you open as a sky map (rounded to half a degree). Cached on disk afterwards.</td><td data-label="Switched on by default?">Only when you open a framing preview or a sub's sky map</td></tr><tr><td data-label="What">Target catalogues</td><td data-label="Goes to">GitHub (OpenNGC) and CDS VizieR in Strasbourg, or its Harvard mirror</td><td data-label="Carries">Nothing but a request for the published catalogue files.</td><td data-label="Switched on by default?">Only when you press Download catalogues</td></tr><tr><td data-label="What">Target name lookup</td><td data-label="Goes to">CDS Sesame in Strasbourg, through astropy</td><td data-label="Carries">The target name you typed on the New project form.</td><td data-label="Switched on by default?">Only when you look up a name the downloaded catalogues do not know</td></tr><tr><td data-label="What">Update check</td><td data-label="Goes to">GitHub (the public AstroTracker releases repository)</td><td data-label="Carries">Nothing but a request for the latest released version number; when you install an update, the download of its installer. An installer runs only if it is signed by the AstroTracker publisher.</td><td data-label="Switched on by default?">Yes; can be turned off in Settings</td></tr><tr><td data-label="What">Push notifications</td><td data-label="Goes to">ntfy.sh, or your own ntfy server</td><td data-label="Carries">Short text messages — a stall warning, the morning summary — to a private topic you generate. No images, ever.</td><td data-label="Switched on by default?">No, off until you enable it</td></tr><tr><td data-label="What">Notifications to the AstroTracker iPhone app</td><td data-label="Goes to">AstroTracker's push relay (push.blastrophoto.com, run on Cloudflare), which hands them to Apple's push service</td><td data-label="Carries">The same short messages, each sealed on your PC for the one phone it is for, so neither the relay nor Apple can read it, with that phone's relay id. No images, ever. The relay keeps your phone's id there and Apple's address for it, and nothing about you or your messages.</td><td data-label="Switched on by default?">No — only for an iPhone paired through the AstroTracker app with its notifications turned on in the app</td></tr></tbody></table></div>
+<p>That is the complete list. There is no ninth thing. The pages themselves load nothing from the internet: their typefaces ship with the program. And the astronomy library inside it never fetches anything on its own: it works from the tables it was installed with.</p>
+<p>AstroTracker installed on a capture PC (the PC that runs your telescope) reaches the internet for one thing only, the same update check and download as above, and sends nothing: what it tells your main PC it writes into a folder beside your images, and your own sync carries it. That is the PC's drive space, a copy of your capture programs' logs, and what the camera, filter wheel, focuser and mount are doing, which it asks of the capture program on that same PC.</p>
+<p>If you press Let my main PC through on a capture PC, AstroTracker asks Windows to add one firewall rule there, for the capture program's own port and your main PC's address only; Windows asks your permission first, and nothing about your network's settings is changed.</p>
+<p>If you ask AstroTracker to connect a capture PC with Syncthing, it talks to the Syncthing program on the same PC, through Syncthing's own control interface, to add a device and a folder. What Syncthing then sends, where to, and which discovery and relay servers it uses is Syncthing's own business and is described in its documentation; AstroTracker carries none of your images itself.</p>
+<p>Besides these, AstroTracker only talks to the devices you point it at yourself: your rig PCs (if you give it their SGP address, or the address of N.I.N.A.'s Advanced API, which it only ever reads from), an all-sky camera (if you give it one's address, your own or the one an observatory publishes for a site of yours), the folders and network shares you add, and the backup folder you choose. A capture PC running AstroTracker writes its own addresses into the status file it sends you; your main PC tries such an address only when it is on this PC's own network, and an address it finds that way is only ever read from until you allow more on the Rigs page.</p>
+<p><strong>Problem reports are not sent by AstroTracker.</strong> Settings › Support saves one as a zip file on your computer; if you want help, you email it yourself. It holds the log, your settings, your library folder layout, your rigs, current alerts and job states. <strong>No images and no database</strong>, and before it is written the licence key, the phone pairing code, the push topic, any access token and any password in an address are taken out, and your site's position is kept only to the whole degree. It is an ordinary zip: open it and look before you send it.</p>
+<hr>
+<h2>Licensing</h2>
+<p>AstroTracker runs on a 30-night trial and then needs a licence key.</p>
+<p><strong>The licence check is entirely offline.</strong> A key is a short signed statement that the program verifies on your own computer using a public key built into it. Nothing is sent anywhere when you enter a key, when it is checked, or at any point afterwards. There is no activation server, no licence server, and no periodic re-validation. A telescope on an isolated network with no internet connection works exactly like one online.</p>
+<p>Two small pieces of bookkeeping support the trial, and both stay on your machine:</p>
+<ul><li>The date you first ran AstroTracker, stored in the database.</li><li><strong>The same date, also stored in the Windows registry</strong> at <code>HKCU\Software\AstroTracker\FirstRun</code>. This exists so that uninstalling and reinstalling does not silently restart a trial. It is one date. It is not sent anywhere and it identifies nothing about you.</li></ul>
+<p>Your key is stored in the database alongside everything else and is never transmitted, and problem reports leave it out.</p>
+<hr>
+<h2>What AstroTracker will not do</h2>
+<ul><li>It will not modify your FITS files. Not one byte, not ever.</li><li>It will not delete anything — not even files it has identified as duplicates. It shows them to you and the decision is yours.</li><li>It will not move a file without showing you first, and every move it makes is logged and can be undone.</li><li>It will not write outside the library folders you configured.</li><li>Read-only mode, in Settings, disables file movement entirely.</li></ul>
+<hr>
+<h2>Phone access</h2>
+<p>If you switch on phone access, AstroTracker serves the same pages to devices on your own network, protected by a pairing code. This is a direct connection from your phone to your PC. Nothing is relayed through any third party, and no data leaves your network. A paired phone can do almost everything the PC can, but not change folders or web addresses (a rig's log and calibration folders, its capture program's address and sequence file, and whether it takes commands at all, included), look into a folder or import a file by its path, restore a backup, add and remove library folders, or remove the licence key or an Astrospheric key: those only work on the PC itself.</p>
+<p>On the PC, only AstroTracker's own pages can use it: a request that another website in your browser tries to make is refused.</p>
+<hr>
+<h2>Children</h2>
+<p>AstroTracker is not directed at children and collects no personal information from anyone.</p>
+<hr>
+<h2>Questions</h2>
+<p>Settings › Support saves a problem report and says what it contains; email it to <a href="mailto:brandon.lewis@blastrophoto.com">brandon.lewis@blastrophoto.com</a>. The same address answers anything else.</p>
+<p><strong>Buy a licence</strong> (on the trial banner, the trial's end page and in Settings) is a link to the AstroTracker website, opened in your browser when you click it. The program itself sends nothing there, and entering a key sends nothing anywhere.</p>
+<p class="at-legal"><a href="../">AstroTracker</a><span aria-hidden="true">·</span><a href="../support/">Support</a></p>
+</article>
+</div>
+</main>
+<footer class="foot">
+<span>© 2026 Blastrophoto</span>
+<span>Acquisition records by AstroTracker · Updated Oct 20, 2026</span>
+</footer>
+</body>
+</html>

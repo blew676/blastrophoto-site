@@ -110,7 +110,7 @@
 }
 .at-row.flip .at-shot { --shot-glow: rgba(232, 85, 62, 0.2); }
 .at-row.tall .at-shot { width: 100%; max-width: 580px; justify-self: center; }
-.at-note-line { font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--faint); }
+.at-note-line, .at .at-phone-text > p.at-note-line { font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--faint); }
 
 /* ---------------------------------------------------------------- the phone */
 .at-phone-band {
@@ -190,4 +190,123 @@
   .at .at-tabs a { padding: 8px 11px; font-size: 14px; }
   .at-phone-band { margin-top: 88px; padding: 44px 20px; border-radius: 16px; }
   .at-phone { width: 280px; height: 580px; }
+}
+
+/* ---------------------------------------------------------------- the iPhone app, the links */
+.at-store { padding-top: 4px; }
+.at-legal {
+  margin-top: 40px; display: flex; justify-content: center; gap: 12px; font-family: var(--mono);
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint);
+}
+.at .at-legal a { color: var(--muted); text-decoration: none; }
+.at .at-legal a:hover { color: var(--text); }
+
+/* ---------------------------------------------------------------- Privacy and Support */
+.at-doc-head {
+  padding-top: calc(var(--header) + 72px); display: flex; flex-direction: column;
+  align-items: flex-start; gap: 18px;
+}
+/* one reading column, head and body together */
+.at-doc-head, .at-doc-body { max-width: 980px; margin-left: auto; margin-right: auto; }
+.at-doc .label a { color: inherit; text-decoration: none; }
+.at-doc .label a:hover { color: var(--text); }
+.at-doc-head .p-h2 { font-size: clamp(36px, 4.4vw, 56px); }
+.at-doc-lede { max-width: 680px; font-size: 19px; line-height: 1.6; color: var(--text-2); }
+.at-doc-body { padding-top: 48px; }
+.at-doc-body h2 {
+  margin: 48px 0 14px; font-weight: 700; font-stretch: 80%; font-size: 30px; line-height: 1.1;
+}
+.at-doc-body p, .at-doc-body li { font-size: 17px; line-height: 1.7; color: var(--text-2); }
+.at-doc-body p + p { margin-top: 14px; }
+.at-doc-body ul { margin: 14px 0 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
+.at-doc-body strong { color: var(--text); font-weight: 600; }
+.at-doc-body code {
+  font-family: var(--mono); font-size: 0.88em; color: var(--text); background: rgba(245, 243, 239, 0.07);
+  padding: 1px 6px; border-radius: 4px; overflow-wrap: anywhere;
+}
+.at-doc-body pre {
+  margin: 14px 0; padding: 14px 16px; overflow-x: auto; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 8px;
+}
+.at-doc-body pre code { background: none; padding: 0; }
+.at-doc-body hr { margin: 44px 0 0; border: 0; border-top: 1px solid var(--line); }
+.at-doc-body a { color: var(--text); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--rule); }
+.at-doc-body a:hover { text-decoration-color: currentColor; }
+.at-doc .at-legal { justify-content: flex-start; margin-top: 64px; font-size: 12px; line-height: 1.4; }
+/* the table of what leaves the PC: scrolls inside itself on a phone, never the page */
+.at-table { margin: 20px 0 6px; overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+.at-table table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14.5px; }
+.at-table th {
+  text-align: left; padding: 12px 14px; font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+.at-table td { padding: 12px 14px; vertical-align: top; line-height: 1.55; color: var(--text-2); border-top: 1px solid var(--line); }
+.at-table tr:first-child td { border-top: 0; }
+.at-table td:first-child { color: var(--text); font-weight: 600; min-width: 150px; }
+@media (max-width: 700px) {
+  /* the table as a card per row, each cell under its column's name */
+  .at-table { border: 0; overflow: visible; }
+  .at-table table { min-width: 0; }
+  .at-table thead { display: none; }
+  .at-table tbody, .at-table tr, .at-table td { display: block; }
+  .at-table tr { margin-top: 12px; padding: 4px 0; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+  .at-table td { border-top: 0; padding: 8px 14px; }
+  .at-table td::before {
+    content: attr(data-label); display: block; margin-bottom: 3px; font-family: var(--mono);
+    font-size: 10.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  }
+  .at-table td:first-child { font-size: 17px; }
+  .at-table td:first-child::before { display: none; }
+  .at-doc-head { padding-top: calc(var(--header) + 44px); }
+  .at-doc-body h2 { font-size: 26px; }
+  .at-doc-body p, .at-doc-body li { font-size: 16px; }
+}
+
+/* ---------------------------------------------------------------- the moving sky (starfield.js) */
+/* .at is a stacking context, so the sky (fixed, the whole window) lies behind its content and in
+   front of the page's own black; the footer is lifted above it, its words clear of the stars */
+.at { position: relative; z-index: 0; }
+.at-sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.foot { position: relative; z-index: 1; }
+
+/* ---------------------------------------------------------------- the iPhone app, his screenshots */
+.at-phones { display: grid; grid-template-columns: repeat(2, 232px); gap: 20px; align-items: start; }
+.at-device { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.at-device-low { margin-top: 56px; }
+.at-device-frame {
+  position: relative; width: 100%; padding: 8px; border-radius: 40px; background: #16181e;
+  border: 1px solid rgba(245, 243, 239, 0.14);
+  box-shadow: 0 44px 80px -36px rgba(0, 0, 0, 0.95), inset 0 0 0 1px #000;
+}
+.at-device-frame img { display: block; width: 100%; height: auto; border-radius: 32px; }
+.at-device-frame::after { /* the camera's island, over the screenshot's status bar */
+  content: ""; position: absolute; top: 15px; left: 50%; width: 30%; height: 15px; margin-left: -15%;
+  border-radius: 10px; background: #000;
+}
+.at-device figcaption {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted);
+}
+.at-phone-more {
+  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px;
+  align-items: start; padding-top: 32px; border-top: 1px solid var(--line);
+}
+.at-snap { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.at-snap img {
+  display: block; width: 100%; height: auto; border-radius: 22px;
+  box-shadow: 0 30px 60px -34px rgba(0, 0, 0, 0.9);
+}
+.at-snap figcaption { font-size: 15px; line-height: 1.55; color: var(--text-2); }
+.at-snap figcaption strong { color: var(--text); font-weight: 600; }
+@media (max-width: 1000px) {
+  .at-phone-more { justify-self: stretch; }
+}
+@media (max-width: 700px) {
+  .at-phones { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: 100%; }
+  .at-device-low { margin-top: 34px; }
+  .at-device-frame { padding: 5px; border-radius: 26px; }
+  .at-device-frame img { border-radius: 21px; }
+  .at-device-frame::after { top: 9px; height: 10px; }
+  .at-phone-more { grid-template-columns: minmax(0, 1fr); gap: 24px; }
 }

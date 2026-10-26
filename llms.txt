@@ -14,6 +14,8 @@ Every picture is shown with the record AstroTracker keeps of how it was made: in
 - [AstroTracker](https://blastrophoto.com/AstroTracker/): AstroTracker keeps a complete record of every astrophotography project: integration by filter and night, sub quality, calibration, and what to shoot next.
   - [AstroTracker Explained (web page)](https://blastrophoto.com/AstroTracker/AstroTracker-Explained.html)
   - [AstroTracker Explained (PDF)](https://blastrophoto.com/AstroTracker/AstroTracker-Explained.pdf)
+- [privacy](https://blastrophoto.com/AstroTracker/privacy/): What AstroTracker keeps on your PC, and the few things that ever leave it.
+- [support](https://blastrophoto.com/AstroTracker/support/): Getting help with AstroTracker and its iPhone app: email, Discord, problem reports and the guide.
 
 ## AstroTracker
 

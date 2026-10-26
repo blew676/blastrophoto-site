@@ -103,29 +103,8 @@
   dt { font-weight: 600; margin-top: 8pt; }
   dd { margin: 2pt 0 0 0; padding-left: 12pt; border-left: 2px solid #e2e6ec; }
 </style>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AstroTracker Explained: the complete guide to AstroTracker, the Windows program that keeps the record of every astrophotography project. What it does and why, written for readers new to astrophotography.">
-<link rel="canonical" href="https://blastrophoto.com/AstroTracker/AstroTracker-Explained.html">
-<style>
-  /* on a screen: a readable column instead of a printed page */
-  @media screen {
-    html { background: #eceae5; }
-    body { max-width: 820px; margin: 0 auto; padding: 28px 40px 80px; background: #fff;
-           font-size: 16px; }
-    .site-back { margin: 0 0 28px; font: 14px/1.4 "Segoe UI", "Helvetica Neue", sans-serif; }
-    .site-back a { color: #1d3f6e; }
-  }
-  @media screen and (max-width: 700px) {
-    body { padding: 18px 16px 60px; }
-    p { text-align: left; }
-    .toc { column-count: 1; }
-  }
-  @media print { .site-back { display: none; } }
-</style>
 </head>
 <body>
-<p class="site-back"><a href="./">← AstroTracker on blastrophoto.com</a></p>
-
 
 <section class="cover">
   <div class="kicker">A complete guide to the software</div>
@@ -140,7 +119,7 @@
   <div class="foot">
     Written for two readers: someone who has never heard of any of this, and an
     astrophotographer deciding whether the program is worth their time.<br>
-    Covers version 0.23.3.
+    Covers version 0.37.0.
   </div>
 </section>
 
@@ -672,7 +651,7 @@
 <p>
   When it does move files — and it can, because filing is half the problem — it never does so
   on its own initiative. Every move is proposed on screen first, confirmed by you, logged, and
-  undoable afterwards. There is also a <b>Read-only mode</b>, under <b>Settings › Safety</b>,
+  undoable afterwards. There is also a <b>Read-only mode</b>, under <b>Settings › Library › Safety</b>,
   that disables file movement entirely, for people who would rather it never touched anything.
 </p>
 
@@ -701,8 +680,8 @@
   on its own: by default each new sub that lands in a current-work folder is measured shortly
   after the scan finds it, so its star size and shape, background, thumbnail and signs of cloud
   are ready in Review by the time you look. <b>Measure new subs on current-work folders
-  automatically</b>, under <b>Settings › Watching and rescans</b>, turns that off. Everything
-  else waits for you to ask: measuring or re-measuring subs from Review or the Library page,
+  automatically</b>, under <b>Settings › Library › Watching and rescans</b>, turns that off. Everything
+  else waits for you to ask: measuring or re-measuring subs from Review or Organize,
   opening a sub at full size in Review, and <b>How much more?</b>, which reads a few subs per
   filter together with their darks and flats.
 </p>
@@ -746,7 +725,7 @@
 <div class="note">
   <span class="label">Why it works this way</span>
   <p>A tool that tells you what it does not yet know is more useful than one that always has an
-  answer. The focuser coefficient on the Rigs page will say <b>Collecting</b> for an entire
+  answer. The focuser coefficient on a rig (Settings › Equipment) will say <b>Collecting</b> for an entire
   season rather than fit a confident-looking line through four data points.</p>
 </div>
 </section>
@@ -758,9 +737,10 @@
 <h3>The installation</h3>
 
 <p>
-  A single installer, <code>AstroTracker-Setup-0.23.3.exe</code>, about 55 MB. It installs for
+  A single installer, <code>AstroTracker-Setup-0.37.0.exe</code>, about 55 MB. It installs for
   your user account rather than system-wide, which means no administrator prompt — and, more
-  usefully, means the program can later update itself without one. It offers a desktop shortcut,
+  usefully, means the program can later update itself without one. It shows the licence
+  agreement first, a short one written to be read, then offers a desktop shortcut,
   a "start when I sign in" option, and an optional install of Syncthing, unticked to begin with
   (a free file-syncing tool, used later if you need to bring subs or log files over from a
   separate observatory PC).
@@ -772,6 +752,11 @@
   website: the program checks for new releases itself and can download and install them, and it
   installs one only when it carries that same signature, as described in <em>Backups, updates
   and staying alive</em>.
+</p>
+
+<p>
+  The pages are served on port 8765 of your PC. If another program already uses that port,
+  AstroTracker says so when it starts and offers the next free one, which it then keeps using.
 </p>
 
 <h3>Where your data lives</h3>
@@ -799,7 +784,7 @@
 
 <p>
   Back up that one folder and you have backed up everything the program knows; uninstalling
-  asks whether you want it deleted. <b>Settings › Data on this PC</b> shows where the folder is
+  asks whether you want it deleted. <b>Settings › This PC › Data on this PC</b> shows where the folder is
   and how large the database, the thumbnails and the log have grown, with a button that clears
   the thumbnails.
 </p>
@@ -815,6 +800,14 @@
   The first time it opens, a setup wizard walks through six steps after a short welcome, which
   also lists what the program never does. You can move past any of them, each can be changed
   later, and each has its own page in the program, so nothing here is a one-time decision.
+</p>
+
+<p>
+  Before those steps the wizard asks one thing: <b>What is this PC for?</b> The answer is
+  nearly always <b>My main PC</b>, the one with your library. <b>A capture PC</b> is for the PC
+  that runs the telescope: there AstroTracker is a much smaller thing with one page of its own,
+  no library and no licence key, and none of the steps below. Where it finds capture programs'
+  logs and no library it says that the PC looks like a capture PC, and leaves the choice to you.
 </p>
 
 <ol>
@@ -842,20 +835,25 @@
   kept somewhere else, at a remote observatory say, can have a site of its own with its own
   time zone. This drives every calculation about when it gets dark, what is above the
   horizon, and how much the moon will hurt.</li>
-  <li><b>Logs</b> (optional). Where your capture software's log files are: PHD2's for guiding
-  and SGP's for the night's sequence. They live on the PC that runs the telescope, so the step
-  walks through copying them over with Syncthing, and a <b>Check folder</b> button counts the
-  logs it finds.</li>
+  <li><b>Capture PCs</b> (optional). Your capture software's log files (PHD2's for guiding,
+  SGP's or N.I.N.A.'s for the night's sequence) and how full its drive is are on the PC that
+  runs the telescope. The easy way to bring them over is to install AstroTracker on that PC
+  too: the same installer, answering <b>A capture PC</b> on its first screen. It finds the
+  capture programs and where the images are saved, keeps a small folder beside the images, and
+  whatever already copies your images to this PC brings that folder along. The step lists each
+  capture PC as it checks in. <b>Set up the capture PC manually</b> is the other choice: the
+  steps for sharing the log folders yourself with Syncthing, with a <b>Check folder</b> button
+  that counts the logs it finds.</li>
   <li><b>Phone</b> (optional). Two tickboxes, <b>Allow phone access on this network</b> and
   <b>Send push notifications through ntfy</b>, each with the steps to set up your phone — see
   <em>Your phone</em>.</li>
 </ol>
 
 <p>
-  A few things are not in the wizard. Under <b>Settings › Observing sites</b> are your home
+  A few things are not in the wizard. Under <b>Settings › General › Observing sites</b> are your home
   site's time zone (blank means the same as this PC), how dark your sky is (the Bortle class,
   taken as 6, a bright suburban sky, until you set it) and the shape of your horizon. An
-  all-sky camera is set under <b>Settings › Weather and sky</b>; see <em>The all-sky camera
+  all-sky camera is set under <b>Settings › Sky and weather</b>; see <em>The all-sky camera
   and finding cloud</em>.
 </p>
 
@@ -863,6 +861,14 @@
   The last screen's <b>Open AstroTracker</b> button closes the wizard. If the scan is still
   running, its progress moves to a banner across the top of every page, and you can use the
   program while it works.
+</p>
+
+<p>
+  Every page is a tab along the top of the window, each with its icon: Imaging, Weather,
+  Planning, Active, Finished, Organize and Guides. At the right are a
+  bell for <b>Alerts</b>, with the number waiting on it, and a gear for <b>Settings</b>. In a
+  narrow window the tabs keep only their icons, and resting the pointer on one gives its name;
+  in a phone's browser the last two fold under <b>More</b>.
 </p>
 </section>
 
@@ -890,7 +896,9 @@
   noon, so it can never run out in the middle of a session. Installing at eleven at night does
   not cost you a night either: whatever time you start, you get all thirty. For the last week
   a banner across the top of every page counts the nights down and names the morning the trial
-  ends.
+  ends, with a <b>Buy a licence</b> link beside it. If your phone receives AstroTracker's
+  notifications it is told as well, when seven, three and one nights are left and again when
+  the trial ends, so the alerts never simply go quiet.
 </p>
 
 <div class="note">
@@ -913,25 +921,65 @@
   What stops is new work, which means anything that would add to or change what the program
   knows. In the background, folders are no longer watched or rescanned, new photographs are not
   measured, and the morning summary, the stall and rain alerts and the season reminders are no
-  longer sent. On the pages, every change is turned down: grading a photograph, writing a note,
-  setting a goal, changing a project's status, saving settings, starting a scan, moving files.
-  Every page still opens and everything on it can still be read, and a banner across the top
-  says the trial has ended, with an <b>Enter a key</b> button.
+  longer sent. On the pages, every change to your library is turned down: grading a photograph,
+  writing a note, setting a goal, changing a project's status, starting a scan, moving files.
+</p>
+
+<p>
+  The program says so plainly. When it is opened after the trial has ended it shows one page
+  first: <b>Your trial has expired</b>, a <b>Buy a licence</b> button that opens the AstroTracker
+  website, and the box to paste a key into. <b>Look at my library</b> puts that page away, and
+  every page behind it still opens and can still be read, under a banner that carries the same
+  two buttons. Try to change something and the page comes back, so a change that was turned down
+  is never a button that silently did nothing.
 </p>
 
 <p>
   A few things carry on, because they look after what you already have rather than adding to
   it: the daily backup and <b>Back up now</b>, checking for and installing updates, and saving
-  a problem report from Settings › Support. Settings › Licence stays open as well, since that
+  a problem report from Settings › This PC › Support. Settings can still be changed too, so phone access
+  and notifications can always be switched off, and Settings › This PC › Licence stays open, since that
   is where the key goes. Entering a key restores the rest immediately, with nothing to re-scan
   and nothing lost, because nothing was ever taken away.
+</p>
+
+<h3>What a licence is</h3>
+
+<p>
+  A licence costs <b>US$79.99</b> and is bought <b>once</b>, on the AstroTracker website
+  (the seller may add the sales tax your country requires). There is no subscription and
+  nothing to renew: the licence does not expire.
+</p>
+
+<table>
+  <tr><th>What you get</th><th>The detail</th></tr>
+  <tr><td class="term">Your computers</td><td>One key, issued in your name, for any number of
+    computers that are yours: the PC in the house, the one in the observatory, a laptop. A
+    capture PC, which only reports on a telescope, needs no key at all.</td></tr>
+  <tr><td class="term">Updates</td><td>Every update to this edition of AstroTracker is
+    included, at no charge, for as long as updates to it are published.</td></tr>
+  <tr><td class="term">A new edition</td><td>Should a substantially different AstroTracker be
+    released one day, announced as a new edition, upgrading to it may cost something. Your key
+    goes on working with the edition you bought, without limit of time, whether you upgrade or
+    not. A change of version number alone is never a new edition.</td></tr>
+  <tr><td class="term">Refunds</td><td>Within 30 days of buying, in full, with no reason
+    needed. Write to the address in the licence agreement.</td></tr>
+</table>
+
+<p>
+  The terms are short and written to be read. The installer shows the <b>licence agreement</b>
+  before it installs anything, and it stays readable afterwards from the bottom of
+  Settings › This PC › Licence, beside the privacy statement and the open-source notices. One section of
+  it is worth reading before you rely on the program: AstroTracker is an aid and not a
+  safeguard. It can miss things or be late, a notification may not arrive, and it should never
+  be the only thing standing between a telescope and the weather.
 </p>
 
 <h3>The key, and what it does not do</h3>
 
 <p>
   A licence key is a short piece of text that arrives by email. You paste it into
-  Settings › Licence, press <b>Use this key</b>, and that is the whole procedure.
+  Settings › This PC › Licence, press <b>Use this key</b>, and that is the whole procedure.
 </p>
 
 <p>
@@ -967,7 +1015,10 @@
 <p>
   You give AstroTracker a list of top-level folders — it calls them <b>library roots</b> — and
   for each one you say what kind of folder it is. You do this in the <b>Folders</b> step of the
-  setup wizard the first time, and on the <b>Library</b> page whenever you like after that. Add
+  setup wizard the first time, and on the <b>Library</b> page whenever you like after that. A
+  folder can be typed, pasted, or picked: <b>Browse…</b> beside the box opens Windows' own
+  folder window, as it does beside every folder box in the program when you are at the PC
+  it runs on. Add
   the folder that holds your rig folders rather than each target folder inside it, since a root
   is read all the way down. The role matters, because it changes how often the folder is looked
   at and what the program expects to find inside. There are three to choose from.
@@ -1005,23 +1056,24 @@
 <h3>Never one root inside another</h3>
 
 <p>
-  What the program will not accept is a root inside another root, or one that contains a root
-  you already have. A root reads everything beneath it, so the inner folder's files would belong
-  to both, and one of the two scans could only fail. It refuses the folder and tells you why, in
-  one of two ways:
+  A root reads everything beneath it, so no file may belong to two roots. A folder inside a root
+  you already have is refused: "that folder is inside <code>D:\Astro</code>, which is already a
+  library root and scans everything under it". There is nothing to do; that folder is already
+  covered.
 </p>
 
-<ul>
-  <li>"that folder is inside <code>D:\Astro</code>, which is already a library root and scans
-  everything under it" — there is nothing to do: that folder is already covered.</li>
-  <li>"that folder contains the library root <code>D:\Astro\MyScope</code>; remove that one
-  first" — remove the smaller root on the Library page, then add the larger one. Removing a
-  root makes the program forget the grades you gave its subs, apart from <code>BAD_</code>
-  names and <code>bad</code> folders, as <em>Library</em> explains.</li>
-</ul>
+<p>
+  A folder that holds roots you already have is the other way round, and it is how a library
+  grows: you began with a folder per rig and now want the whole drive. Add the drive, and
+  AstroTracker lists the roots it holds and asks whether to take them in. Their subs keep their
+  grades, projects and measurements, and their dark runs and flat sets what you set on them.
+  Nothing is read again; only the rest of the drive is scanned. From then on those folders count
+  as the role you chose for the drive. The one exception is the folder for rejected subs, which
+  must stay outside every root: move it elsewhere in Settings first.
+</p>
 
 <p>
-  A rig's own calibration folder, set on the Rigs page, follows the same rule; see
+  A rig's own calibration folder, set under Settings › Equipment › Rigs, follows the same rule; see
   <em>Calibration: darks, bias and flats</em>.
 </p>
 
@@ -1030,11 +1082,14 @@
 <p>
   The Library list can show one more role, <code>rejected</code>, which is not among the three
   you pick from. That root is made for you when you fill in <b>Folder for rejected subs</b> under
-  Settings › Rejected subs: the folder the subs you grade bad are moved to (see <em>Review —
+  Settings › Library › Rejected subs: the folder the subs you grade bad are moved to (see <em>Review —
   judging your photographs</em>). The folder is created if it does not exist and follows the
-  setting: change the folder and the root moves with it, clear it and the root goes. Everything
-  in it counts as bad, and adds nothing to your totals. Choose a folder outside your other
-  roots: one inside them would be a root inside a root, and its scan would be refused.
+  setting. Change it, and the subs already in the old folder leave the library, since they are
+  no longer in the folder for rejected subs: their grades wait for 120 days, as a removed
+  folder's do, and come back from whichever root holds them; the new folder is scanned straight
+  away. Clear the setting and the root goes the same way. Everything in the folder counts as
+  bad, and adds nothing to your totals. Choose a folder outside your other roots: one inside
+  them would be a root inside a root, and its scan would be refused.
 </p>
 
 <h3>Stage folders</h3>
@@ -1045,7 +1100,7 @@
   folder from one to the other is how you signal that you have stopped shooting and started
   editing. AstroTracker notices the move and updates the project's status accordingly. If your
   drives use different names — "Incoming", "Stacking" — you give it yours under
-  Settings › Library layout, separated by commas if there are several.
+  Settings › Library › Library layout, separated by commas if there are several.
 </p>
 
 <h3>What it expects to find, and what it ignores</h3>
@@ -1063,12 +1118,51 @@
 </p>
 
 <p>
+  It reads <b>FITS</b> files, astronomy's standard format, compressed ones (<code>.fz</code>)
+  included, and <b>XISF</b>, PixInsight's format, which N.I.N.A. can also save subs in. It cannot
+  read the raw files a DSLR writes (CR2, NEF and the like): a folder of those says so in
+  Settings › Library rather than simply looking empty.
+</p>
+
+<p>
+  <b>Processed files outside those folders</b> are recognised too. A master dark, a calibrated or
+  aligned sub, a stacked channel or a finished picture kept beside your subs is listed but never
+  counted. PixInsight carries the original subs' header keywords into what it makes, so a
+  calibrated sub still says "light" and still names the capture program; what gives it away is
+  that its pixels are fractional numbers, which no camera writes, or that its header calls it a
+  master.
+</p>
+
+<p>
   It notices <b>files whose names begin with <code>BAD_</code></b> and treats that as a human
   judgement to be preserved rather than a naming accident. If you have been marking bad frames
   that way for years, the program keeps that opinion. A sub sitting in a folder called
   <code>bad</code>, <code>rejected</code>, <code>reject</code>, <code>quarantine</code> or
   <code>trash</code> is read the same way.
 </p>
+
+<h3>Your capture program</h3>
+
+<p>
+  The program that runs the camera through the night decides how files are named and filed, and
+  what their headers say. AstroTracker was built around Sequence Generator Pro, and it knows the
+  habits of the others you are likely to use:
+</p>
+
+<ul>
+  <li><b>N.I.N.A.</b> files a night's images in a folder named after the date, then by frame type
+  (<code>2026-09-26\LIGHT</code>, <code>2026-09-26\FLAT</code>), with no folder per target. The
+  date folder counts as the night, and that night's flats count for every target in it.</li>
+  <li><b>ZWO's ASIAIR</b> writes no target name and no local time into its files; both are in
+  the file's name, so that is where they are read from. Its flats have a folder of their own
+  (<code>Autorun\Flat</code>) and count for the lights of their night.</li>
+  <li><b>DWARFLAB's smart telescopes</b> (checked with a Dwarf Mini) say nothing in a file
+  about what kind of frame it is, and stamp it with your phone's local time at the end of
+  the exposure. A frame of a named object is taken for a light, its time is read that way,
+  and the rig is named after the telescope.</li>
+  <li><b>APT, Voyager, Ekos</b> and the rest write standard headers, which is all a scan
+  needs.</li>
+</ul>
 </section>
 
 <section class="chapter">
@@ -1080,7 +1174,7 @@
 </p>
 
 <p>
-  For every FITS file it finds, the program opens just far enough to read the header block and
+  For every FITS or XISF file it finds, the program opens just far enough to read the header block and
   then closes it again. A header is a few kilobytes of plain text at the front of a file that
   may be fifty megabytes. Reading the headers of 195,000 files is a manageable job; reading their
   contents would be several terabytes of disk traffic.
@@ -1114,11 +1208,11 @@
 
 <p>
   Times are handled in local clock time throughout, because that is how you experience a night.
-  Sequence Generator Pro writes both the local time and a UTC timestamp into every header, and
-  the program reads the local one; where a capture program recorded only UTC, an approximate
-  local time is worked out from the longitude in the header. A telescope in another time zone
-  can be given that zone, and its subs, its logs and its darkness times are then all read on
-  that clock rather than yours.
+  Sequence Generator Pro and N.I.N.A. write both the local time and a UTC timestamp into every
+  header, and the program reads the local one. Where a capture program recorded only UTC, as the
+  ASIAIR does, the local time comes from the file's name when it carries one, and otherwise from
+  your home site's time zone. A telescope in another time zone can be given that zone, and its
+  subs, its logs and its darkness times are then all read on that clock rather than yours.
 </p>
 
 <h3>After the first scan</h3>
@@ -1175,9 +1269,15 @@
 
 <p>
   So the program discovers your telescopes rather than being told about them. After the first
-  scan, the Rigs page lists what it found. You give each one a name — "80 mm refractor",
+  scan, Settings › Equipment › Rigs lists what it found. You give each one a name — "80 mm refractor",
   "8-inch Newtonian" — and can add the things a header cannot know: which filters it carries, where its log files are, its
   guiding limit.
+</p>
+
+<p>
+  Some capture programs do fill those two fields in usefully: N.I.N.A. records the telescope
+  named in its profile, and the ASIAIR the camera's model. A rig first found in their files
+  starts out with that as its name. The fingerprint still decides which rig a file belongs to.
 </p>
 
 <h3>One rig, more than one fingerprint</h3>
@@ -1195,7 +1295,7 @@
   a focal length within 2 per cent of an existing rig's, and the same sensor once the binning
   is undone. If so, the frames join that rig and it simply gains a second fingerprint. The same
   check absorbs a focal length written slightly differently in the header, as happens when a
-  capture profile is edited. The Rigs page lists the fingerprints each rig has collected and
+  capture profile is edited. Each rig under Settings › Equipment lists the fingerprints each rig has collected and
   the binnings it has been seen at; its <b>Binning</b> setting is just the one you normally
   shoot at, and frames at another binning still belong to the rig.
 </p>
@@ -1249,8 +1349,8 @@
 
 <p>
   A friend's setup can be identical to yours, the same telescope model with the same camera,
-  and then it shares your fingerprint. There the folder decides. <b>Split by folder…</b> on the
-  Rigs page gives the frames under a folder name you choose (the folder their data arrives in,
+  and then it shares your fingerprint. There the folder decides. <b>Split by folder…</b> under
+  Settings › Equipment › Rigs gives the frames under a folder name you choose (the folder their data arrives in,
   say) a rig of their own with your friend as owner, and later frames in that folder follow it.
   Frames with no such folder in their path always stay with your own rig.
 </p>
@@ -1334,12 +1434,9 @@
   When the result is not what you meant (a mosaic's panels kept in separate folders under
   different names, say, split into projects of their own), you put it right on the project page:
   <b>Move to…</b> for chosen subs, <b>Merge into…</b> for a whole project (see <em>Inside one
-  project</em>). Subs sent with <b>Move to…</b> are marked as placed by you: no rescan moves them
-  again, and neither does <b>Regroup projects</b> on the Library page, which rebuilds all the
-  grouping from the files. A merge holds through rescans, but merged subs are not marked, so
-  <b>Regroup projects</b> can split them apart again; a merge also deletes the emptied project's
-  goals and cannot be undone in the app. For a correction that must survive everything, use
-  <b>Move to…</b>.
+  project</em>). Subs sent with <b>Move to…</b>, and every sub of a project you merge, are marked
+  as placed by you: no rescan moves them again, and neither does <b>Regroup projects</b> at the
+  top of Organize, which rebuilds all the grouping from the files.
 </p>
 
 <h3>The two-targets-in-one-folder problem</h3>
@@ -1347,6 +1444,13 @@
 <p>
   Sequence Generator Pro creates one folder per sequence. If you shoot a second target the same
   night, its frames land in the first target's folder — and now the folder name is a lie.
+</p>
+
+<p>
+  N.I.N.A.'s standard layout is the same situation on purpose: a whole night is filed by date and
+  frame type, with no folder per target, so every target of the night shares one folder. Those
+  date folders are recognised for what they are, nothing offers to move their subs apart, and the
+  night's flats count for every target in them.
 </p>
 
 <p>
@@ -1365,10 +1469,17 @@
 
 <p>
   The same care applies before anything moves. Flats, darks and bias count towards a project
-  whose lights share their folder. Where two projects share it, a frame whose target name picks
-  one out, such as <code>flats_M101</code>, counts for that one; everything else counts for the
-  folder's owner: the project the folder is named after, or failing that, the one whose subs
-  were there first. A frame you placed by hand stays where you put it.
+  whose lights share their folder and were taken with the same camera and binning: a flat from
+  another camera could not calibrate them. Where two such projects share it, a frame in a Night
+  folder counts for the project whose lights alone are in that Night folder, whatever its file
+  name says; failing that, a frame whose
+  target name picks one out, such as <code>flats_M101</code>, counts for that one; everything
+  else counts for the folder's owner: the project the folder is named after, or failing that,
+  the one whose subs were there first; and if the owner was shot with another camera, for the
+  project shot nearest the frame's night. A flat no project in its folder could use goes by its
+  headers instead: to the one project in the same library folder that was shot with its camera
+  on its night, which is how flats kept in a folder of their own find their project; with two
+  such projects, or none, it belongs to none. A frame you placed by hand stays where you put it.
 </p>
 </section>
 
@@ -1416,7 +1527,7 @@
   It tells you once per season, and re-arms after the target has been out of range for a month.
   It is a season reminder, not a weather one: if the target already clears that bar on the day
   you postpone the project, the reminder waits until it has gone and come back. The switch is
-  under Settings › Weather and sky. If new light frames for a postponed project simply appear,
+  under Settings › Sky and weather. If new light frames for a postponed project simply appear,
   it puts itself back to Acquiring without being asked.
 </p>
 
@@ -1435,9 +1546,19 @@
 </p>
 
 <p>
+  So the program asks rather than acts. When you mark a project Complete with its final image
+  already in, or add the final image to a project that is complete (see <em>The finished
+  picture</em>), it offers to archive the project there and then: where its files are and where
+  they would go, how many subs and nights, how long a move between drives would take, and
+  whether its processing goes along. <b>Archive now</b> starts the same logged, undoable batch
+  as the Organize page; <b>Not now</b> leaves the project waiting there.
+</p>
+
+<p>
   When you are ready to tidy, <b>Archive finished projects</b> on the Organize page moves a
-  completed project's lights and flats into your archive, night folders and all, as one logged,
-  undoable batch (see <em>Organize — moving files safely</em>).
+  completed project into your archive as one logged, undoable batch: its lights and flats, night
+  folders and all, one copy of each, and the processing the library survey found for it (see
+  <em>Organize — moving files safely</em>).
 </p>
 
 <p>
@@ -1520,11 +1641,14 @@
 </p>
 
 <p>
-  Along the top are a few totals: how many projects are active, the integration in the whole
-  library, how many rigs and how many files the program knows, and, when there are any, an
-  <b>Unassigned</b> count of files that belong to no project. The tile calls them calibration
-  frames, and most are: darks and bias kept in a calibration library belong to a camera rather
-  than a project, so they always count here. If the latest night produced light frames, a <b>Last night</b> card
+  Along the top are five tiles about what the page lists: how many projects are active (and how
+  many are postponed), the integration they hold (each sub once, however many folders hold a
+  copy of it, and nothing for a sub graded bad; the postponed projects' hours are given beside
+  it), how many rigs they use, how much was taken for them in the last 30 days, and how many subs the program flagged that nobody has graded yet;
+  click that one for the projects they are in and what they were flagged for, each opening its
+  Review. The library's own totals, its whole integration, the files indexed, the copies and
+  what could not be placed, are at the top of Organize. If the latest night produced
+  light frames, a <b>Last night</b> card
   follows with what each project gained and buttons to deal with the flagged subs
   (<em>The morning summary</em> describes it). A <b>+ Plan a target</b> link leads to the
   Planning page, which is where tonight's chart, the recommendations and the catalogue
@@ -1629,7 +1753,7 @@
 </p>
 
 <p>
-  That profile, typed under Settings › Observing sites, is then used everywhere it matters: the
+  That profile, typed under Settings › General › Observing sites, is then used everywhere it matters: the
   tonight chart, everything else on the Planning page that asks when a target is up, and the
   season reminder for postponed projects. A target that technically rises at nine but does not
   clear your oak tree until eleven is shown as rising at eleven, because that is the truth for
@@ -1691,6 +1815,13 @@
   relying on a shared flat set from three weeks ago.
 </p>
 
+<p>
+  Flats that no project claims, kept one folder above the lights (an ASIAIR's
+  <code>Autorun\Flat</code>, or a mosaic's flats beside its panel folders), count for the lights
+  beneath them, matched by date. A one-shot-colour camera takes its flats with no filter, as it
+  takes its lights, and the table shows that filter as <b>OSC</b>.
+</p>
+
 <h3>How much more?</h3>
 
 <p>
@@ -1731,7 +1862,9 @@
 <p>
   The bands, and the patch of pixels the noise is judged over (3 × 3 by default), are yours to set
   under <b>How much more?</b> on the Settings page, because what counts as clean is one imager's
-  eye rather than a textbook figure.
+  eye rather than a textbook figure. On a one-shot-colour camera each pixel's noise is judged
+  against pixels of its own colour, since the red, green and blue sky levels differ by far more
+  than the noise does.
 </p>
 
 <h4>The notes behind the i</h4>
@@ -1830,8 +1963,11 @@
 <p>
   Grouping is automatic, but you have the last word. <b>Rename</b> in the header, or a
   double-click on the project's name, changes what it is called. <b>Merge into…</b> folds this
-  project into another you pick from the list: every file moves across and this one is gone. It
-  asks first, and it cannot be undone from the page.
+  project into another you pick from the list. Only AstroTracker's records change: nothing moves
+  on disk. Its subs join the other project, marked as placed by you, and so does what you gave
+  this one: its goals (where both set one for the same filter, the larger is kept), its notes
+  (under a line naming it), its <b>Revisit later</b> mark, and its finished picture if the other
+  project has none. Then this one is gone. It asks first, and a merge cannot be undone.
 </p>
 
 <p>
@@ -1885,34 +2021,48 @@
 <h3>What a rig card shows</h3>
 
 <ul>
+  <li><b>Its sequence</b>, for a rig run by SGP whose capture PC says which sequence it runs:
+  the target being taken with a bar for each filter, filled as SGP counts its frames, as
+  SGP's own sequence window shows them (<b>Red 55/60</b>, and the total, <b>163/180 · 91% ·
+  about 51 min left</b>). The filter being taken is marked; subs that arrived since SGP last
+  saved its counts are the lighter end of their bar; a filter switched off in SGP is dimmed;
+  the sequence's other targets have a line each.</li>
   <li><b>Tonight</b> — the hours and number of subs since local noon, and how many came
   through each filter.</li>
   <li><b>Time since the last sub.</b> The single most informative number on the page. If your
   exposures are five minutes and it has been twenty-two minutes, something is wrong, and the card
   says so: once the next sub is later than the margin set in Settings, the time turns into
   <b>STALLED</b> and a note says how many minutes late the next sub is.</li>
-  <li><b>The latest sub's measurements</b> — its filter and exposure, star size (FWHM), shape
-  (eccentricity, shown as <i>e</i>) and the number of stars found, then any warning flags it
-  earned, or "looks fine" — so you can see focus drifting or cloud arriving without opening
-  anything. The flags are explained in <em>Review — judging your photographs</em>.</li>
-  <li><b>Trends across the night</b> for sky brightness and star size, as two small lines that
-  appear once three subs have been measured, so a gradual decline is visible as a decline rather
-  than as one bad frame. When the stars late in the night are more than a quarter larger than
-  they were early on, the star-size line turns amber and the card warns "focus drifting: stars are
-  getting bigger".</li>
+  <li><b>The latest sub's measurements</b> — its filter and exposure, star size (FWHM), its
+  <b>median</b> (the middle brightness of its pixels in ADU, which is the sky's level: compare it
+  with subs of the same filter, since each filter lets through a different amount of sky) and
+  the number of stars found, then any warning flags it earned, or "looks fine" — so you can see
+  focus drifting or cloud arriving without opening anything. When the stars late in the night
+  are more than a quarter larger than they were early on, the card warns "focus drifting: stars
+  are getting bigger". The flags are explained in <em>Review — judging your photographs</em>.</li>
   <li><b>The seeing estimate</b>, in arc-seconds with a plain-language band from excellent to
   bad.</li>
   <li><b>Cloud over the target.</b> With an all-sky camera at your home site, a warning such as
   <b>clouds over M31: 45%</b> appears once the camera sees 30 percent cover or more in the
   direction of the rig's target.</li>
   <li><b>A guide graph</b> in the style of PHD2's own: the last ten minutes of guiding error, RA
-  in blue and declination in red, with your limit marked as a dashed line. A rig guiding badly is
-  obvious at a glance.</li>
-  <li><b>The latest picture</b> from that rig, with buttons to grade it right there without
+  in blue and declination in red, with your limit marked as a dashed line. Above it, the RMS
+  of each axis and the total, which turns red with <b>high</b> once PHD2's last 100 frames are
+  over your limit, <b>star lost</b> when PHD2 has lost its star, and the session's figure. A rig
+  guiding badly is obvious at a glance.</li>
+  <li><b>The latest picture</b> from that rig, under a line that says which sub it is (its
+  filter, exposure, time and file name, and its project when the rig shot more than one target
+  that night), with buttons to grade it right there without
   opening the project: <b>clouds</b>, <b>trailing</b>, <b>focus</b>, <b>airplane / satellite</b>
   (for a streak one left across the frame) and <b>other</b> each reject it for that one reason,
   replacing any it had; <b>good</b> passes it and <b>clear</b> removes the grade. Several reasons
   at once are given on the Review page.</li>
+  <li><b>The Capture PC bar</b>, when that PC reports itself: its name and when it was last heard
+  from; every drive with the room left on it, the one the images are saved on first, with
+  roughly how many nights that is at the rig's recent rate; and Windows Update, only when there
+  is something to say, such as a restart waiting (since when, and when the PC last restarted).
+  The drive turns amber under the limit set in Settings, and a warning goes out once, to the
+  phone too, so a full drive is not first learnt from the sub that could not be saved.</li>
 </ul>
 
 <h3>Tonight's sequence as a chain</h3>
@@ -1925,8 +2075,9 @@
 </p>
 
 <p>
-  This is assembled entirely from the SGP and PHD2 log files, and it turns a wall of log text
-  into something you can read in one second from bed. At the foot of the card, <b>Show session
+  This is assembled from the capture program's log (Sequence Generator Pro's or N.I.N.A.'s)
+  and PHD2's, and it turns a wall of log text into something you can read in one second from
+  bed. At the foot of the card, <b>Show session
   log</b> lists the night's latest events. <b>Clear errors</b> tidies away the warnings once you
   have dealt with them and <b>Clear</b> hides the lot; anything new still appears, and past
   sessions and the morning summary keep every event.
@@ -1938,7 +2089,14 @@
   <em>finished normally</em>. Without it, a rig that completed its plan at 4 a.m. and a rig that
   crashed at 4 a.m. look identical — both simply stop producing files — and you would get a
   "no new subs" alarm either way. With the log, the card says "sequence finished" and no alert is
-  sent.</p>
+  sent. A meridian flip under way is read the same way, so the quarter of an hour it can take
+  does not look like a stalled rig, and so are the minutes Sequence Generator Pro waits before
+  it when the flip is too close for another sub. The same log counts the flip down before every
+  sub, so the card says when it is due: "flip at 03:48 (in 25 min)".</p>
+  <p style="margin-top:6pt">Programs whose logs are not read (APT, Voyager, Ekos) stop guiding
+  when their sequence ends, so PHD2's log stands in: guiding that stopped after the last sub
+  means the night is over. A rig with neither gets its alarm at a lower priority, with a note
+  to ignore it if the sequence was due to end.</p>
 </div>
 
 <h3>Past sessions</h3>
@@ -1955,7 +2113,7 @@
 <p>
   Optionally — and only for a rig on the same network — the card can show what the hardware is
   doing this second. Sequence Generator Pro runs a small service on the observatory PC; enter
-  that PC's address as the rig's <b>SGP API host</b> on the Rigs page and the card gains a
+  that PC's address as the rig's <b>Capture program API</b> under Settings › Equipment › Rigs and the card gains a
   <b>Rig now</b> panel showing the camera's state and temperature, which filter is in the beam,
   where the focuser is, and whether the mount is parked, slewing or tracking. It recognises an
   autofocus run while it is happening. A rig with an address keeps its card all day, so the panel
@@ -1963,15 +2121,33 @@
 </p>
 
 <p>
+  Two rigs can be one capture PC: the same telescope with its reducer on, or with another
+  camera, is a different rig to AstroTracker but the same PC, the same logs and the same address.
+  Give both rigs the same <b>Log folder</b> and address and the page shows one card for that PC,
+  on the rig that is taking the subs, with the night's log, the guide graph and the Rig now panel
+  on it. Before a night's first sub has landed the card is the rig you used last, and it changes
+  over when the first sub arrives. If you swap during a night, each rig keeps the part of the
+  night it imaged, and the first is shown as finished rather than stalled.
+</p>
+
+<p>
   Filters are shown by name rather than slot number. The service will only ever report "slot 2",
   so the names are read out of the rig's own log file — which means they also work for a
   telescope whose logs you sync but whose PC you cannot reach. Failing that, type them into the
-  rig's <b>Filter wheel</b> box on the Rigs page.
+  rig's <b>Filter wheel</b> box under Settings › Equipment › Rigs.
+</p>
+
+<p>
+  N.I.N.A. offers the same through its free <b>Advanced API</b> plugin: the rig PC's address with
+  the plugin's port, such as <code>192.168.1.50:1888</code>, in the same box gives the same
+  panel, with the filter named by N.I.N.A. itself, plus the side of the pier the mount is on, the
+  minutes until its meridian flip, and the guiding error. AstroTracker only ever reads from it;
+  the Rig actions below are Sequence Generator Pro's.
 </p>
 
 <p>
   Beyond watching, you can optionally allow <b>control</b>. Switched on per rig with <b>Allow
-  control</b> on the Rigs page, and off by default, it adds a <b>Rig actions</b> menu that can park
+  control</b> under Settings › Equipment › Rigs, and off by default, it adds a <b>Rig actions</b> menu that can park
   and unpark the mount, abort the frame being exposed, set the cooler, move the filter wheel, move
   the focuser to a position or step it in or out, connect or disconnect the equipment, start a
   sequence, and set the meridian flip delay (how many minutes past the meridian the mount waits
@@ -2014,13 +2190,23 @@
   night. Planning Thursday from Monday morning works.
 </p>
 
+<p>
+  Members of <b>Astrospheric</b> (a forecasting service for astronomers, covering North America,
+  Greenland, Iceland, Ireland and the UK) can add its forecast underneath: three rows, cloud,
+  seeing and transparency, hour by hour for about 82 hours, in Astrospheric's own colours. It
+  needs your own Astrospheric Professional key, entered in Settings, and each request spends a
+  few of that key's monthly credits, which AstroTracker is careful with. It is labelled a
+  preview because Astrospheric promises nothing of the interface it relies on. The verdict,
+  the rain alert and the planner stay with Open-Meteo.
+</p>
+
 <h3>The rain alert</h3>
 
 <p>
   While a telescope is imaging, or while the site is in darkness, the program watches the same
   forecast and warns you once — tray, in the app, and on your phone — when rain becomes likely
   within your chosen lead time. You set both the probability threshold and how much warning you
-  want, under Settings › Weather and sky; out of the box it warns at a 50 percent chance of rain
+  want, under Settings › Sky and weather; out of the box it warns at a 50 percent chance of rain
   within three hours.
 </p>
 
@@ -2046,7 +2232,10 @@
   site and a dark-sky site, or a remote telescope in another state — each is a site of its own
   with its own coordinates, horizon, Bortle class and time zone, and everything is computed per
   site. On the Weather page each site gets a panel of its own with its own arc and forecast,
-  noting whether it is dark there now and how far its clock is from yours.
+  noting whether it is dark there now and how far its clock is from yours. A site's night runs
+  from its own noon to noon, so a telescope on the other side of the world keeps its whole night
+  rather than having it cut in two at yours. And in a northern summer with no true darkness at
+  all, the watches follow nautical darkness instead, so the alerts keep working.
 </p>
 
 <h3>The all-sky camera</h3>
@@ -2058,6 +2247,14 @@
   plays the night as a timelapse, and <b>Notify me when it clears</b> for a night you are waiting
   on. <em>The all-sky camera and finding cloud</em> explains how all of
   it works. Without a camera set up, this part of the page simply does not appear.
+</p>
+
+<p>
+  A telescope kept at another site can have that site's camera too. A hosted observatory
+  usually publishes one all-sky picture for everybody there; give its web address to the site
+  under <b>Settings › General › Observing sites</b> and the site's part of this page shows that picture,
+  with its time on the site's own clock and its age. It is the picture alone: the cloud reading,
+  its warnings and the timelapse are taken from the camera at your home site.
 </p>
 
 <h3>Seeing</h3>
@@ -2139,6 +2336,16 @@
   Each comes with its reasons. <b>All · NB · BB</b> beside a telescope's name switches between
   every kind of target, narrowband targets only, and broadband ones only. <b>Not for me</b> stops a
   target coming back, and <b>Plan it</b> opens the planning form filled in for it.
+</p>
+
+<p>
+  Above the telescopes, <b>From</b> has a switch for each catalogue the targets are drawn from:
+  Messier, Caldwell, Herschel 400, Sharpless, van den Bergh, Barnard, LBN, NGC and IC. Press one
+  to leave its targets out for every telescope, and again to bring them back; the lists are
+  worked out again a moment later. Someone who never shoots dark nebulae switches Barnard off
+  once instead of dismissing its objects one at a time. A target that two catalogues list (every
+  Messier object is also an NGC or IC object) stays while either is switched on, under the name
+  of the one that is. The choice is kept in the program, so the phone shows the same.
 </p>
 
 <h3>Worth another visit</h3>
@@ -2227,9 +2434,13 @@
   which way up the image is. Then the bright-star catalogue pins down the exact geometry. This
   takes about forty minutes of a clear night, and is redone from scratch on a clear night about
   once a week, because nothing about the mounting is assumed. If you move or replace the camera,
-  <b>Forget</b> under Settings › Weather and sky clears the old answer until the next clear night,
-  and <b>Find north now</b> beside it solves at once when forty minutes of frames are in. Two
-  nights solved independently agreed to under two degrees.
+  <b>Forget</b> under Settings › Sky and weather clears the old answer until the next clear night,
+  and <b>Find north now</b> beside it solves at once when forty minutes of frames are in (it
+  asks before it forgets). Two nights solved independently agreed to under two degrees. Every
+  answer is checked against what chance would match on the same picture, the same geometry
+  turned to other directions, and kept only when it matches at least three times as many
+  stars; that keeps a wrong answer out in twilight and lets the right one through under a
+  bright moon, which washes out most of the stars.
 </p>
 
 <p>
@@ -2243,9 +2454,12 @@
 
 <div class="note">
   <span class="label">Why it works this way</span>
-  <p>The moon is deliberately excluded from the cloud reading. It is a light, not weather; it
-  moves; and it lights up the equipment in the frame. Left in, the sky around a bright moon reads
-  as lit cloud and the detector cries wolf every month.</p>
+  <p>The moon is deliberately allowed for in the cloud reading. It is a light, not weather; it
+  moves, so the sky ahead of it brightens faster than the clear-sky reference can follow; and
+  it lights up the equipment in the frame. Left in, the sky around a bright moon reads as lit
+  cloud and the detector cries wolf every month. So the disc and its glare are left out, and
+  while the moon is up (or dawn is coming) the smooth brightening it spreads across the sky is
+  taken as light: only what stands out from it, a lit cloud with edges, counts.</p>
   <p style="margin-top:6pt">Similarly, where the camera software writes both a display JPEG and a
   raw FITS frame, the FITS is what gets measured. The JPEG is re-stretched by the camera software
   as the scene changes — a yard light going out is enough — and one such re-stretch was once read
@@ -2280,7 +2494,7 @@
   the camera's pictures one after another, the way Review plays a set of subs. They are the
   pictures the cloud reading sampled, one a minute through darkness, so every frame carries its
   own reading; the button therefore needs <b>Read cloud cover from the camera during
-  darkness</b> (Settings › Weather and sky, on by default). It opens on the most recent night,
+  darkness</b> (Settings › Sky and weather, on by default). It opens on the most recent night,
   and a <b>Night</b> list at the top offers the others still available, up to about two weeks
   back. Where the camera writes colour JPEGs, those are what you see; a camera that saves only
   raw frames plays in grey.
@@ -2347,7 +2561,7 @@
   AstroTracker reads the actual pixels of each sub and computes the numbers below. New subs in
   your current-work folders are measured on their own soon after they arrive (see <em>The
   watcher</em>); anything else when you ask, with <b>Measure N unmeasured</b> or <b>Re-measure
-  all</b> at the top of a project's Review page, or <b>Re-measure N subs</b> on the Library page
+  all</b> at the top of a project's Review page, or <b>Re-measure N subs</b> at the top of Organize
   for subs an older version measured. The line under the page title keeps count: measured,
   flagged, rejected and unmeasured.
 </p>
@@ -2667,8 +2881,11 @@
 <p>
   <b>Move rejected subs (N)</b> at the top of the Review page (<b>Move N bad frames</b> on the
   project page) moves them out in one undoable batch; in read-only mode it is greyed out. If you
-  set a rejected-subs folder they land in <code>&lt;folder&gt;\&lt;rig&gt;\&lt;project&gt;\</code>; without one they go to a
-  <code>bad</code> folder beside their siblings. Either way they remain tracked, marked as moved,
+  set a rejected-subs folder they land in
+  <code>&lt;folder&gt;\&lt;rig&gt;\&lt;project&gt;\&lt;night&gt;\</code>, so rejects of the same name from
+  different nights never collide; without one they go to a <code>bad</code> folder beside their
+  siblings. The folder must be one of its own: Settings refuses one inside or around your
+  library folders. Either way they remain tracked, marked as moved,
   and out of your integration totals.
 </p>
 </section>
@@ -2685,6 +2902,14 @@
 <p>
   Every section on this page folds away and stays folded, because on a large library the page is
   otherwise twenty-odd screens long.
+</p>
+
+<p>
+  A setting, <b>Remove folders that moves leave empty</b> (under Settings, and offered here and
+  in Tidy my library), makes every move and every Undo remove the folders it leaves empty, up to
+  the library folder. It never removes a library folder, a New Data or Processing folder, the
+  copies set aside or your folder for rejects, nor a folder holding anything at all. With it
+  off, only archiving and setting copies aside remove the folders they empty.
 </p>
 
 <h3>Proposed moves</h3>
@@ -2714,30 +2939,70 @@
 </dl>
 
 <p>
-  For each proposed move you see the file, its project, its type, its night, where it would go
-  and why. You tick what you want. Nothing whatever happens until you confirm.
+  The moves are shown one tile per project, grouped by rig. Click a project and you see why its
+  files move, its folders before and after, and where they will go, which you can change: its
+  Night folders are kept under the folder you choose, and the folder is checked before
+  anything moves. A move that cannot be made says why; when a file of the same name is already
+  at the destination, the two can be compared, to see whether it is a copy, a different sub, or
+  one you already moved by hand. A project's files are listed one click away. You tick the
+  projects you want. Nothing whatever happens until you confirm.
 </p>
 
 <h3>The safety rules</h3>
 
 <ul>
   <li>Files are <b>never overwritten</b>. A collision is reported, not resolved silently.</li>
-  <li>Every batch is <b>logged</b> with each individual move.</li>
+  <li>Every batch is <b>logged</b> with each individual move, written down before the file is
+  touched.</li>
   <li>Every batch can be <b>undone</b>, putting everything back where it came from.</li>
+  <li>A move to another drive is copied under a temporary name, read back and compared with the
+  original, and takes the real name only once the copy is complete and correct, so a half-copied
+  or damaged sub never passes for a whole one. When archiving, the original is then set aside on
+  its own drive, in a folder called <code>Duplicates ready for deletion</code>, rather than
+  deleted: you empty that folder once you are happy with the archive. If the program closes
+  in the middle of a batch (the PC restarts, the power fails), the next start settles the batch
+  by what it finds on disk, and its Undo is there. Quit lets the file being moved finish first,
+  and an update or a restore waits until the batch is done.</li>
   <li>A move outside your library roots is <b>refused</b> — the program will not write to a
   destination it does not manage.</li>
-  <li><b>Read-only mode: never move files</b>, under Settings › Safety, switches all of it
+  <li><b>Read-only mode: never move files</b>, under Settings › Library › Safety, switches all of it
   off, undo included.</li>
 </ul>
 
 <h3>Archive finished projects</h3>
 
 <p>
-  A list of completed projects whose files still sit on a working drive, with the destination
-  each would go to in your archive. Tick, confirm, and the lights and flats move together, night
-  folders and all, as one undoable batch. Darks stay in the dark library where they belong. It
-  needs a library folder with the Archive role; until you add one on the Library page, the
-  section says so.
+  Completed projects whose files still sit on a working drive, one tile per project grouped by
+  rig, each with the destination it would go to in your archive beside it, which you can
+  change. Tick, confirm, and the lights and flats move together, night
+  folders and all, as one undoable batch, each file in a <code>Lights</code> or
+  <code>Flats</code> folder below its Night folder. Darks stay in the dark library where they
+  belong. It needs a library folder with the Archive role; until you add one under Settings › Library,
+  the section says so.
+</p>
+
+<p>
+  Only one copy of each sub moves. A sub stored twice on your working drives — the same capture
+  in New Data and in a folder called "M31 backup", say — has one copy archived and the other set
+  aside first into <code>Duplicates ready for deletion</code> on its own drive, after a byte for
+  byte comparison with the copy that moves. So does a sub the archive already holds for that
+  project: there is no point copying it twice. If every sub of a project is already in the
+  archive under another project (a folder copied to the NAS long ago and never removed), its
+  panel says so; point its destination at that folder and the copies on the working drive are set
+  aside instead.
+</p>
+
+<p>
+  The processing goes along too, as the library survey found it: WBPP's output folders, a
+  processing run's folder (with the folder above it when that is named after the target, so
+  <code>Processing\IC1805\21hrs</code> takes <code>Processing\IC1805</code> with it), PixInsight
+  projects, and pictures in the project's own folders. Folders move whole, and only when nothing
+  of another target's is in them; a picture kept elsewhere, or a folder several targets share,
+  stays where it is. WBPP's calibrated and registered subs can make processing many times the size
+  of the subs themselves, so each project has a <b>Take its processing along</b> tick box; untick
+  it to leave the processing where it is this time. A project's panel shows what moves where,
+  what is set aside first, what stays and why, and how long it will take. A batch that would not fit on the
+  archive's drive is refused before anything moves.
 </p>
 
 <p>
@@ -2808,13 +3073,36 @@
 <p class="chapter-num">Part Four · Chapter 21</p>
 <h2>Library</h2>
 
+<p class="lead">
+  The folders and the dark library are under Settings › Library; the library's numbers, <b>Survey
+  the library</b>, <b>Tidy my library</b>, <b>Regroup projects</b> and <b>Re-measure</b> sit at the top of Organize.
+</p>
+
 <p>
   The folders themselves: the library roots described in <em>Telling it where your files
   are</em>, which also explains the roles and why a folder inside another root is refused. To add
   one, type or paste its path, choose <b>Current work</b>, <b>Archive</b> or <b>Calibration
   library</b>, and press <b>Add folder</b>; a line under the form explains the role you picked.
+  A folder that holds roots you already have offers to take them in, as that chapter explains.
   The rejected-subs folder is not added here: it joins the list once you set it under Settings ›
-  Rejected subs.
+  Library › Rejected subs. At the top of Organize, <b>Survey the library</b> opens the survey, described at the end
+  of this chapter. A folder added with the wrong role is switched between current work and
+  archive in the <b>Role</b> column, in place, with nothing scanned again. A first scan of a large
+  folder can take hours: <b>Stop</b> on the scan line at the top of the page ends it, keeping what
+  was read, and the folder is scanned again by itself half an hour later unless it is removed.
+</p>
+
+<p>
+  Four tiles sit above the list. <b>Integration</b> is the whole library's in one figure: every
+  sub in a project counted once, however many folders or projects hold a copy of it, and nothing
+  for a sub graded bad, with your own hours and those taken with friends' rigs apart. Then how
+  many files the program has indexed, with how many of them were set aside as processed files,
+  masters or copies. <b>Copies</b> counts the files that repeat a sub already in the library (the
+  same camera, start time, exposure and kind of frame) and the room they take; click it for
+  <b>Tidy my library</b>, which sets aside those it safely can and says why it leaves the
+  others. Last, how many lights and flats belong to no project, the ones it could not place,
+  which the survey lists with the reason. Darks and bias are not among them: they belong to the
+  dark library, never to a project.
 </p>
 
 <p>Each root gets one row:</p>
@@ -2837,8 +3125,8 @@
 
 <p>
   Each row has a <b>Scan</b> button, to scan that folder now rather than wait for the schedule,
-  and a <b>Remove</b> button. With more than one folder, <b>Scan all</b> scans them one after
-  another.
+  <b>Change folder…</b> and <b>Remove</b>. With more than one folder, <b>Scan all</b> scans them
+  one after another.
 </p>
 
 <h3>When a drive is unplugged</h3>
@@ -2846,16 +3134,31 @@
 <p>
   Nothing needs switching off. The folder's dot turns red and its Scan button is greyed out.
   Scheduled rescans pass it by, and <b>Scan all</b> skips it without touching anything. Its
-  files stay in the index, grades and all, and everything carries on once the drive is back.
+  files stay in the index, grades and all, and everything carries on once the drive is back:
+  its live watch starts again by itself, and until it does the folder is rescanned every two
+  minutes. A folder that cannot be read in the middle of a scan (a network share that blinks)
+  is not taken for an empty one either: its subs stay as they were until a scan can read it,
+  and the scan says which folders it could not read.
+</p>
+
+<h3>When a folder moves</h3>
+
+<p>
+  A drive that comes back under another letter, a new PC, a share mounted under another name:
+  <b>Change folder…</b> gives the folder its new place. AstroTracker first checks that a sample
+  of its subs are there, at the same places under the new folder, then points everything at
+  it: grades, reject reasons, projects and measurements stay, and so do the dark runs and flat
+  sets with what you set on them.
 </p>
 
 <div class="warn">
-  <span class="label">Remove forgets</span>
-  <p><b>Remove</b> touches no file on disk, but the program forgets the folder: its files leave
-  the index, and with them the grades and reject reasons you gave them. Adding it again starts
-  from scratch, apart from <code>BAD_</code> names and <code>bad</code> folders, which are read afresh. A folder's role cannot
-  be changed once it is added, and removing and re-adding it is no free way round that, so choose
-  the role with care.</p>
+  <span class="label">Remove keeps grades for a while</span>
+  <p><b>Remove</b> touches no file on disk. The folder leaves the library, but what its subs
+  carried (grades, reject reasons, projects, measurements) is kept for 120 days: add the folder
+  again in that time, or its new place, and it comes back. The camera bodies and retired flags
+  you set on its dark runs and flat sets are not kept, so for a folder that moved, use
+  <b>Change folder…</b> instead. A folder's role cannot be changed once it is added, so choose
+  it with care.</p>
 </div>
 
 <h3>Re-measure</h3>
@@ -2882,16 +3185,174 @@
 <h3>Regroup projects, and the dark library</h3>
 
 <p>
-  <b>Regroup projects</b> rebuilds the grouping of files into projects from scratch, from the
-  files themselves. Subs you placed in a project by hand keep it, and planning projects, goals
-  and notes are kept; an automatically grouped project you renamed may get its default name
-  back, which is why it asks first. It cannot run while a scan is running.
+  <b>Regroup projects</b> checks every sub's project against the grouping rules, for when the
+  rules have changed. A sub moves only when the rules clearly place it in another project: one
+  that still fits its project by name or pointing, or shares a folder with subs that do, stays
+  where it is. Subs you placed or merged stay where you put them, finished and cancelled projects
+  stay as they are, and no project with notes, goals, a final picture, a measurement or a
+  <b>Revisit later</b> mark is deleted. It asks first, says how many subs it moved, and cannot run
+  while a scan is running.
 </p>
 
 <p>
   At the bottom of the page is the <b>Dark and bias library</b>: every dark and bias run found
   anywhere in your folders, by camera body, described in <em>Calibration: darks, bias and
-  flats</em>.
+  flats</em>. While a scan is adding darks and bias it has not grouped yet, a line above it says
+  how many; their runs appear when the scan finishes.
+</p>
+
+<h3>The survey: where everything stands</h3>
+
+<p>
+  The survey is for the moment you have added every drive and want to know what you actually
+  have: data spread over several disks, copies of copies, and no archive. It takes a few minutes
+  on a large library, runs in the background, and changes nothing on disk.
+</p>
+
+<p>
+  It starts from what the scans already know and adds the one thing a scan skips on purpose:
+  signs of processing. It looks for the folders WBPP writes (reading the header of one master
+  light in each, to learn whose it is), PixInsight projects, the integrations the scan set
+  aside, and pictures. A JPEG, or a TIFF or PNG whose name says final, counts as a finished
+  picture; any other TIFF or PNG is a step on the way. Each sign is placed with a project by the
+  target named in its header, by the folder it sits in, or by the target in its name. A picture
+  that could belong to two rigs' projects of the same target counts for both, since that is
+  usually one image made from both; one that could be two different targets counts for neither
+  and is listed.
+</p>
+
+<p>From that, every project gets a suggestion, with the reason in words:</p>
+
+<table>
+  <tr><th>Suggestion</th><th>When</th><th>Status it offers</th></tr>
+  <tr><td class="term">Finished</td><td>A finished picture is newer than the last night of
+    subs.</td><td>Complete</td></tr>
+  <tr><td class="term">Processed, no final</td><td>WBPP, a PixInsight project or integrations
+    newer than the subs, and no finished picture.</td><td>Processing</td></tr>
+  <tr><td class="term">Processed, new subs since</td><td>It was processed, then more subs came
+    in, and none for two months.</td><td>Processing</td></tr>
+  <tr><td class="term">Still collecting</td><td>Subs in the last two months, whatever was
+    processed along the way.</td><td>Acquiring</td></tr>
+  <tr><td class="term">Ready to process</td><td>Its goals are met, or nothing new for two
+    months and nothing processed.</td><td>Processing</td></tr>
+  <tr><td class="term">Stale</td><td>Nothing for more than a year and nothing
+    processed.</td><td>None: yours to decide</td></tr>
+</table>
+
+<p>
+  A suggestion only ever moves a project forward, never touches a postponed or cancelled one,
+  and changes nothing until you tick it and press <b>Accept</b>. The ones that would change
+  something come first. Hover over what was found to see where each sign is and how it was
+  placed.
+</p>
+
+<p>
+  Below the projects comes what is <b>stored twice</b>: subs that exist in more than one place,
+  by pair of folders, with how much of each folder the copies make up and how much space
+  keeping one copy of each would free. <b>Organize › Duplicates</b> lists the copies file by
+  file.
+</p>
+
+<p>
+  Below that list the survey can set the extra copies aside. For every sub stored more than once
+  one copy stays: the one in the archive, then the one not named or filed as a copy (a folder
+  called "backup" or "old", or Windows' own "M81_001 (2).fit"), then the one outside New Data, then
+  the one in the folder holding more of the project. You can change that for any pair of folders,
+  or leave a pair alone. <b>Set aside</b> compares each copy byte for byte with the one that stays,
+  then moves it into a folder called <code>Duplicates ready for deletion</code> at the top of its
+  own library folder, with the folders it was in kept below it, so it is a rename on the same
+  drive and takes no time. Nothing is deleted: that folder is yours to empty once you are happy,
+  and <b>Undo</b> puts every copy back. Copies of different sizes, copies in two projects (a
+  working project may reuse old nights on purpose), copies graded differently, copies in a
+  Syncthing folder (moving a file out of one deletes it on the other computer) and anything
+  written in the last day are left where they are, with the reason.
+  Last comes what <b>cannot be placed</b>: files that cannot be read (an empty file is usually a
+  copy that never finished, and the survey says whether a readable copy exists elsewhere),
+  darks, bias and flats that match no light in the library, and processing it could not tie to
+  any project, such as planetary, solar or landscape work.
+</p>
+
+<h3>Tidy my library</h3>
+
+<p>
+  For a library that grew over several drives, <b>Tidy my library</b> (at the top of Organize and
+  the survey) works out how to put every project in its place, and shows the whole plan before
+  anything moves. It is a guided popup of five pages. First the projects the survey would call
+  finished, to mark Complete if you agree; then projects that look like one project filed twice
+  (the same subs under two projects, or a few stray subs beside a target), to merge; then where
+  things go and how they are named; then the plan.
+</p>
+
+<p>
+  Finished projects go to one <b>Archive folder</b> and active ones to one <b>Active folder</b>,
+  each on one drive (the same drive is fine). By default a project lands in
+  <code>Archive\2025\ED127\M31</code> or <code>Active\ED127\M31</code>: the year, the rig's folder,
+  the project's name. The rig's folder is the one you typed as its <b>Folder for its files</b> under
+  Settings › Equipment › Rigs. Without one, a folder name the rig's files were found under is used only when it
+  is the rig's own: named after the rig, its telescope or its camera, or the working folder its
+  projects sit directly under. A name merely found on disk, such as a catch-all <code>Misc</code>
+  or a target's folder, never is; failing all that, the rig's full name,
+  such as <code>ED127 ASI2600MM</code>. The page lists every rig's folder before anything moves,
+  with any name passed over and why, and a run writes the folder it used into the rig's box, so
+  later plans keep it. Below that only a Night folder is kept, then a
+  <code>Lights</code>, <code>Flats</code>, <code>Darks</code> or <code>Bias</code> folder; old
+  folder names in between, such as <code>drive-download-2024…</code>, are dropped. Options add a
+  folder per night, named by its date, for subs that have none; send the darks found in projects
+  to the dark library; and take processing along. Rejected subs go to your folder for rejects.
+</p>
+
+<p>
+  A folder you made inside a project that is not a Night folder keeps its name: its subs go
+  into a folder beside <code>Lights</code> named for it, such as
+  <code>Night_3\Lights - PIER_W_Bad</code>, with its flats in <code>Flats - PIER_W_Bad</code>.
+  A folder whose name says only what a header says already (a filter, <code>data</code>, the
+  project's own name) is still dropped. A friend's subs (a rig with an owner under Settings › Equipment › Rigs)
+  are filed apart from yours, in a <b>Friends</b> folder at the top of the Archive and of the
+  Active folder, under the friend's name: <code>Archive\Friends\Michael\2025\C11\M106</code>.
+  Archiving one finished project from the Organize page files it the same way.
+</p>
+
+<p>
+  The finished projects already in the Archive folder are filed the same way (<b>The archive
+  too</b>, ticked by default), as renames on the archive's own drive. A project that is alone in a
+  folder where your naming puts projects keeps that folder, whatever it is called, and the year it
+  sits under; nothing leaves the archive, so a sub marked bad there goes to a Rejected folder
+  inside its project. Two Night folders of the same name holding different nights are kept apart,
+  one of them under its date. A project shot with two rigs gets a folder under each rig, with
+  that rig's lights and flats in it. Untick the box to leave the archive exactly as it is.
+</p>
+
+<p>
+  Before the plan is worked out, flats, darks and bias are filed again by the rules described
+  under <em>Organize</em>, so a plan never starts from out-of-date filing.
+  Every new place is read back the way AstroTracker's scanner will read it, and must give the
+  same target and night. A project whose subs share file names across nights (a sequencer that
+  starts counting again each night) gets a folder per night anyway, or the files would meet; a
+  project named like a folder of frames, such as "Dark Shark", gets a folder the scanner reads
+  right ("DarkShark"). The plan shows, for each drive, how much it would receive against its free
+  space, what would be set aside on each drive for you to delete later, and roughly how long it
+  would take, then what stays where it is and why.
+</p>
+
+<p>
+  When the plan looks right, <b>Run the plan</b> carries it out. AstroTracker first copies its own
+  database, the record every Undo works from, then goes one project at a time: the copies stored
+  twice are set aside, then the subs and the processing move. Between two drives each file is
+  copied, read back and compared before its original is set aside. Before each project it checks
+  the room on the drives again, and a drive or network share that is not there is waited for.
+  The PC stays awake, and while the run goes on nothing else moves files or installs an update; a
+  banner at the top of every page shows how far it has got.
+</p>
+
+<p>
+  <b>Stop</b> finishes the file being moved and ends the run there; <b>Resume</b> goes on later,
+  after a restart too, with the same plan, so a project stopped half way still ends up whole in
+  the folder the plan gave it. At the end a report lists, project by project, what moved, what
+  was set aside and what could not be moved and why, with buttons to open the new folders and the
+  "Duplicates ready for deletion" ones. <b>Undo</b> puts back one project, or everything, in the
+  background. Capture software keeps saving to the old folders until it is pointed at the new
+  ones, and PixInsight and WBPP setups name files by their full path, so the report says where
+  everything went.
 </p>
 </section>
 
@@ -2900,7 +3361,8 @@
 <h2>Rigs</h2>
 
 <p class="lead">
-  Each telescope setup, grouped into Identity, Optics, Camera, Capture PC and Calibration.
+  Each telescope setup, grouped into Identity, Optics, Camera, Capture PC and Calibration, under
+  Settings › Equipment: a row each, which opens to the rig's editor and its own Save.
 </p>
 
 <p>
@@ -2918,11 +3380,69 @@
   moonlight advice; a narrowband filter with no width entered counts as 6 nm.</li>
   <li><b>Which site</b> it observes from, which settles its darkness times, forecast and time
   zone.</li>
+  <li><b>The folder its projects are filed under</b> (<b>Folder for its files</b>), which is where
+  Tidy my library and Organize put them; left blank, the box shows the folder that will be used.
+  The <b>Folder names</b> beside it are only how the rig's files are recognised on disk.</li>
   <li><b>Where its log files are</b> (<b>Log folder</b>), so guiding and sequence events can be
   read.</li>
-  <li><b>Its capture PC's address</b> (<b>SGP API host</b>), for live camera, focuser and mount
+  <li><b>Its capture PC's address</b> (<b>Capture program API</b>, SGP's or N.I.N.A.'s), for live camera, focuser and mount
   state on the Imaging page, and whether <b>Allow control</b> lets the program send it
   commands.</li>
+  <li><b>Two rigs on one capture PC.</b> The same telescope with its reducer on, or with another
+  camera, is another rig on the same PC: give both the same Log folder and the same address, and
+  the log lines, the guiding and the live panel go to whichever of them is taking the subs.</li>
+  <li><b>AstroTracker on the capture PC.</b> Installed on the PC that runs the telescope and
+  told it is a capture PC, the program keeps a folder named <code>.astrotracker</code> inside
+  the folder the images are saved in: how much room that PC's drives have, which the capture
+  programs never say, and a copy of their logs. Whatever brings the subs to your main PC brings
+  the folder along, so nothing is opened on either PC and it works for a rig you only reach by
+  remote desktop. A rig with no Log folder of its own then reads its capture PC's logs, and
+  Settings › General › Capture PCs shows what that PC last reported. Where it finds a Syncthing folder above the saved
+  images it asks nothing; otherwise it shows the folder it found and waits for a yes. It
+  installs new versions by itself, never while a sequence is running. For a capture PC it
+  cannot be installed on, a small Windows task can report the drive space alone; its command is
+  under <b>Guides</b>, ready to copy.</li>
+  <li><b>A new rig.</b> A capture PC set up today has no logs and no images. Its page still
+  shows the capture programs it finds installed, asks for the folder the images will be saved
+  in, and takes a name for the rig; the <b>Capture PCs</b> list under Settings › General
+  shows it waiting for its first subs, and the rig those subs create is given that name.</li>
+  <li><b>Syncthing set up for you.</b> AstroTracker never carries your images itself; where
+  nothing brings a rig's images home yet, it can wire up Syncthing, the free program most
+  people use for that. <b>Connect a capture PC with Syncthing</b> under Settings › General › Capture PCs shows a
+  code; pasted on the capture PC's page, it shares the image folder with this PC; this PC then
+  shows the capture PC and its folder, each with an <b>Accept</b> button. It only ever adds
+  to what Syncthing has, and a folder you share already is kept as you made it.</li>
+  <li><b>The live panel, with nothing to open.</b> A capture PC asks its own capture program
+  every few seconds what the camera, filter wheel, focuser and mount are doing, and sends
+  the answers home in the same folder as the images. The rig's card shows them marked
+  <em>through the folder</em>, as old as your sync is slow, often about a minute. That is all
+  a rig at a remote observatory,
+  or one you only reach by remote desktop, needs for its live panel.</li>
+  <li><b>The firewall, for a quicker reading and the rig actions.</b> For a reading every few
+  seconds, and to send a rig an action, this PC asks the capture program over the network
+  itself, and Windows Firewall on the capture PC has to allow it. The
+  capture PC's page has a button for that, <b>Let my main PC through</b>: Windows asks for
+  permission and adds a rule for that one port and your main PC's address only, since the
+  capture program's interface has no password. Your main PC then fills in the rig's address by
+  itself once it can reach it.</li>
+  <li><b>Windows Update kept away at night.</b> Windows restarts a PC when it decides to, and a
+  capture PC restarted in the night ends its sequence. The capture PC's page has a switch,
+  <b>Keep Windows Update from restarting this PC during a night</b>: Windows asks for
+  permission once, then still downloads updates but installs them only when you say so.
+  Your main PC warns, under Settings › General › Capture PCs and on the Imaging card, when a capture PC has a restart
+  waiting or is left for Windows to restart, and sends a push in the afternoon before dark
+  when a restart is waiting.</li>
+  <li><b>Its sequence, and starting every rig at once.</b> The capture PC's page chooses the
+  SGP sequence file (starting from the one SGP last opened), and the Imaging card shows how
+  far each target has got. <b>Start all</b> on the Imaging page starts every ready rig's
+  sequence, half a minute apart; <b>Arm for dark</b> starts the rigs you pick when it gets
+  dark, but only once you confirm the push sent half an hour before, or, chosen as <b>When
+  the sky clears</b>, once the all-sky camera has seen an open sky for a while and no rain is
+  forecast, without asking (a push first gives five minutes to cancel); <b>Stop &amp; park
+  all</b>, pressed and held for two seconds, aborts every rig's frame and parks its mount.
+  These sit in a bar that stays at the top of the Imaging page, above a table of the rigs
+  with each one's sequence, what it is doing and its own Start and Park; the rig cards are
+  below it as before. Your paired phone can do all of it.</li>
   <li><b>Its own guiding limit</b>, if a rig with a very different focal length or mount needs a
   different threshold from the global one.</li>
   <li><b>A calibration folder</b>, if the rig keeps its own — see <em>Calibration: darks, bias
@@ -2949,7 +3469,7 @@
 <p>
   AstroTracker derives it from your own nights. Each time a rig finishes an autofocus run, it
   records where the focuser settled and the temperature the focuser reported. That needs the
-  rig's <b>SGP API host</b>: the log files mention the temperature too rarely, so a rig whose logs
+  rig's <b>Capture program API</b>: the log files mention the temperature too rarely, so a rig whose logs
   are only copied across records nothing and shows no focus panel. Once there are ten runs spread
   over at least eight degrees that actually track the temperature, the rig's <b>focus vs
   temperature</b> line states its own steps per degree and where the focuser should sit at the
@@ -2971,7 +3491,7 @@
 <h2>Hardware</h2>
 
 <p>
-  Cameras and telescopes entered once as things in their own right, then picked from dropdowns
+  Under Settings › Equipment › Cameras and optics: cameras and telescopes entered once as things in their own right, then picked from dropdowns
   when you build a rig — rather than typing the same sensor dimensions and pixel size into every
   rig that uses that camera. An "Import from my rigs" button seeds the list from what has already
   been discovered.
@@ -2999,10 +3519,10 @@
 
 <p>
   Darks are organised by <b>camera body</b> first, then by <b>run</b> — one folder shot on one
-  night. The <b>Dark and bias library</b> at the foot of the Library page lists each run's sets,
+  night. The <b>Dark and bias library</b> at the foot of Settings › Library lists each run's sets,
   dates and frame counts. A light frame matches darks from its own rig's camera with the same
   exposure, gain, offset and binning, a temperature within 2 °C and shot within a year of the
-  lights (both under Settings › Calibration matching), choosing the nearest run in time, and the
+  lights (both under Settings › Calibration and quality › Calibration matching), choosing the nearest run in time, and the
   project page names which run it would use for each exposure group.
 </p>
 
@@ -3013,7 +3533,7 @@
 </p>
 
 <p>
-  Where two cameras on the Hardware page share a sensor model, a run's body may be genuinely
+  Where two cameras under Settings › Equipment › Cameras and optics share a sensor model, a run's body may be genuinely
   ambiguous. The program works it out from the telescope it was shot on or a folder named after
   the rig, and where it truly cannot, it raises a <b>Dark runs</b> alert and you pick the body in
   the dark library; until then the run matches either body, marked unverified. People with one
@@ -3032,7 +3552,7 @@
 
 <p>
   Flats are matched to lights in the same night folder first; without one, flats shot within 14
-  days of the session count (Settings › Calibration matching). If a rig keeps a single
+  days of the session count (Settings › Calibration and quality › Calibration matching). If a rig keeps a single
   calibration folder that you re-shoot periodically, tell the program where it is: everything in
   it from that rig's camera belongs to the rig, and the flats become dated sets, filter by
   filter, read from the headers — so the subfolders can be named anything at all.
@@ -3088,7 +3608,7 @@ they disappear on their own when the situation is fixed. They cover:</p>
   flats must match rotation.</li>
   <li>Gain or offset drift — a setting changed between sessions, which invalidates calibration.</li>
   <li>Flats in force for a rig that are older than its <b>Remind me when flats are older than,
-  days</b> on the Rigs page (off until you give it a number).</li>
+  days</b> under Settings › Equipment › Rigs (off until you give it a number).</li>
   <li>A rig the scan has found that you have not confirmed yet.</li>
   <li>A rig the scan created from only a handful of photographs, which is usually a mistake.</li>
   <li>A filter name in the headers that matches none of the standard names.</li>
@@ -3108,8 +3628,8 @@ they disappear on their own when the situation is fixed. They cover:</p>
 <p>
   A rig the scan discovers arrives unconfirmed, with a <b>Rig</b> alert, "New rig detected",
   under the name the program made up for it: give it a proper name, say whether its camera is mono
-  or colour, and press <b>Confirm</b> on the Rigs page. One created from fewer than ten lights
-  (Settings › Rig review) gets a <b>Rig review</b> alert instead, because that is far more often a
+  or colour, and press <b>Confirm</b> under Settings › Equipment › Rigs. One created from fewer than ten lights
+  (Settings › Equipment › Rig review) gets a <b>Rig review</b> alert instead, because that is far more often a
   camera setting changed by mistake for part of a night, such as a cropped readout, than a new
   telescope. The alert names the existing rig it resembles, if there is one. Confirm the rig if
   it is real; otherwise <b>Merge into…</b> or <b>Delete</b> it, as <em>Recognising your
@@ -3138,7 +3658,7 @@ they disappear on their own when the situation is fixed. They cover:</p>
 </p>
 
 <p>
-  A date under Settings › Sub quality, <b>Hide calibration alerts for nights before</b>, hides
+  A date under Settings › Calibration and quality › Sub quality, <b>Hide calibration alerts for nights before</b>, hides
   missing-flat and gain-or-offset drift alerts about nights before it, which is how you adopt the
   program mid-library without drowning in complaints about 2019. Missing-dark alerts belong to a
   project rather than a night, so the date leaves them alone. Missing flats, missing darks and
@@ -3157,6 +3677,23 @@ they disappear on their own when the situation is fixed. They cover:</p>
   end of each group. Pick one to see its projects, newest first, with a box to filter by target.
   Cancelled ones are labelled as such, so a target you gave up on stays visible as a record of what was tried
   rather than vanishing.
+</p>
+
+<p>
+  Five tiles sit above the cards: how many projects are finished (with how many were cancelled,
+  and how many were last imaged this year), the integration they hold (counted as on the Active
+  page), the rigs they were taken with, how many of your completed projects have a final picture, and how many finished projects
+  still have files on a working drive, with their size; that tile leads to Organize, where they
+  can be archived.
+</p>
+
+<p>
+  A tile marked ▾ opens the list behind its number under the row, and a second click closes it.
+  <b>Finished projects</b> lists them all, to filter by name or rig and sort by date, hours or
+  name; <b>Integration</b> lists them by hours, most first; <b>Final pictures</b> lists your
+  completed projects without a final picture and with one, and each opens the project at its
+  picture, so the ones still missing a picture are easy to find. A tile marked ↗ takes you to
+  the page where its number is acted on.
 </p>
 
 <p>
@@ -3180,6 +3717,8 @@ they disappear on their own when the situation is fixed. They cover:</p>
   megabytes; the file you chose is never touched, and the daily backup copies the
   <code>finals</code> folder too. A complete project without a picture shows an empty frame with
   an <b>Upload the final image</b> button; <b>Replace</b> and <b>Remove</b> change it later.
+  Once the picture is in, the program offers to archive the project (<em>Finishing, and
+  archiving</em>).
 </p>
 </section>
 
@@ -3187,39 +3726,60 @@ they disappear on their own when the situation is fixed. They cover:</p>
 <p class="chapter-num">Part Four · Chapter 27</p>
 <h2>Settings</h2>
 
-<p>Grouped by subject, in the order they appear on the page:</p>
+<p>
+  Seven groups down the side, one open at a time, and a search box above them that looks through
+  the words of every section. On a phone the groups are a list, and each opens on a screen of its
+  own. Rigs, cameras and optics, capture PCs and the library's folders live here too.
+</p>
 
 <table class="long">
-  <tr><th>Group</th><th>What is in it</th></tr>
+  <tr><th>Section</th><th>What is in it</th></tr>
+  <tr><td class="term" colspan="2"><b>General</b></td></tr>
+  <tr><td class="term">Appearance</td><td><b>Classic</b>, plain dark panels, or <b>Glass</b>: see-through panels with lit edges over a night-blue background, the open page lit in blue. Shown at once and kept on the PC, so every browser and phone gets the same look. Under it, the <b>Loading screen</b>: Cassiopeia, Photon accumulation, Telescope lock or Sky map sweep, which also plays small inside any part of a page still waiting for its answer.</td></tr>
   <tr><td class="term">Observing sites</td><td>Your home site: name, latitude, longitude, elevation, time zone (blank means this PC's), <b>Altitude limit</b> (30°), <b>Bortle class</b> (6) and horizon. Below it, any other sites, each with its own horizon, time zone and Bortle class. Feeds every sky calculation.</td></tr>
-  <tr><td class="term">Calibration matching</td><td>How old flats may be when there is no Night folder to pair them by (14 days), how far a dark's temperature may differ from the lights' (2 °C), and how old a dark may be (365 days).</td></tr>
-  <tr><td class="term">Dark-age reminder</td><td><b>Remind me to retake darks</b>: an alert when a dark set your active projects rely on is older than a number of days (90). Off by default: plenty of imagers never need to retake darks.</td></tr>
-  <tr><td class="term">Safety</td><td><b>Read-only mode: never move files</b> (off). Switched on, it stops every file move: Organize and Quarantine are switched off; everything else keeps working.</td></tr>
+  <tr><td class="term">Capture PCs</td><td>The PCs beside your rigs as each last reported itself (drive space, Windows Update, the programs found), and <b>Connect a capture PC with Syncthing</b>.</td></tr>
+  <tr><td class="term">Phone access</td><td><b>Allow phones and other computers on this network</b> (off), an optional second code for Tailscale, and the pairing QR codes with their links (<em>Your phone</em>).</td></tr>
+  <tr><td class="term" colspan="2"><b>Equipment</b></td></tr>
+  <tr><td class="term">Rigs</td><td>Every rig, a row each that opens to its editor and its own Save: name, owner, folders, site, optic and camera, log folder, the capture program's address and Allow control, filters, guiding limit, calibration folder and flat rules.</td></tr>
+  <tr><td class="term">Cameras and optics</td><td>Each camera and telescope entered once and picked from a list on each rig, and <b>Import from my rigs</b>.</td></tr>
+  <tr><td class="term">Rig review</td><td>How few lights make a rig the scanner created worth a second look (10).</td></tr>
+  <tr><td class="term" colspan="2"><b>Library</b></td></tr>
+  <tr><td class="term">Library folders</td><td>The folders the program reads, their roles, <b>Scan</b>, <b>Change folder…</b> and <b>Remove</b>, and what the watcher is doing with each.</td></tr>
+  <tr><td class="term">Watching and rescans</td><td>Whether current-work folders are watched (on) and new subs measured automatically (on), the settle time (8 seconds), and how often everything is rescanned: current work every 15 minutes, archives every 6 hours.</td></tr>
   <tr><td class="term">Library layout</td><td>The archive template, stage folder names, and <b>Learn from my archive</b>.</td></tr>
   <tr><td class="term">Rejected subs</td><td>Where quarantined frames go. Left empty, they go into a <code>bad</code> folder beside the rest.</td></tr>
-  <tr><td class="term">Phone access</td><td><b>Allow phones and other computers on this network</b> (off), an optional second code for Tailscale, and the pairing QR codes with their links (<em>Your phone</em>).</td></tr>
-  <tr><td class="term">Push notifications</td><td><b>Send push notifications through ntfy</b> (off), the per-phone setup, a test push, and how late a rig's next sub must be before it counts as stalled (10 minutes).</td></tr>
-  <tr><td class="term">Weather and sky</td><td>The rain warning (on: a 50% chance within 3 hours), the season reminder (on), the all-sky picture folder or URL, reading cloud from it (on), the cloud warning (on, at 60% cover), the all-clear (off, at 15% or less), the sky circle, and where north lies in the all-sky picture.</td></tr>
-  <tr><td class="term">Guiding and seeing</td><td>The guiding warning (on): a limit of 1.5″ total RMS, held for 5 minutes.</td></tr>
-  <tr><td class="term">How much more?</td><td><b>Needs more below, SNR</b> (4), <b>Clean from, SNR</b> (6) and <b>Judged per patch of</b> (3 × 3 pixels): where a filter's verdict changes, as <em>Signal, noise, and when a filter is done</em> explains.</td></tr>
-  <tr><td class="term">Morning summary</td><td>Whether it is sent (on), the time it arrives (08:00), and <b>Send a test summary now</b>.</td></tr>
+  <tr><td class="term">Safety</td><td><b>Read-only mode: never move files</b> (off). Switched on, it stops every file move: Organize and Quarantine are switched off; everything else keeps working.</td></tr>
+  <tr><td class="term">Dark and bias library</td><td>Every dark and bias run by camera body, with a picker where two bodies share a sensor.</td></tr>
+  <tr><td class="term" colspan="2"><b>Calibration and quality</b></td></tr>
+  <tr><td class="term">Calibration matching</td><td>How old flats may be when there is no Night folder to pair them by (14 days), how far a dark's temperature may differ from the lights' (2 °C), and how old a dark may be (365 days).</td></tr>
+  <tr><td class="term">Dark-age reminder</td><td><b>Remind me to retake darks</b>: an alert when a dark set your active projects rely on is older than a number of days (90). Off by default: plenty of imagers never need to retake darks.</td></tr>
   <tr><td class="term">Sub quality</td><td><b>Hide calibration alerts for nights before</b> (a date), the trailing thresholds (eccentricity 0.75, and 0.15 above the session's median), <b>Re-flag measured subs</b>, and <b>Auto-grade on the Review page (test feature)</b>, off by default (see <em>Review — judging your photographs</em>).</td></tr>
-  <tr><td class="term">Rig review</td><td>How few lights make a rig the scanner created worth a second look (10).</td></tr>
-  <tr><td class="term">Watching and rescans</td><td>Whether current-work folders are watched (on) and new subs measured automatically (on), the settle time (8 seconds), and how often everything is rescanned: current work every 15 minutes, archives every 6 hours.</td></tr>
-  <tr><td class="term">Target catalogues</td><td>Downloads the object catalogues the Planning page and its checklists use, or imports an OpenNGC file you downloaded yourself.</td></tr>
-  <tr><td class="term">Data on this PC</td><td>Where the program keeps its data, how much room the database, thumbnails, sky cache and log take, and <b>Clear thumbnails</b>. Your FITS files are never copied here.</td></tr>
+  <tr><td class="term">How much more?</td><td><b>Needs more below, SNR</b> (4), <b>Clean from, SNR</b> (6) and <b>Judged per patch of</b> (3 × 3 pixels): where a filter's verdict changes, as <em>Signal, noise, and when a filter is done</em> explains.</td></tr>
+  <tr><td class="term" colspan="2"><b>Sky and weather</b></td></tr>
+  <tr><td class="term">Forecast and rain</td><td>The rain warning (on: a 50% chance within 3 hours) and the season reminder (on).</td></tr>
+  <tr><td class="term">All-sky camera</td><td>The all-sky picture folder or URL, reading cloud from it (on), the cloud warning (on, at 60% cover), the all-clear (off, at 15% or less), the sky circle, and where north lies in the all-sky picture.</td></tr>
+  <tr><td class="term">Guiding and seeing</td><td>The guiding warning (on): a limit of 1.5″ total RMS, held for 5 minutes.</td></tr>
+  <tr><td class="term">Astrospheric</td><td>The forecast preview on your own Astrospheric key: cloud, seeing and transparency under each site's forecast.</td></tr>
+  <tr><td class="term" colspan="2"><b>Notifications</b></td></tr>
+  <tr><td class="term">Push notifications</td><td><b>Send push notifications through ntfy</b> (off), the server, the per-phone setup and a test push.</td></tr>
+  <tr><td class="term">When a rig stops</td><td>How late a rig's next sub must be before it counts as stalled (10 minutes), the capture PC drive warning, and <b>Wake me when a rig stops in the night</b>.</td></tr>
+  <tr><td class="term">Morning summary</td><td>Whether it is sent (on), the time it arrives (08:00), whether the morning report opens in the app (on), <b>Show last night's report</b> and <b>Send a test summary now</b>.</td></tr>
+  <tr><td class="term" colspan="2"><b>This PC</b></td></tr>
   <tr><td class="term">Backups</td><td><b>Back up the database daily</b> (off), the folder, the time (09:00), copies to keep (7), <b>Back up now</b>.</td></tr>
   <tr><td class="term">Updates</td><td><b>Check for updates</b> (on, every 6 hours), automatic installs (off), the channel (stable), <b>Check now</b>.</td></tr>
+  <tr><td class="term">Data on this PC</td><td>Where the program keeps its data, how much room the database, thumbnails, sky cache and log take, and <b>Clear thumbnails</b>. Your FITS files are never copied here.</td></tr>
+  <tr><td class="term">Target catalogues</td><td>Downloads the object catalogues the Planning page and its checklists use, or imports an OpenNGC file you downloaded yourself.</td></tr>
   <tr><td class="term">Export training data</td><td>Writes your graded subs, the ones the program flagged and a sample of ordinary ones to a folder, as training material for the sub-quality model on another machine. Running it again adds only what is new.</td></tr>
-  <tr><td class="term">Licence</td><td>How many trial nights are left, or who the copy is licensed to; the box to paste a key into; links to the licence terms, the privacy statement and the open-source licences.</td></tr>
+  <tr><td class="term">Licence</td><td>How many trial nights are left, or who the copy is licensed to; a Buy a licence link and the box to paste a key into; links to the licence agreement, the copyright notice, the privacy statement and the open-source licences.</td></tr>
   <tr><td class="term">Support</td><td>Saving a problem report to email to the developer, and <b>What's new</b> for the full version history.</td></tr>
 </table>
 
 <p>
-  The groups from Observing sites to Watching and rescans, and the Backups and Updates choices
-  further down, are kept when you press <b>Save settings</b>, which sits just below Watching and
-  rescans. The other sections below that button work through buttons of their own, and so does
-  the list of other observing sites, which keeps each change as you make it.
+  A section you change is outlined, and its own <b>Undo</b> and <b>Save</b> appear at its foot,
+  staying on screen while the section runs past it; only that section's changes are sent. An
+  edit left unsaved is still there when you come back to Settings, until the app is reloaded. The
+  look and the loading screen are kept the moment you choose them, and a rig, the other observing
+  sites, the catalogues and the sections with buttons of their own keep their own changes.
 </p>
 
 </section>
@@ -3229,21 +3789,30 @@ they disappear on their own when the situation is fixed. They cover:</p>
 <h2>Guides</h2>
 
 <p>
-  Reached from the top right of any page. How-to articles, grouped by subject. Most are for the
-  parts of the setup that involve other machines — getting a rig's log files onto this PC (with
-  Syncthing, if you like), opening the one network port a rig needs, the all-sky camera, phone
-  access and push notifications, backups. The rest explain things people trip over in the
-  program itself: what each library folder's role means, two targets that ended up in one
-  folder, flats and rotation, controlling a rig from the Imaging page, and how the focuser's
-  response to temperature is learned.
+  The last tab along the top of any page. How-to articles, grouped by subject. The first ones
+  are where a new user starts: installing and the first run, and the trial, buying a licence
+  and entering its key. Most of the others are for the parts of the setup that involve other
+  machines — setting up a capture PC, getting a rig's log files onto this PC (with Syncthing,
+  if you like), opening the one network port a rig needs, the all-sky camera, phone access and
+  push notifications, backups. Some explain things people trip over in the program itself: what
+  each library folder's role means, two targets that ended up in one folder, flats and
+  rotation, controlling a rig from the Imaging page, and how the focuser's response to
+  temperature is learned. The last group is for when something needs doing to the program
+  itself: updates and the beta channel, sending a problem report, and moving to another PC.
 </p>
 
 <p>
   Two details make these more useful than ordinary documentation. Commands come with
   <em>this</em> PC's own address already filled in and a Copy button, so they can be run as they
   stand rather than adapted. And a small <b>i</b> beside individual fields opens the guide for
-  that specific field — so the explanation of "SGP API host" is next to the box asking for it,
+  that specific field — so the explanation of "Capture program API" is next to the box asking for it,
   rather than in a manual you would have to know to go and read.
+</p>
+
+<p>
+  The same guides also exist as ordinary web pages, one to a topic, so that somebody helping
+  you can send a link to exactly the one you need before you have the program open. Those
+  pages say "this PC's address" where the program itself would show yours.
 </p>
 </section>
 <section class="chapter">
@@ -3318,7 +3887,7 @@ they disappear on their own when the situation is fixed. They cover:</p>
 <p>
   You do not have to press reload either. When a scan adds, changes or removes a sub, or a batch
   of measurements finishes, the Active, Imaging, Weather, Planning, Review and Finished pages
-  refresh themselves, and so does the count on the Alerts tab. A scan that found nothing leaves
+  refresh themselves, and so does the count on the Alerts bell. A scan that found nothing leaves
   the page alone, so a Review page is not rebuilt under you while you grade.
 </p>
 
@@ -3383,12 +3952,18 @@ they disappear on their own when the situation is fixed. They cover:</p>
   When it stays above the limit — 1.5 arc-seconds by default, or a per-rig value — for five
   closed minutes in a row (the number of minutes is yours to change too), you get one warning
   with the RA and declination split, which usually identifies the cause. A quiet note follows
-  in the session log when it settles again.
+  in the session log when it settles again. The figure on the rig's card is worked out the
+  way PHD2 works it out, so it matches the one on PHD2's own graph: the scatter of the star
+  about its average position over the last hundred guide frames, with the frames of a dither
+  and its settling left out. The warning itself judges each
+  minute on that minute's own frames: the last hundred frames keep one bad frame for about
+  five minutes, and a single swing must not read as five minutes of bad guiding.
 </p>
 
 <p>
   Five closed minutes matters: guiding spikes constantly for a few seconds at a time, and an
-  alert on every spike would be noise. Five sustained minutes is a real problem.
+  alert on every spike would be noise. Five sustained minutes is a real problem. A swing far
+  beyond the limit is still noted, quietly, as one line on the rig's timeline.
 </p>
 
 <h3>Cloud, and the all-clear</h3>
@@ -3509,13 +4084,34 @@ they disappear on their own when the situation is fixed. They cover:</p>
 </p>
 
 <p>
-  It goes out once a day, after 8 a.m. unless you choose another time under Settings › Morning
+  It goes out once a day, after 8 a.m. unless you choose another time under Settings › Notifications › Morning
   summary, where it can also be switched off. A night is dated by the evening it began, so its
   summary never goes out while the night is still running; if the computer was off at that hour
   it arrives when the program next starts, and a night that produced no subs sends nothing. It
-  travels like every other notification: the Windows tray, a banner at the top of the app, and
-  your phone if push is set up (<em>Your phone</em>). <b>Send a test summary now</b>, in the
-  same place, sends the latest night's summary at once, whatever the time.
+  travels like every other notification: the Windows tray, the app, and your phone if push is
+  set up (<em>Your phone</em>). <b>Send a test summary now</b>, in the same place, sends the
+  latest night's summary at once, whatever the time.
+</p>
+
+<h3>The morning report</h3>
+
+<p>
+  In the app the same night opens as the <b>morning report</b>: the first time you open
+  AstroTracker after that hour, or at once if it is open when the summary goes out, and once a
+  night; <b>Got it</b> puts it away on every device you use. It tells the night rig by rig. A
+  bar for each rig runs across the night with the hours of full darkness marked on it, lit
+  where subs were landing, so time lost shows as a gap. Under the bars each rig has a row: its
+  targets with their subs per filter, its typical guiding and star size, and up to five lines
+  worth a look. The first is time lost in the dark and why, read from the capture program's log
+  around the gap: a meridian flip whose centring failed and the recovery after it, a sequence
+  that ended and was started again, a change of target waiting for its start time, a lost
+  guide star. Then come errors the log recorded, a park the mount did not confirm, guiding
+  warnings, subs the capture program restarted, an autofocus that had to try again, and subs
+  flagged. The night's to-dos close it: subs to review, flats needed, subs in another target's
+  folder, a gain or offset that changed. <b>Open last night</b> opens the night on the Imaging
+  page. The report can be switched off beside the morning summary, where <b>Show last night's
+  report</b> opens it at any time, as <b>Morning report</b> does beside a past night on the
+  Imaging page.
 </p>
 
 <p>
@@ -3560,10 +4156,10 @@ they disappear on their own when the situation is fixed. They cover:</p>
   <code>astrotracker.db</code> in <code>%LOCALAPPDATA%\AstroTracker</code>, copy the backup's
   <code>finals</code> folder into that same folder, and start. Leave out the <code>finals</code>
   folder and the projects' finished pictures are missing, since the database only names them.
-  Thumbnails rebuild on demand, and your folders, rigs and grades come back as they were,
-  provided each folder has the same path on the new PC: give the drives the same letters.
-  Removing a folder on the Library page and adding it again under a new letter starts it from
-  scratch, without its grades (see <em>Library</em>).
+  Thumbnails rebuild on demand, and your folders, rigs and grades come back as they were. A
+  folder whose path is different on the new PC (another drive letter, say) is pointed at its
+  new place with <b>Change folder…</b> under Settings › Library, and everything its subs carried
+  comes with it (see <em>Library</em>).
 </p>
 
 <h3>The database is checked every start</h3>
@@ -3593,9 +4189,11 @@ they disappear on their own when the situation is fixed. They cover:</p>
   installer runs. The releases always come from AstroTracker's own page on GitHub; that is not a
   setting anyone can change.</li>
   <li><b>Install now</b> closes the program, runs the installer silently, and starts the new
-  version. The page reloads itself when the server is back and shows What's new.</li>
+  version. The page reloads itself when the server is back and shows What's new. While files
+  are being moved it waits: it says so, and you install when the batch is done.</li>
   <li><b>Automatic installs</b>, off by default, do the same unattended — but only outside
-  darkness, never while a rig is imaging, and not within ten minutes of a start.</li>
+  darkness, never while a rig is imaging or files are being moved, and not within ten minutes of
+  a start.</li>
   <li><b>Channel</b>: stable, or beta to also receive pre-releases.</li>
 </ul>
 
@@ -3685,8 +4283,8 @@ they disappear on their own when the situation is fixed. They cover:</p>
 <h3>Seeing the pages</h3>
 
 <p>
-  Under Settings › Phone access, tick <b>Allow phones and other computers on this network</b>,
-  press <b>Save settings</b> and restart AstroTracker; Windows then asks once whether to allow it
+  Under Settings › General › Phone access, tick <b>Allow phones and other computers on this network</b>,
+  press <b>Save</b> and restart AstroTracker; Windows then asks once whether to allow it
   on private networks, and you allow it. Then scan a QR code in Settings with your phone's
   camera: it opens the Imaging page and pairs the phone at the same time. Any device without the
   pairing code is refused.
@@ -3751,9 +4349,11 @@ they disappear on their own when the situation is fixed. They cover:</p>
 <p>
   Push uses ntfy, a free open-source service. There is no account and no open port: the program
   publishes to a private topic and your phone subscribes to it. Tick <b>Send push notifications
-  through ntfy</b> under Settings › Push notifications; it uses the public ntfy.sh server unless
+  through ntfy</b> under Settings › Notifications › Push notifications; it uses the public ntfy.sh server unless
   you give your own under <b>Server</b>. Which alerts reach the phone is set out in <em>Every
-  alert it can send</em>.
+  alert it can send</em>. <b>Wake me when a rig stops in the night</b> sends the alert for a rig
+  that stops, or a capture PC that falls silent while imaging, at the phone's most urgent
+  level; for it to wake you, let the ntfy app through Do Not Disturb.
 </p>
 
 <p>
@@ -3802,6 +4402,14 @@ they disappear on their own when the situation is fixed. They cover:</p>
   one-directional while seeing wanders.
 </p>
 
+<p>
+  A one-shot-colour camera needs one more step. Its sensor is a mosaic of red, green and blue
+  pixels, and under a lit sky the three sit at different levels: a fine checkerboard that makes
+  every star look wider than it is, and wider still as the sky brightens. For a rig marked as
+  colour under Settings › Equipment › Rigs, each colour's sky is taken out before a star is measured, so its star
+  sizes mean the same as a mono camera's.
+</p>
+
 <h3>Eccentricity — how round the stars are</h3>
 
 <p>
@@ -3826,8 +4434,8 @@ they disappear on their own when the situation is fixed. They cover:</p>
   good subs measure 0.4 to 0.55, because field curvature, tilt and coarse pixels all make them
   slightly oval, so a sub is only called trailing when its eccentricity reaches <b>0.75</b>
   <em>and</em>, on a night with five or more subs in that filter, sits at least <b>0.15</b>
-  above that night's median. Both numbers are under Settings › Sub quality: lower the bar to be
-  stricter, press <b>Save settings</b>, and <b>Re-flag measured subs</b> then applies it to
+  above that night's median. Both numbers are under Settings › Calibration and quality › Sub quality: lower the bar to be
+  stricter, press <b>Save</b>, and <b>Re-flag measured subs</b> then applies it to
   everything already measured.
 </p>
 
@@ -4046,7 +4654,7 @@ they disappear on their own when the situation is fixed. They cover:</p>
   the physical way, and subs that stray far from it are set aside. On a night when the target
   climbed from 25° to 81° with the moon down, the first hour looked like cloud against the
   night's median and sat within 2% of expected against the fit. This needs the latitude and
-  longitude of the rig's site (Settings › Observing sites) and the target's position in the
+  longitude of the rig's site (Settings › General › Observing sites) and the target's position in the
   headers; without them, or with fewer than eight subs to fit, the plain median is used.
 </p>
 
@@ -4123,7 +4731,7 @@ they disappear on their own when the situation is fixed. They cover:</p>
     <li>A project's first night has no history, so haze that lasted all night can pass.</li>
     <li>Dew or frost on the camera's window is not told apart from cloud, and neither is a lit
     building or tree in the way; the <b>below horizon</b> mark in Review, from the horizon you draw
-    under Settings › Observing sites, helps with the second.</li>
+    under Settings › General › Observing sites, helps with the second.</li>
     <li>Old projects with no grades have been seen to score high in bulk, and nobody has yet
     checked why.</li>
     <li>How well a model trained on one library carries over to other equipment is unproven. That
@@ -4261,7 +4869,7 @@ they disappear on their own when the situation is fixed. They cover:</p>
 </table>
 
 <p>
-  The two numbers and the size of the patch are settings, under <b>Settings › How much
+  The two numbers and the size of the patch are settings, under <b>Settings › Calibration and quality › How much
   more?</b>. The default patch, 3 × 3 pixels, is close to how you see a drizzled master
   (drizzling is a way of stacking that enlarges the result) after light noise reduction; a
   single pixel is the strictest choice. They are settings because they are one imager's eye, not
@@ -4530,8 +5138,8 @@ they disappear on their own when the situation is fixed. They cover:</p>
 
 <p>
   The aperture is the one number your photographs do not carry. It comes from the telescope you
-  entered on the Hardware page, or from the <b>Aperture mm</b> box when you edit a rig on the Rigs
-  page. A rig without one has nothing taken off for its optics, so its estimate reads worse than
+  entered under Settings › Equipment › Cameras and optics, or from the <b>Aperture mm</b> box when you
+  edit a rig under Settings › Equipment › Rigs. A rig without one has nothing taken off for its optics, so its estimate reads worse than
   it should — most noticeably on a small telescope, whose optical limit is the largest.
 </p>
 
@@ -4585,6 +5193,12 @@ they disappear on their own when the situation is fixed. They cover:</p>
     <td>Open-Meteo</td>
     <td>Your coordinates. No account, no key.</td>
     <td>Works without it; the page says it is offline.</td>
+  </tr>
+  <tr>
+    <td class="term">Astrospheric forecast</td>
+    <td>Astrospheric</td>
+    <td>Your coordinates and your own Astrospheric key.</td>
+    <td>Off until you enter your own key.</td>
   </tr>
   <tr>
     <td class="term">Sky survey images</td>
@@ -4650,7 +5264,7 @@ they disappear on their own when the situation is fixed. They cover:</p>
   A problem report is a zip file: the end of each log file, which includes the pages' own notes
   of errors, slow requests and freezes, and a snapshot of the program — your settings, library
   folders, rigs and alerts, and what each part was doing. No images and no database.
-  <b>Save problem report…</b> in Settings › Support writes it, and you email it yourself; the
+  <b>Save problem report…</b> in Settings › This PC › Support writes it, and you email it yourself; the
   program never sends it. <em>Backups, updates and staying alive</em> lists everything in it.
 </p>
 
@@ -4668,7 +5282,7 @@ they disappear on their own when the situation is fixed. They cover:</p>
   A few more connections normally stay inside your own network, and each exists only if you
   set it up. When the <b>All-sky picture folder or URL</b> setting holds a web address rather
   than a folder, AstroTracker fetches the camera's newest picture from that address. A rig
-  with an <b>SGP API host</b> on the Rigs page is asked every five seconds what its camera,
+  with a <b>Capture program API</b> address under Settings › Equipment › Rigs is asked every five seconds what its camera,
   filter wheel, focuser and mount are doing, and is sent a command only when that rig's
   <b>Allow control</b> is on and you send one yourself (see <em>Imaging — the live view</em>).
   And with phone access switched on, your phone talks straight to this PC over your own
@@ -4753,7 +5367,7 @@ they disappear on their own when the situation is fixed. They cover:</p>
   bright and even the background is, <b>Star glow</b>, <b>Sky change</b> and <b>Cloud
   likely</b> — and can sort the doubtful subs first, but none of them rejects, moves or grades
   anything by itself. The one thing that acts on them is a test feature, off until you switch it
-  on under Settings › Sub quality: an <b>Auto-grade (test)</b> button on a project's Review page
+  on under Settings › Calibration and quality › Sub quality: an <b>Auto-grade (test)</b> button on a project's Review page
   that rejects as clouds the ungraded subs the cloud model is surest about. It acts only when you
   press it, never touches a sub you graded, and one click takes its grades back (see <em>Review —
   judging your photographs</em>).
@@ -4804,7 +5418,7 @@ they disappear on their own when the situation is fixed. They cover:</p>
   <tr><td class="term">All-sky camera</td><td>A cheap camera with a fisheye lens pointed straight up, photographing the whole sky about once a minute. AstroTracker reads its pictures to tell cloud from clear sky.</td></tr>
   <tr><td class="term">Arc-second</td><td>1/3600 of a degree. The full moon is about 1,800 arc-seconds wide. Guiding errors and seeing are measured in these.</td></tr>
   <tr><td class="term">Aureole</td><td>The halo of light that thin cloud scatters around a star, spreading well beyond the star itself. It is the bloom that is hard to process out of a stack, and what star glow measures.</td></tr>
-  <tr><td class="term">Auto-grade</td><td>A test feature, off until you switch it on under Settings › Sub quality, that rejects as clouds your ungraded subs whose cloud likelihood or star glow reaches the level you pick. Its grades are marked "auto" and one click takes them all back.</td></tr>
+  <tr><td class="term">Auto-grade</td><td>A test feature, off until you switch it on under Settings › Calibration and quality › Sub quality, that rejects as clouds your ungraded subs whose cloud likelihood or star glow reaches the level you pick. Its grades are marked "auto" and one click takes them all back.</td></tr>
   <tr><td class="term">Bias frame</td><td>A zero-length exposure with the lens capped, measuring the camera's fixed electrical offset.</td></tr>
   <tr><td class="term">Binning</td><td>Combining neighbouring pixels into one, trading resolution for sensitivity. Part of a rig's fingerprint.</td></tr>
   <tr><td class="term">Bortle class</td><td>A 1–9 scale of sky darkness. 1 is a remote desert, 9 a city centre.</td></tr>
@@ -4825,7 +5439,7 @@ they disappear on their own when the situation is fixed. They cover:</p>
   <tr><td class="term">Guiding</td><td>A second camera watching one star and correcting the mount many times a minute.</td></tr>
   <tr><td class="term">HFR</td><td>Half-flux radius — a second sharpness measure, less sensitive to star profile shape.</td></tr>
   <tr><td class="term">Header</td><td>The text label inside a FITS file: target, filter, exposure, temperature, date, optics.</td></tr>
-  <tr><td class="term">Horizon profile</td><td>Your real horizon of trees, roofs and hills, entered under Settings › Observing sites as bearing:altitude pairs (180:15 is 15° up due south) or one number all the way round. A target counts as up only above it, and Review marks subs taken below it.</td></tr>
+  <tr><td class="term">Horizon profile</td><td>Your real horizon of trees, roofs and hills, entered under Settings › General › Observing sites as bearing:altitude pairs (180:15 is 15° up due south) or one number all the way round. A target counts as up only above it, and Review marks subs taken below it.</td></tr>
   <tr><td class="term">Integration</td><td>Total exposure time across every sub of a project.</td></tr>
   <tr><td class="term">Library root</td><td>A top-level folder you have told AstroTracker about, with a role.</td></tr>
   <tr><td class="term">Light frame</td><td>A sub of the actual target, as opposed to a calibration frame.</td></tr>
@@ -4852,8 +5466,8 @@ they disappear on their own when the situation is fixed. They cover:</p>
 
 <div style="margin-top:26pt; padding-top:10pt; border-top:1px solid #c9cfd9; font-family:'Segoe UI',sans-serif; font-size:9.5pt; color:#6a7385;">
   <p style="text-align:left">
-    This document describes AstroTracker 0.23.3. Features are added regularly; the version
-    history inside the program, behind the <b>What's new</b> button under Settings › Support, is always current.
+    This document describes AstroTracker 0.37.0. Features are added regularly; the version
+    history inside the program, behind the <b>What's new</b> button under Settings › This PC › Support, is always current.
   </p>
 </div>
 </section>
