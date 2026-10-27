@@ -8,7 +8,7 @@ Every picture is shown with the record AstroTracker keeps of how it was made: in
 
 ## Pages
 
-- [Gallery](https://blastrophoto.com/gallery/): 144 finished pictures, 4,645 hours of integration.
+- [Gallery](https://blastrophoto.com/gallery/): 146 finished pictures, 4,744 hours of integration.
 - [Telescopes](https://blastrophoto.com/telescopes/): the telescopes behind the pictures.
 - [About](https://blastrophoto.com/about/): the person behind the pictures.
 - [AstroTracker](https://blastrophoto.com/AstroTracker/): AstroTracker keeps a complete record of every astrophotography project: integration by filter and night, sub quality, calibration, and what to shoot next.
@@ -39,6 +39,8 @@ The other purpose of this website is to promote a new tool I've developed called
 
 The pictures are not offered for training AI models (see robots.txt).
 
+- [Sh2-171 - The Cosmic Question Mark](https://blastrophoto.com/sh2-171-the-cosmic-question-mark/): Sh2-171 - The Cosmic Question Mark: 57h 30m of SHO through the Pleiades 68 + ASI2600MM, 6 nights.
+- [Barnard 11](https://blastrophoto.com/barnard-11/): Barnard 11: 41h 20m of LRGB + Hα, OIII through the Pleiades 68 + ASI2600MM, 12 nights.
 - [vdB 156](https://blastrophoto.com/vdb-156/): vdB 156: 47h 05m of LRGB + Hα through the Pleiades 68 + ASI2600MM, 9 nights.
 - [Triangulum Galaxy](https://blastrophoto.com/triangulum-galaxy-edgehd-8-asi2600mm/): Triangulum Galaxy: 44h 16m of LRGB + Hα through the EdgeHD 8 + ASI2600MM, 5 nights.
 - [Andromeda Galaxy](https://blastrophoto.com/andromeda-galaxy-redcat51/): Andromeda Galaxy: 17h 58m of LRGB through the Redcat51, 3 nights.
