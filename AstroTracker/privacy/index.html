@@ -43,7 +43,7 @@
 </details>
 </header>
 <main id="main">
-<link rel="stylesheet" href="../astrotracker.css?v=2">
+<link rel="stylesheet" href="../astrotracker.css?v=3">
 <div class="product at at-doc">
 <section class="wrap at-doc-head">
 <p class="label"><a href="../">AstroTracker</a> · Privacy</p>
@@ -53,7 +53,7 @@
 
 <p><strong>Short version: AstroTracker does not collect anything about you, and your photographs never leave your computer.</strong></p>
 <p>There is no account, no sign-in, no telemetry, no analytics, and no usage tracking. Nothing about which features you use, how often you run it, or what is in your library is recorded anywhere but on your own PC.</p>
-<p>Last updated 22 October 2026: notifications to the AstroTracker iPhone app.</p>
+<p>Last updated 26 October 2026: the AstroTracker iPhone app.</p>
 <hr>
 <h2>Where your data lives</h2>
 <p>Everything AstroTracker knows sits in one folder on your computer:</p>
@@ -85,6 +85,19 @@
 <h2>Phone access</h2>
 <p>If you switch on phone access, AstroTracker serves the same pages to devices on your own network, protected by a pairing code. This is a direct connection from your phone to your PC. Nothing is relayed through any third party, and no data leaves your network. A paired phone can do almost everything the PC can, but not change folders or web addresses (a rig's log and calibration folders, its capture program's address and sequence file, and whether it takes commands at all, included), look into a folder or import a file by its path, restore a backup, add and remove library folders, or remove the licence key or an Astrospheric key: those only work on the PC itself.</p>
 <p>On the PC, only AstroTracker's own pages can use it: a request that another website in your browser tries to make is refused.</p>
+<hr>
+<h2>The AstroTracker iPhone app</h2>
+<p>The iPhone app is a companion to AstroTracker on your PC and works only with it. It has no account, no advertising, no analytics and no tracking, and no code from anyone else is built into it.</p>
+<p><strong>What it talks to.</strong> Your own PC, directly, over your own network (or your own VPN): the Tonight screen, the widgets and AstroTracker's pages read your PC just as a browser at home does. Notifications come through AstroTracker's push relay and Apple's push service, sealed on your PC so that only your phone can open them (the last row of the table above). Nothing else.</p>
+<p><strong>What it asks iOS for.</strong></p>
+<ul><li>The camera, only to scan the pairing code your PC shows. Nothing it sees is kept or sent anywhere.</li><li>Your local network, to reach your PC.</li><li>Notifications, if you allow them. Without them the app still works; it just cannot tell you anything while it is closed.</li></ul>
+<p><strong>What it keeps on the phone.</strong></p>
+<ul><li>Your PC's name and network address, and the name your PC lists the phone by.</li><li>The phone's own pairing code for your PC, the key your PC seals its notifications with, and the phone's id and secret at the push relay, in iOS's keychain. They are kept on this phone only: never synced, and not carried to another phone by a backup.</li><li>Tonight's last reading, for the widgets; and your choices: a sound for each kind of alert, and the look and loading screen your PC uses.</li></ul>
+<p>AstroTracker's pages are kept only while the app is open: their cookies are never written to the phone. <strong>See a demo night</strong> shows a night recorded inside the app, and reaches no PC at all.</p>
+<p><strong>What the push relay keeps.</strong> For each phone: its relay id, a fingerprint of its secret, the address Apple gives the app on that phone for notifications, whether it is a test build, when it registered and when it was last used; and a count of notifications by the hour, to hold back a flood, cleared daily. Never a message (it only ever passes them on, sealed) and never your PC's or your phone's internet address. Cloudflare, which runs it, carries each request as any website's host does.</p>
+<p><strong>Removing it.</strong></p>
+<ul><li><strong>Unpair</strong>, in the app, removes the phone from your PC and deletes your PC's details, the pairing code, the sealing key and the widgets' reading from the phone. Removing the phone under Settings › General › Phone access on the PC does the same at the PC, and the app forgets your PC the next time it asks it anything.</li><li>The relay deletes a phone's entry as soon as Apple reports the app gone from it (after you delete the app, at the next notification your PC sends), and any entry neither your PC nor the app has used for 400 days.</li><li>Deleting the app removes everything it keeps except its keychain entries, which iOS may keep until the phone is erased; they are of no use without the app.</li></ul>
+<p>If you share analytics with app developers in iOS's settings, Apple may pass on the app's crash reports to me; Apple sends them without anything that identifies you.</p>
 <hr>
 <h2>Children</h2>
 <p>AstroTracker is not directed at children and collects no personal information from anyone.</p>

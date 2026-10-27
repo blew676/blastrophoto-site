@@ -218,6 +218,7 @@
 }
 .at-doc-body p, .at-doc-body li { font-size: 17px; line-height: 1.7; color: var(--text-2); }
 .at-doc-body p + p { margin-top: 14px; }
+.at-doc-body ul + p { margin-top: 20px; }
 .at-doc-body ul { margin: 14px 0 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
 .at-doc-body strong { color: var(--text); font-weight: 600; }
 .at-doc-body code {
