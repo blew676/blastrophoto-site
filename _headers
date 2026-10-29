@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-4XVszVqE4DaE/zv92V6JMFgMTX7vNbhxHE4t9AZTPEQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://blastrophoto.goatcounter.com; connect-src 'self' https://api.web3forms.com https://blastrophoto.goatcounter.com; object-src 'none'; form-action 'self' https://api.web3forms.com; frame-ancestors 'none'; base-uri 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://gc.zgo.at 'sha256-84UbxJRRQse2hg2OawMWqAQw3EiADaDiclCY3EvL53E='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://blastrophoto.goatcounter.com; connect-src 'self' https://api.web3forms.com https://blastrophoto.goatcounter.com; object-src 'none'; form-action 'self' https://api.web3forms.com; frame-ancestors 'none'; base-uri 'self'
   X-Frame-Options: DENY
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
 /*.svg
