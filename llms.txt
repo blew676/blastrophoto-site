@@ -8,7 +8,7 @@ Every picture is shown with the record AstroTracker keeps of how it was made: in
 
 ## Pages
 
-- [Gallery](https://blastrophoto.com/gallery/): 149 finished pictures, 4,835 hours of integration.
+- [Gallery](https://blastrophoto.com/gallery/): 150 finished pictures, 4,899 hours of integration.
 - [Telescopes](https://blastrophoto.com/telescopes/): the telescopes behind the pictures.
 - [About](https://blastrophoto.com/about/): the person behind the pictures.
 - [AstroTracker](https://blastrophoto.com/AstroTracker/): AstroTracker keeps a complete record of every astrophotography project: integration by filter and night, sub quality, calibration, and what to shoot next.
@@ -39,6 +39,7 @@ The other purpose of this website is to promote a new tool I've developed called
 
 The pictures are not offered for training AI models (see robots.txt).
 
+- [LBN 576](https://blastrophoto.com/lbn-576/): LBN 576: 64h 10m of SHO through the ED127 Reduced, 7 nights.
 - [Sh2-171 - The Cosmic Question Mark](https://blastrophoto.com/sh2-171-the-cosmic-question-mark/): Sh2-171 - The Cosmic Question Mark: 57h 30m of SHO through the Pleiades 68 + ASI2600MM, 6 nights.
 - [NGC 1333](https://blastrophoto.com/ngc-1333-ed127-reduced/): NGC 1333: 52h 09m of LRGB + Hα through the ED127 Reduced, 10 nights.
 - [LBN 347](https://blastrophoto.com/lbn-347/): LBN 347: 20h 18m of R + Hα through the Redcat51, 4 nights.
