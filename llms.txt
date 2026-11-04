@@ -8,7 +8,7 @@ Every picture is shown with the record AstroTracker keeps of how it was made: in
 
 ## Pages
 
-- [Gallery](https://blastrophoto.com/gallery/): 150 finished pictures, 4,899 hours of integration.
+- [Gallery](https://blastrophoto.com/gallery/): 152 finished pictures, 4,986 hours of integration.
 - [Telescopes](https://blastrophoto.com/telescopes/): the telescopes behind the pictures.
 - [About](https://blastrophoto.com/about/): the person behind the pictures.
 - [AstroTracker](https://blastrophoto.com/AstroTracker/): AstroTracker keeps a complete record of every astrophotography project: integration by filter and night, sub quality, calibration, and what to shoot next.
@@ -39,6 +39,7 @@ The other purpose of this website is to promote a new tool I've developed called
 
 The pictures are not offered for training AI models (see robots.txt).
 
+- [Double Cluster](https://blastrophoto.com/double-cluster-gt81/): Double Cluster: 48h 25m of LRGB + Hα through the GT81, 10 nights.
 - [LBN 576](https://blastrophoto.com/lbn-576/): LBN 576: 64h 10m of SHO through the ED127 Reduced, 7 nights.
 - [Sh2-171 - The Cosmic Question Mark](https://blastrophoto.com/sh2-171-the-cosmic-question-mark/): Sh2-171 - The Cosmic Question Mark: 57h 30m of SHO through the Pleiades 68 + ASI2600MM, 6 nights.
 - [NGC 1333](https://blastrophoto.com/ngc-1333-ed127-reduced/): NGC 1333: 52h 09m of LRGB + Hα through the ED127 Reduced, 10 nights.
@@ -110,6 +111,7 @@ The pictures are not offered for training AI models (see robots.txt).
 - [Trifid Nebula](https://blastrophoto.com/m20/): Trifid Nebula: 8h 24m of LRGB through the C11 (.63x) + ASI294MM, 5 nights.
 - [M95 and M96](https://blastrophoto.com/m95-and-m96/): M95 and M96: 19h 24m of LRGB + Hα through the ED127 + ASI2600MM, 8 nights.
 - [M88](https://blastrophoto.com/m88/): M88: 15h 30m of LRGB through the C11 (.63x) + ASI294MM, 5 nights.
+- [NGC 4278](https://blastrophoto.com/ngc-4278/): NGC 4278: 38h 37m of LRGB + Hα through the GT81, 8 nights.
 - [Needle Galaxy](https://blastrophoto.com/needle-galaxy/): Needle Galaxy: 6h 28m of LRGB through the C11 (.63x) + ASI294MM, 2 nights.
 - [Koi Fish Galaxy](https://blastrophoto.com/koi-fish-galaxy/): Koi Fish Galaxy: 71h 17m of LRGB + Hα through the ED127 + ASI2600MM, 12 nights.
 - [NGC 2170](https://blastrophoto.com/ngc-2170/): NGC 2170: 33h 27m of L + Hα through the ED127 + ASI2600MM, 17 nights.
