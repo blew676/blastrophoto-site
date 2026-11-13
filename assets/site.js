@@ -153,27 +153,39 @@
     var isOn = function () {
       return fsElement() === viewer || viewer.classList.contains("is-full");
     };
-    var sharpen = function () {
-      var full = pic.getAttribute("data-full");
+    // the sharper copy of a picture on the page: the one shown, or (0.8.1) the version compared
+    // with it; one that was switched away from while it loaded is not put back
+    var sharpen = function (img) {
+      img = img || pic;
+      var full = img.getAttribute("data-full");
       var need = Math.max(window.screen.width, window.screen.height) * (window.devicePixelRatio || 1);
-      if (!full || pic.getAttribute("src") === full || need <= pic.naturalWidth * 1.1) return;
+      if (!full || img.getAttribute("src") === full || need <= img.naturalWidth * 1.1) return;
       var hi = new Image();
-      hi.onload = function () { pic.src = full; };
+      hi.onload = function () {
+        if (img.getAttribute("data-full") === full) img.src = full;
+      };
       hi.src = full;
     };
+    var sharpenAll = function () {
+      viewer.querySelectorAll("img[data-full]").forEach(function (img) {
+        if (!img.closest("[hidden]")) sharpen(img);
+      });
+    };
+    var afterSync = null; // (0.8.1) the compare layer, fitted again to the picture's new size
     var sync = function () {
       var on = isOn();
       viewer.classList.toggle("fs-on", on);
       document.body.classList.toggle("no-scroll", viewer.classList.contains("is-full"));
       fsButton.setAttribute("aria-pressed", String(on));
       fsButton.setAttribute("aria-label", on ? "Leave full screen" : "View full screen");
+      if (afterSync) afterSync();
     };
     var fillWindow = function () {
       viewer.classList.add("is-full");
       sync();
     };
     var enter = function () {
-      sharpen();
+      sharpenAll();
       if (!request || document.fullscreenEnabled === false) return fillWindow();
       try {
         var started = request.call(viewer);
@@ -204,6 +216,114 @@
       if (e.key === "Escape" && viewer.classList.contains("is-full")) leave();
       if (e.key === "f" || e.key === "F") toggle();
     });
+
+    // (0.8.1) Versions of the picture from the same data (HaRGB, RGB): a button for each, and
+    // Compare, the main one on the left and the other on the right with a line between them,
+    // dragged, or moved with the arrow keys once its knob has the focus.
+    var switcher = viewer.querySelector("[data-versions]");
+    var layer = viewer.querySelector("[data-compare-layer]");
+    if (switcher && layer) {
+      var choices = [].slice.call(switcher.querySelectorAll("[data-version]"));
+      var compareBtn = switcher.querySelector("[data-compare]");
+      var other = layer.querySelector(".compare-img");
+      var knob = layer.querySelector("[data-compare-knob]");
+      var tagA = layer.querySelector(".compare-tag-a");
+      var tagB = layer.querySelector(".compare-tag-b");
+      var shown = 0;
+      var put = function (img, b) {
+        img.setAttribute("data-full", b.getAttribute("data-full"));
+        img.src = b.getAttribute("data-src");
+        img.alt = b.getAttribute("data-alt");
+      };
+      var press = function () {
+        var comparing = !layer.hidden;
+        choices.forEach(function (b, i) {
+          b.setAttribute("aria-pressed", String(!comparing && i === shown));
+        });
+        compareBtn.setAttribute("aria-pressed", String(comparing));
+        viewer.classList.toggle("comparing", comparing);
+      };
+      var place = function (pct) {
+        pct = Math.max(0, Math.min(100, pct));
+        layer.style.setProperty("--at", pct + "%");
+        knob.setAttribute("aria-valuenow", String(Math.round(pct)));
+      };
+      // over the picture itself, not the black beside it: the line then runs from one edge of
+      // the picture to the other, and the labels sit in its corners
+      var fit = function () {
+        var fw = viewer.clientWidth;
+        var fh = viewer.clientHeight;
+        var iw = pic.naturalWidth || Number(pic.getAttribute("width"));
+        var ih = pic.naturalHeight || Number(pic.getAttribute("height"));
+        if (!fw || !fh || !iw || !ih) return;
+        var s = Math.min(fw / iw, fh / ih);
+        layer.style.left = (fw - iw * s) / 2 + "px";
+        layer.style.top = (fh - ih * s) / 2 + "px";
+        layer.style.width = iw * s + "px";
+        layer.style.height = ih * s + "px";
+      };
+      var refit = function () {
+        if (!layer.hidden) fit();
+      };
+      window.addEventListener("resize", refit);
+      pic.addEventListener("load", refit);
+      afterSync = refit;
+      var show = function (i) {
+        shown = i;
+        layer.hidden = true;
+        put(pic, choices[i]);
+        if (isOn()) sharpen(pic);
+        press();
+      };
+      var compare = function () {
+        var b = shown === 0 ? 1 : shown; // the version being looked at, or the one after the main
+        put(pic, choices[0]);
+        put(other, choices[b]);
+        tagA.textContent = choices[0].textContent;
+        tagB.textContent = choices[b].textContent;
+        place(50);
+        layer.hidden = false;
+        fit();
+        if (isOn()) sharpenAll();
+        press();
+      };
+      choices.forEach(function (b, i) {
+        b.addEventListener("click", function () { show(i); });
+      });
+      compareBtn.addEventListener("click", function () {
+        if (layer.hidden) compare();
+        else show(shown);
+      });
+      var dragging = false;
+      var follow = function (e) {
+        var r = layer.getBoundingClientRect();
+        if (r.width) place(((e.clientX - r.left) / r.width) * 100);
+      };
+      layer.addEventListener("pointerdown", function (e) {
+        if (e.button) return;
+        dragging = true;
+        try {
+          layer.setPointerCapture(e.pointerId);
+        } catch (err) {
+          // a pointer that cannot be captured still moves the line while it is over the picture
+        }
+        follow(e);
+      });
+      layer.addEventListener("pointermove", function (e) {
+        if (dragging) follow(e);
+      });
+      layer.addEventListener("pointerup", function () { dragging = false; });
+      layer.addEventListener("pointercancel", function () { dragging = false; });
+      knob.addEventListener("keydown", function (e) {
+        var now = Number(knob.getAttribute("aria-valuenow"));
+        var step = e.shiftKey ? 10 : 2;
+        var to = { ArrowLeft: now - step, ArrowDown: now - step, ArrowRight: now + step, ArrowUp: now + step, Home: 0, End: 100 }[e.key];
+        if (to === undefined) return;
+        e.preventDefault();
+        e.stopPropagation(); // the arrow keys step to the next picture everywhere else
+        place(to);
+      });
+    }
   }
 
   // A picture's page: the arrow keys step to the previous and next pictures.
