@@ -29,6 +29,47 @@
 /* pretty, not site.css's balance: Edge balanced "The Night / Sky, Photographed." on phones */
 .sky-note .display { font-size: clamp(40px, 4.6vw, 76px); line-height: 0.92; text-wrap: pretty; }
 .sky-note.is-away { opacity: 0; }
+/* (0.8.2) a smaller line under the heading (a verse's reference, say): in the site's own type,
+   the record's small capitals */
+.sky-cite {
+  margin: 0; font-family: var(--mono); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245, 243, 239, 0.82);
+}
+/* the inscription: spaced Cormorant capitals in the middle of the sky, the line under it in
+   italic between two hairlines (its two font files come along only for this look) */
+@font-face {
+  font-family: "Cormorant Inscription"; src: url("cormorant-normal-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Inscription"; src: url("cormorant-italic-400.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+.sky-note.is-inscription {
+  left: 50%; bottom: 76px; transform: translateX(-50%); width: max-content;
+  max-width: min(1040px, calc(100% - 2 * var(--pad))); align-items: center; gap: 18px; text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75), 0 0 32px rgba(0, 0, 0, 0.65);
+}
+.sky-note.is-inscription .display {
+  font-family: "Cormorant Inscription", Georgia, serif; font-weight: 400; font-style: normal; font-stretch: normal;
+  font-size: clamp(24px, 3vw, 50px); line-height: 1.3; letter-spacing: 0.17em; margin-right: -0.17em;
+  text-transform: uppercase; text-wrap: balance; max-width: 18em; /* a verse in two even lines at any width */
+}
+.sky-note.is-inscription .sky-cite {
+  display: flex; align-items: center; justify-content: center; gap: 16px; color: rgba(245, 243, 239, 0.8);
+  font-family: "Cormorant Inscription", Georgia, serif; font-style: italic; font-size: clamp(17px, 1.5vw, 23px);
+  letter-spacing: 0.04em; text-transform: none;
+}
+.sky-note.is-inscription .sky-cite::before, .sky-note.is-inscription .sky-cite::after {
+  content: ""; width: 56px; height: 1px; background: rgba(245, 243, 239, 0.5);
+}
+/* the words fade in, stay a while and go for good (the note's own opacity still hides them while
+   a picture is open); with less motion asked for they simply stay */
+.sky-note.fades > * { animation: sky-words 14s ease-in-out 1s both; }
+@keyframes sky-words { 0% { opacity: 0; } 18% { opacity: 1; } 75% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .sky-note.fades > * { animation: none; } }
+/* the narrowest phones keep the verse's two lines */
+@media (max-width: 380px) { .sky-note.is-inscription .display { font-size: 21px; letter-spacing: 0.14em; margin-right: -0.14em; } }
 .sky-tip {
   position: absolute; z-index: 6; pointer-events: none; padding: 7px 10px;
   transform: translate(-50%, calc(-100% - 12px)); white-space: nowrap;

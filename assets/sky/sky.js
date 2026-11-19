@@ -142,8 +142,10 @@
   if (!tour.length) return;
   var stars = [], lines = [], names = [];
 
-  var note = el("div", "sky-note");
+  // (0.8.2) the heading's look, a smaller line under it, and words that fade in and away
+  var note = el("div", "sky-note" + (data.look === "inscription" ? " is-inscription" : "") + (data.fade ? " fades" : ""));
   note.appendChild(el("h2", "display", data.heading));
+  if (data.subheading) note.appendChild(el("p", "sky-cite", data.subheading));
   var controls = el("div", "show-controls");
   controls.innerHTML =
     '<span class="show-count" data-count></span>' +
